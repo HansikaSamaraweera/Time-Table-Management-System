@@ -5,12 +5,16 @@
  */
 package com.project.frames;
 
+import com.project.model.Lecturer;
 import com.project.util.dbdetail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +24,7 @@ public class lecturers extends javax.swing.JFrame {
     
      private static Connection con;
      
+      private PreparedStatement ps2;
      private PreparedStatement ps3;
 
     /**
@@ -27,6 +32,7 @@ public class lecturers extends javax.swing.JFrame {
      */
     public lecturers() {
         initComponents();
+      
     }
 
     /**
@@ -38,7 +44,6 @@ public class lecturers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,16 +64,11 @@ public class lecturers extends javax.swing.JFrame {
         rankbtn = new javax.swing.JButton();
         addlec = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 204));
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -122,58 +122,61 @@ public class lecturers extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Edit Lecturers");
+        jButton2.setText("View Lecturers");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel9.setText("Add Lecturers");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(110, 110, 110))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fac, 0, 281, Short.MAX_VALUE)
-                            .addComponent(dep)
-                            .addComponent(cen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(levelCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(fac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dep)
+                        .addComponent(cen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(levelCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(rank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(eid)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(addlec, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(49, 49, 49)
-                        .addComponent(rankbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rankbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(eid)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(addlec, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
                     .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(211, 211, 211))
+                .addGap(69, 69, 69))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(225, 225, 225)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -201,17 +204,30 @@ public class lecturers extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(levelCombo))
+                    .addComponent(levelCombo, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(rank, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rankbtn))
-                .addGap(63, 63, 63)
+                .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addlec, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 102));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 196, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,51 +235,40 @@ public class lecturers extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jButton1)
-                .addGap(76, 76, 76)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Check Button
-        addlect(13, 15);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void addlecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addlecActionPerformed
         // TODO add your handling code here:
+        try{
         String name= nm.getText();
-        String emmid=eid.getText();
+        float emmid=Float.parseFloat(eid.getText());
         String faculty=(String) fac.getSelectedItem();
         String department=dep.getText();
         String center=(String) cen.getSelectedItem();
         String building=(String) buil.getSelectedItem();
-        String level =(String) levelCombo.getSelectedItem();
-        String rank123= rank.getText();
+        int level =Integer.parseInt((String) levelCombo.getSelectedItem());
+        float rank123= Float.parseFloat(rank.getText());
         
         System.out.println("Values"+name+emmid+faculty+department+center+building+level+rank123+"********");
+        int id_1=lec_index();
         
-        if(rank123.equalsIgnoreCase("Rank")){
+            addlecturer(id_1,name,emmid,faculty,department,center,building,level,rank123);
+        
+        }catch(Exception e){
         Error ob =new Error();
         ob.setVisible(true);
-        }else{
-            addlecturer(WIDTH, WIDTH);
         }
-        
         
     }//GEN-LAST:event_addlecActionPerformed
 
@@ -307,6 +312,8 @@ public class lecturers extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Lecturer_view ob=new Lecturer_view();
+        ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -343,16 +350,56 @@ public class lecturers extends javax.swing.JFrame {
             }
         });
     }
+   
+    public int lec_index() {
+        
+         try {
+             int x;
+             
+             con = dbdetail.getCon();
+             
+             ps2 = con.prepareStatement("select id from lec where id >= all (select id from lec)");
+             
+             ResultSet rs2 = ps2.executeQuery();
+             
+             while (rs2.next()) {
+                 
+                 x=rs2.getInt(1);
+                 x++;
+                 
+                 return x;
+                 
+             }
+             
+             con.close();
+             
+             
+             
+             return 0; 
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        return 0;
+        
+    }
     
-    private void addlect(int cId,int no){
+    private void addlecturer(int id,String name,float emmid,String faculty,String department,String center,String building,int level,float rank123){
 
                         
          try {
                         System.out.println("hello1");    
                         con = dbdetail.getCon();
-             ps3 = con.prepareStatement("insert into eventcor1(id,cid) values(?,?) ");
-              ps3.setInt(1,cId);
-                        ps3.setInt(2, no);
+                        ps3 = con.prepareStatement("insert into lec(id,name,emmid,faculty,department,center,building,level,rank123) values(?,?,?,?,?,?,?,?,?) ");
+                        ps3.setInt(1,id);
+                        ps3.setString(2,name);
+                        ps3.setFloat(3, emmid);
+                        ps3.setString(4, faculty);
+                        ps3.setString(5, department);
+                        ps3.setString(6, center);
+                        ps3.setString(7, building);
+                        ps3.setInt(8, level);
+                        ps3.setFloat(9, rank123);
                         ps3.execute();
                         System.out.println("hello");
                         
@@ -360,6 +407,10 @@ public class lecturers extends javax.swing.JFrame {
         
             con.setAutoCommit(false);
             con.close();
+            
+            lecturers ob1=new lecturers();
+            ob1.setVisible(true);
+            this.dispose();
          } catch (SQLException ex) {
              Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -368,29 +419,6 @@ public class lecturers extends javax.swing.JFrame {
     
 }
     
-    private void addlecturer(int cId,int no){
-
-                        
-         try {
-                        System.out.println("hello1");    
-                        con = dbdetail.getCon();
-             ps3 = con.prepareStatement("insert into eventcor1(id,cid) values(?,?) ");
-              ps3.setInt(1,cId);
-                        ps3.setInt(2, no);
-                        ps3.execute();
-                        System.out.println("hello");
-                        
-
-        
-            con.setAutoCommit(false);
-            con.close();
-         } catch (SQLException ex) {
-             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
-         }
-                       
-       
-    
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addlec;
@@ -399,7 +427,6 @@ public class lecturers extends javax.swing.JFrame {
     private javax.swing.JTextField dep;
     private javax.swing.JTextField eid;
     private javax.swing.JComboBox fac;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -409,7 +436,9 @@ public class lecturers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JComboBox levelCombo;
     private javax.swing.JTextField nm;
     private javax.swing.JLabel rank;
