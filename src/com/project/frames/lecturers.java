@@ -248,16 +248,17 @@ public class lecturers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addlecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addlecActionPerformed
-       
+        String check=rank();
+        if(check.equals("crct")){
         try{
         String name= nm.getText();
-        float emmid=Float.parseFloat(eid.getText());
+        int emmid=Integer.parseInt(eid.getText());
         String faculty=(String) fac.getSelectedItem();
         String department=dep.getText();
         String center=(String) cen.getSelectedItem();
         String building=(String) buil.getSelectedItem();
         int level =Integer.parseInt((String) levelCombo.getSelectedItem());
-        float rank123= Float.parseFloat(rank.getText());
+        String rank123=rank.getText();
         
         System.out.println("Values"+name+emmid+faculty+department+center+building+level+rank123+"********");
         int id_1=lec_index();
@@ -268,7 +269,7 @@ public class lecturers extends javax.swing.JFrame {
         Error ob =new Error();
         ob.setVisible(true);
         }
-        
+        }
     }//GEN-LAST:event_addlecActionPerformed
 
     private void rankbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankbtnActionPerformed
@@ -382,8 +383,39 @@ public class lecturers extends javax.swing.JFrame {
         return 0;
         
     }
+    private String rank(){
+    try{
+          String empid = eid.getText();  
+          
+          int count=empid.length();
+          System.out.print("len"+count);
+          
+          String level= (String) levelCombo.getSelectedItem();
+          
+          float id = Float.parseFloat(empid);
+          
+          if(count==6 && !level.equals("Select")){
+          
+          String dis=level+"."+empid;
+            rank.setText(dis);
+            return "crct";
+         
+          }else {
+              System.out.println("inside");
+          Error ob123=new Error();
+          ob123.setVisible(true);
+          }
+            
+         }catch(Exception e){
+             System.out.println("inside");
+          Error ob123=new Error();
+          ob123.setVisible(true);
+          
+         }
+    return "fls";
+    }
     
-    private void addlecturer(int id,String name,float emmid,String faculty,String department,String center,String building,int level,float rank123){
+    private void addlecturer(int id,String name,int emmid,String faculty,String department,String center,String building,int level,String rank123){
 
                         
          try {
@@ -392,13 +424,13 @@ public class lecturers extends javax.swing.JFrame {
                         ps3 = con.prepareStatement("insert into lec(id,name,emmid,faculty,department,center,building,level,rank123) values(?,?,?,?,?,?,?,?,?) ");
                         ps3.setInt(1,id);
                         ps3.setString(2,name);
-                        ps3.setFloat(3, emmid);
+                        ps3.setInt(3, emmid);
                         ps3.setString(4, faculty);
                         ps3.setString(5, department);
                         ps3.setString(6, center);
                         ps3.setString(7, building);
                         ps3.setInt(8, level);
-                        ps3.setFloat(9, rank123);
+                        ps3.setString(9, rank123);
                         ps3.execute();
                         System.out.println("hello");
                         

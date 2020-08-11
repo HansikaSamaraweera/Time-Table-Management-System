@@ -13,13 +13,13 @@ public class Lecturer {
     //name+emmid+faculty+department+center+building+level+rank123
     int id;
     String name;
-    Float emmid;
+    int emmid;
     String faculty;
     String department;
     String center;
     String buiding;
     int level;
-    Float rank123;
+    String rank123;
 
     public String getName() {
         return name;
@@ -29,11 +29,11 @@ public class Lecturer {
         this.name = name;
     }
 
-    public Float getEmmid() {
+    public int getEmmid() {
         return emmid;
     }
 
-    public void setEmmid(Float emmid) {
+    public void setEmmid(int emmid) {
         this.emmid = emmid;
     }
 
@@ -77,11 +77,11 @@ public class Lecturer {
         this.level = level;
     }
 
-    public Float getRank123() {
+    public String getRank123() {
         return rank123;
     }
 
-    public void setRank123(Float rank123) {
+    public void setRank123(String rank123) {
         this.rank123 = rank123;
     }
 

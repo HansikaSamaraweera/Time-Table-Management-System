@@ -408,22 +408,24 @@ public class Lecturer_view extends javax.swing.JFrame {
 
     private void updateLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateLecActionPerformed
         // TODO add your handling code here:
-        
+        String check=rank();
+        if(check.equals("crct")){
         try{
         String name= nm.getText();
-        float emmid=Float.parseFloat(eid.getText());
+        int emmid=Integer.parseInt(eid.getText());
         String faculty=(String) fac.getSelectedItem();
         String department=dep.getText();
         String center=(String) cen.getSelectedItem();
         String building=(String) buil.getSelectedItem();
         int level =Integer.parseInt((String) levelCombo.getSelectedItem());
-        float rank123= Float.parseFloat(rank.getText());
+        String rank123= rank.getText();
         int id=Integer.parseInt(edit_id.getText());
             editlecturer(id,name,emmid,faculty,department,center,building,level,rank123);
         
         }catch(Exception e){
         Error ob =new Error();
         ob.setVisible(true);
+        }
         }
     }//GEN-LAST:event_updateLecActionPerformed
     private void deletelec(int id){
@@ -440,7 +442,7 @@ public class Lecturer_view extends javax.swing.JFrame {
             Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void editlecturer(int id,String name,float emmid,String faculty,String department,String center,String building,int level,float rank123){
+    private void editlecturer(int id,String name,int emmid,String faculty,String department,String center,String building,int level,String rank_y){
                 
          try {
                         System.out.println("hello1");    
@@ -449,13 +451,13 @@ public class Lecturer_view extends javax.swing.JFrame {
                        // ps3 = con.prepareStatement("insert into lec(name,emmid,faculty,department,center,building,level,rank123) values(?,?,?,?,?,?,?,?) where id=? ");
                         ps3 = con.prepareStatement("UPDATE lec SET name=?,emmid=?,faculty=?,department=?,center=?,building=?,level=?,rank123=?  where id=? ");
                         ps3.setString(1,name);
-                        ps3.setFloat(2, emmid);
+                        ps3.setInt(2, emmid);
                         ps3.setString(3, faculty);
                         ps3.setString(4, department);
                         ps3.setString(5, center);
                         ps3.setString(6, building);
                         ps3.setInt(7, level);
-                        ps3.setFloat(8, rank123);
+                        ps3.setString(8, rank_y);
                         ps3.setInt(9, id);
                         ps3.execute();
                         System.out.println("hello");
@@ -542,13 +544,13 @@ public class Lecturer_view extends javax.swing.JFrame {
                 //name+emmid+faculty+department+center+building+level+rank123
                 Lecturer ar=new Lecturer();
                 ar.setName(rs12.getString(1));
-                ar.setEmmid(rs12.getFloat(2));
+                ar.setEmmid(rs12.getInt(2));
                 ar.setFaculty(rs12.getString(3));
                 ar.setDepartment(rs12.getString(4));
                 ar.setCenter(rs12.getString(5));
                 ar.setBuiding(rs12.getString(6));
                 ar.setLevel(rs12.getInt(7));
-                ar.setRank123(rs12.getFloat(8));
+                ar.setRank123(rs12.getString(8));
                 ar.setId(rs12.getInt(9));
                 
                 arr.add(ar);
@@ -562,7 +564,7 @@ public class Lecturer_view extends javax.swing.JFrame {
         return arr;
     }
     private void display(int id){
-    getOneLec(id);
+    //getOneLec(id);
     Lecturer object=new Lecturer();
     object = getOneLec(id);
     
@@ -576,8 +578,9 @@ public class Lecturer_view extends javax.swing.JFrame {
         
         String level1 = String.valueOf(object.getLevel());
         levelCombo.setSelectedItem(level1);
-        String rank1 = String.valueOf(object.getRank123());
-        rank.setText(rank1);
+        /*String rank1 = String.valueOf(object.getRank123());
+        rank.setText(rank1);*/
+        rank.setText(object.getRank123());
         
     
     }
@@ -592,13 +595,13 @@ public class Lecturer_view extends javax.swing.JFrame {
                 //name+emmid+faculty+department+center+building+level+rank123
                 
                 ar.setName(rs11.getString(1));
-                ar.setEmmid(rs11.getFloat(2));
+                ar.setEmmid(rs11.getInt(2));
                 ar.setFaculty(rs11.getString(3));
                 ar.setDepartment(rs11.getString(4));
                 ar.setCenter(rs11.getString(5));
                 ar.setBuiding(rs11.getString(6));
                 ar.setLevel(rs11.getInt(7));
-                ar.setRank123(rs11.getFloat(8));
+                ar.setRank123(rs11.getString(8));
                 ar.setId(rs11.getInt(9));
                
                 
@@ -609,6 +612,37 @@ public class Lecturer_view extends javax.swing.JFrame {
             Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ar;
+    }
+     private String rank(){
+    try{
+          String empid = eid.getText();  
+          
+          int count=empid.length();
+          System.out.print("len"+count);
+          
+          String level= (String) levelCombo.getSelectedItem();
+          
+          float id = Float.parseFloat(empid);
+          
+          if(count==6 && !level.equals("Select")){
+          
+          String dis=level+"."+empid;
+            rank.setText(dis);
+            return "crct";
+         
+          }else {
+              System.out.println("inside");
+          Error ob123=new Error();
+          ob123.setVisible(true);
+          }
+            
+         }catch(Exception e){
+             System.out.println("inside");
+          Error ob123=new Error();
+          ob123.setVisible(true);
+          
+         }
+    return "flse";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
