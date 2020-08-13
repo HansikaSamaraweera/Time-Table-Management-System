@@ -47,7 +47,6 @@ public class Subject_View extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -92,23 +91,15 @@ public class Subject_View extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 102));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/sl - Copy.PNG"))); // NOI18N
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(jLabel13)
-                .addContainerGap(94, Short.MAX_VALUE))
+            .addGap(0, 235, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 848, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 102));
@@ -579,7 +570,6 @@ public class Subject_View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
