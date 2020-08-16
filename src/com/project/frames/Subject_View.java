@@ -91,7 +91,7 @@ public class Subject_View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 102));
+        jPanel5.setBackground(new java.awt.Color(102, 0, 102));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
 
@@ -401,6 +401,7 @@ public class Subject_View extends javax.swing.JFrame {
         // TODO add your handling code here:
         mainframe ob=new mainframe();
         ob.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

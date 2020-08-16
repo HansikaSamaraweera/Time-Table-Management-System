@@ -44,6 +44,7 @@ public class Lecturer_view extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lecView = new javax.swing.JTable();
@@ -74,6 +75,16 @@ public class Lecturer_view extends javax.swing.JFrame {
         DeleteLec = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+
+        jButton5.setBackground(new java.awt.Color(204, 204, 255));
+        jButton5.setText("Main Menu");
+        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -116,10 +127,11 @@ public class Lecturer_view extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel1.setBackground(new java.awt.Color(102, 0, 102));
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel1.setText("View Lecturers");
+        jLabel1.setText("   View Lecturers");
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Enter ID");
@@ -314,9 +326,18 @@ public class Lecturer_view extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 102));
+        jPanel5.setBackground(new java.awt.Color(102, 0, 102));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
+
+        jButton6.setBackground(new java.awt.Color(204, 204, 255));
+        jButton6.setText("Main Menu");
+        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -325,11 +346,17 @@ public class Lecturer_view extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel12)
                 .addGap(0, 125, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -347,15 +374,14 @@ public class Lecturer_view extends javax.swing.JFrame {
                             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(328, 328, 328)
-                        .addComponent(jLabel1)
+                        .addGap(304, 304, 304)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -444,6 +470,19 @@ public class Lecturer_view extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_updateLecActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
     private void deletelec(int id){
         try {
             con = dbdetail.getCon();
@@ -670,6 +709,8 @@ public class Lecturer_view extends javax.swing.JFrame {
     private javax.swing.JTextField eid;
     private javax.swing.JComboBox fac;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
