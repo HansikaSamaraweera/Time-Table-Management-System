@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -403,7 +404,10 @@ public class Subject_View extends javax.swing.JFrame {
         // TODO add your handling code here:
         
          int id=Integer.parseInt(SS_ID.getText());
-        deleteSub(id);
+         int x=JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+         System.out.println("deleteeeeeeeee"+x);
+         if(x==0){
+        deleteSub(id);}
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

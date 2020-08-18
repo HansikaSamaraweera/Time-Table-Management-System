@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -441,14 +442,16 @@ public class Lecturer_view extends javax.swing.JFrame {
 
             }else {
                 System.out.println("inside");
-                Error ob123=new Error();
-                ob123.setVisible(true);
+                /*Error ob123=new Error();
+                ob123.setVisible(true);*/
+                JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
             }
 
         }catch(Exception e){
             System.out.println("inside");
-            Error ob123=new Error();
-            ob123.setVisible(true);
+            /*Error ob123=new Error();
+            ob123.setVisible(true);*/
+            JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
 
         }
     }//GEN-LAST:event_rankbtnActionPerformed
@@ -456,7 +459,9 @@ public class Lecturer_view extends javax.swing.JFrame {
     private void DeleteLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteLecActionPerformed
         // TODO add your handling code here:
         int id=Integer.parseInt(edit_id.getText());
-        deletelec(id);
+        int x=JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+        if(x==0){
+        deletelec(id);}
         
     }//GEN-LAST:event_DeleteLecActionPerformed
 
@@ -477,8 +482,9 @@ public class Lecturer_view extends javax.swing.JFrame {
             editlecturer(id,name,emmid,faculty,department,center,building,level,rank123);
         
         }catch(Exception e){
-        Error ob =new Error();
-        ob.setVisible(true);
+        /*Error ob =new Error();
+        ob.setVisible(true);*/
+            JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
         }
         }
     }//GEN-LAST:event_updateLecActionPerformed
@@ -699,14 +705,16 @@ public class Lecturer_view extends javax.swing.JFrame {
          
           }else {
               System.out.println("inside");
-          Error ob123=new Error();
-          ob123.setVisible(true);
+          /*Error ob123=new Error();
+          ob123.setVisible(true);*/
+              JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
           }
             
          }catch(Exception e){
              System.out.println("inside");
-          Error ob123=new Error();
-          ob123.setVisible(true);
+          /*Error ob123=new Error();
+          ob123.setVisible(true);*/
+             JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
           
          }
     return "flse";

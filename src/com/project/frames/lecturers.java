@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -372,14 +373,16 @@ public class lecturers extends javax.swing.JFrame {
          
           }else {
               System.out.println("inside");
-          Error ob123=new Error();
-          ob123.setVisible(true);
+         /* Error ob123=new Error();
+          ob123.setVisible(true);*/
+              JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
           }
             
          }catch(Exception e){
              System.out.println("inside");
-          Error ob123=new Error();
-          ob123.setVisible(true);
+          /*Error ob123=new Error();
+          ob123.setVisible(true);*/
+             JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
           
          }
     }//GEN-LAST:event_rankbtnActionPerformed
@@ -491,14 +494,16 @@ public class lecturers extends javax.swing.JFrame {
          
           }else {
               System.out.println("inside");
-          Error ob123=new Error();
-          ob123.setVisible(true);
+          /*Error ob123=new Error();
+          ob123.setVisible(true);*/
+              JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
           }
             
          }catch(Exception e){
              System.out.println("inside");
-          Error ob123=new Error();
-          ob123.setVisible(true);
+              JOptionPane.showMessageDialog(null,"Incorrect input for level or Lecturer ID");
+          /*Error ob123=new Error();
+          ob123.setVisible(true);*/
           
          }
     return "fls";
