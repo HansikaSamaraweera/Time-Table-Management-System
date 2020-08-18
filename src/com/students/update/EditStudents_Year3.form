@@ -368,6 +368,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="groupID">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="99" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Generate Group ID"/>
               </Properties>
               <Events>
@@ -376,6 +379,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="subgroupID">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="99" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Generate Sub-Group ID"/>
               </Properties>
               <Events>
@@ -530,6 +536,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnSearch">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="12" style="1"/>
                 </Property>

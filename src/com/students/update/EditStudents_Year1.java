@@ -168,6 +168,7 @@ public class EditStudents_Year1 extends javax.swing.JFrame {
             }
         });
 
+        groupID.setBackground(new java.awt.Color(0, 153, 102));
         groupID.setText("Generate Group ID");
         groupID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +176,7 @@ public class EditStudents_Year1 extends javax.swing.JFrame {
             }
         });
 
+        subgroupID.setBackground(new java.awt.Color(0, 153, 102));
         subgroupID.setText("Generate Sub-Group ID");
         subgroupID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,6 +458,7 @@ public class EditStudents_Year1 extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
         btnSearch.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnSearch.setText("ID");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -557,15 +560,32 @@ public class EditStudents_Year1 extends javax.swing.JFrame {
 
     private void subgroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subgroupIDActionPerformed
         String x = null;
-        if(s1.isSelected())
-        {
-            x="S1";
+        if(s1.isSelected()==true)
+            {
+                x="S1";
+            }
+        if(s2.isSelected()==true){
+                x="S2";
+            }
+        if(ay.getText().trim().isEmpty()&&pro.getSelectedItem()=="Select One"&&x==null){
+            lbn1.setText("This Field is Required");
+            lbn2.setText("This Field is Required");
+            lbn3.setText("This Field is Required");
+            
         }
-        if(s2.isSelected()){
-            x="S2";
+        else if(ay.getText().trim().isEmpty()){
+            lbn1.setText("This Field is Required");
         }
+        else if(pro.getSelectedItem()=="Select One"){
+            lbn3.setText("This Field is Required");
+        }
+        else if(x==null){
+                lbn2.setText("This Field is Required");      
+        }
+        else{
         String z=ay.getText()+"."+x+"."+pro.getSelectedItem()+"."+gno.getValue().toString()+"."+subno.getValue().toString();
         gsubid.setText(z);
+        }
     }//GEN-LAST:event_subgroupIDActionPerformed
 
     private void year1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_year1MousePressed
@@ -604,7 +624,7 @@ public class EditStudents_Year1 extends javax.swing.JFrame {
             String subgrpNo=gsubid.getText();
 
             con = (Connection) dbdetail.getCon();
-            ps1 = con.prepareStatement("UPDATE students SET year=?,semester=?,programme=?, grpno=?,grpid=?,subgno=?,subgid=?  WHERE stuid=? ");
+            ps1 = con.prepareStatement("UPDATE studentsY1 SET year=?,semester=?,programme=?, grpno=?,grpid=?,subgno=?,subgid=?  WHERE stuid=? ");
             ps1.setString(1, year);
             if(s1.isSelected())
             {
