@@ -916,15 +916,32 @@ public class AddStudents_Year2 extends javax.swing.JFrame {
 
     private void subgroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subgroupIDActionPerformed
         String x = null;
-        if(s1.isSelected())
-        {
-            x="S1";
+        if(s1.isSelected()==true)
+            {
+                x="S1";
+            }
+        if(s2.isSelected()==true){
+                x="S2";
+            }
+        if(ay.getText().trim().isEmpty()&&pro.getSelectedItem()=="Select One"&&x==null){
+            lbn1.setText("This Field is Required");
+            lbn2.setText("This Field is Required");
+            lbn3.setText("This Field is Required");
+            
         }
-        if(s2.isSelected()){
-            x="S2";
+        else if(ay.getText().trim().isEmpty()){
+            lbn1.setText("This Field is Required");
         }
+        else if(pro.getSelectedItem()=="Select One"){
+            lbn3.setText("This Field is Required");
+        }
+        else if(x==null){
+                lbn2.setText("This Field is Required");      
+        }
+        else{
         String z=ay.getText()+"."+x+"."+pro.getSelectedItem()+"."+gno.getValue().toString()+"."+subno.getValue().toString();
         gsubid.setText(z);
+        }
     }//GEN-LAST:event_subgroupIDActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -973,9 +990,16 @@ public class AddStudents_Year2 extends javax.swing.JFrame {
         String subNo=(String)subno.getValue().toString();
         String subgrpNo=gsubid.getText();
 
+        if(ay.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
+        }
+        else if(ay.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
+        }
+        else{
         int x=0;
         try{
-            ps1 = con.prepareStatement("select stuid from students where stuid >= all (select stuid from students)");
+            ps1 = con.prepareStatement("select stuid from studentsY2 where stuid >= all (select stuid from studentsY2)");
 
             ResultSet rs1 = ps1.executeQuery();
 
@@ -986,7 +1010,7 @@ public class AddStudents_Year2 extends javax.swing.JFrame {
 
             }
 
-            String q = "INSERT INTO students (stuid,year,semester,programme,grpno,grpid,subgno,subgid) values (?,?,?,?,?,?,?,?)";
+            String q = "INSERT INTO studentsY2 (stuid,year,semester,programme,grpno,grpid,subgno,subgid) values (?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(q);
             ps.setInt(1, x);
             ps.setString(2,year);
@@ -1013,6 +1037,7 @@ public class AddStudents_Year2 extends javax.swing.JFrame {
 
         }  catch (SQLException ex) {
             Logger.getLogger(AddStudents_Year2.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_SaveActionPerformed
 
