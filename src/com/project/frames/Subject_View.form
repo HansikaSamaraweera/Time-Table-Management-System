@@ -308,7 +308,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="580" max="32767" attributes="0"/>
+                      <EmptySpace pref="569" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -382,7 +382,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Year"/>
+                <Property name="text" type="java.lang.String" value="Offered Year and Semester"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="year1">
@@ -471,7 +471,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="13" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Faculty"/>
+                <Property name="text" type="java.lang.String" value="Offered Faculty"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="fac1">

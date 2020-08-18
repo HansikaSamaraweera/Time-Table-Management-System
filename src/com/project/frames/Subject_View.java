@@ -32,9 +32,16 @@ public class Subject_View extends javax.swing.JFrame {
     private PreparedStatement ps2;
     private PreparedStatement ps3;
     private PreparedStatement ps26;
+    private PreparedStatement ps11;
     public Subject_View() {
         initComponents();
         show_sub();
+        
+        ArrayList arr2 = getfac();
+        for(Object x:arr2){
+          fac1.addItem(x);
+          
+          }
     }
 
     /**
@@ -146,7 +153,7 @@ public class Subject_View extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 255)));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel3.setText("Year");
+        jLabel3.setText("Offered Year and Semester");
 
         year1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Y1.S1", "Y1.S2", "Y2.S1", "Y2.S2", "Y3.S1", "Y3.S2", "Y4.S1", "Y4.S2", " " }));
 
@@ -172,7 +179,7 @@ public class Subject_View extends javax.swing.JFrame {
         jLabel10.setText("Evaluation Hours");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel11.setText("Faculty");
+        jLabel11.setText("Offered Faculty");
 
         fac1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Faculty of Computing", "Faculty of Engineering", "Faculty of Humanity Science" }));
 
@@ -264,7 +271,7 @@ public class Subject_View extends javax.swing.JFrame {
                             .addComponent(l1)
                             .addComponent(e1)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(580, Short.MAX_VALUE))
+                .addContainerGap(569, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,6 +458,31 @@ public class Subject_View extends javax.swing.JFrame {
             }
         });
     }
+    private ArrayList getfac(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps11 = con.prepareStatement("select name from fac");
+             
+             ResultSet rs11 = ps11.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
+    
+    }
+   
      private void show_sub(){
     DefaultTableModel model1 =(DefaultTableModel)sub_tab.getModel();
         Object[] row=new Object[10];

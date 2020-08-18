@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JProgressBar;
@@ -29,10 +30,15 @@ public class Subject extends javax.swing.JFrame {
      
       private PreparedStatement ps2;
      private PreparedStatement ps3;
+     private PreparedStatement ps11;
     
     public Subject() {
         initComponents();
-        
+        ArrayList arr2 = getfac();
+        for(Object x:arr2){
+          fac1.addItem(x);
+          
+          }
     }
 
     /**
@@ -113,7 +119,7 @@ public class Subject extends javax.swing.JFrame {
         jLabel1.setText("Add Subjects");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Year");
+        jLabel2.setText("Offered Year and Semester");
 
         year1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Y1.S1", "Y1.S2", "Y2.S1", "Y2.S2", "Y3.S1", "Y3.S2", "Y4.S1", "Y4.S2", " " }));
 
@@ -139,9 +145,7 @@ public class Subject extends javax.swing.JFrame {
         jLabel9.setText("Evaluation Hours");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setText("Faculty");
-
-        fac1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Faculty of Computing", "Faculty of Engineering", "Faculty of Humanity Science" }));
+        jLabel10.setText("Offrered Faculty");
 
         sname1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,7 +220,7 @@ public class Subject extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
@@ -399,6 +403,30 @@ public class Subject extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Subject.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
+    }
+    private ArrayList getfac(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps11 = con.prepareStatement("select name from fac");
+             
+             ResultSet rs11 = ps11.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
     
     }
    

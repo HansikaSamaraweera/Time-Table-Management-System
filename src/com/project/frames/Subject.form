@@ -155,7 +155,7 @@
                           <Component id="jButton2" min="-2" pref="142" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="214" max="32767" attributes="0"/>
+                  <EmptySpace pref="209" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -245,7 +245,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Year"/>
+            <Property name="text" type="java.lang.String" value="Offered Year and Semester"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="year1">
@@ -334,19 +334,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Faculty"/>
+            <Property name="text" type="java.lang.String" value="Offrered Faculty"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="fac1">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Faculty of Computing"/>
-                <StringItem index="1" value="Faculty of Engineering"/>
-                <StringItem index="2" value="Faculty of Humanity Science"/>
-              </StringArray>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="sname1">
           <Events>

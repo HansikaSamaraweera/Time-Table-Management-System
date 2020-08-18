@@ -358,10 +358,15 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <Component id="dep" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="dep" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="cen" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
@@ -462,46 +467,26 @@
             <Component class="javax.swing.JTextField" name="eid">
             </Component>
             <Component class="javax.swing.JComboBox" name="fac">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Select"/>
-                    <StringItem index="1" value="Faculty Of Computing"/>
-                    <StringItem index="2" value="Faculty Of Engineering"/>
-                    <StringItem index="3" value=" "/>
-                  </StringArray>
-                </Property>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="dep">
-            </Component>
             <Component class="javax.swing.JComboBox" name="cen">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="7">
                     <StringItem index="0" value="Select"/>
                     <StringItem index="1" value="Malabe"/>
                     <StringItem index="2" value="Metro"/>
                     <StringItem index="3" value="Kandy"/>
                     <StringItem index="4" value="Jaffna"/>
+                    <StringItem index="5" value="Matara"/>
+                    <StringItem index="6" value="Kurunagala"/>
                   </StringArray>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="buil">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Select"/>
-                    <StringItem index="1" value="Main Building"/>
-                    <StringItem index="2" value="Engineering Building"/>
-                    <StringItem index="3" value="New Building"/>
-                  </StringArray>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="levelCombo">
               <Properties>
@@ -575,6 +560,8 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteLecActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="dep">
             </Component>
           </SubComponents>
         </Container>

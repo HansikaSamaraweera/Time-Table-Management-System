@@ -31,9 +31,30 @@ public class Lecturer_view extends javax.swing.JFrame {
     private PreparedStatement ps2;
     private PreparedStatement ps3;
     private PreparedStatement ps26;
+    private PreparedStatement ps11;
+    private PreparedStatement ps12;
     public Lecturer_view() {
         initComponents();
         show_lec();
+        
+          
+        ArrayList arr1 = getbuilding();
+        for(Object x:arr1){
+          buil.addItem(x);
+          
+          }
+        
+        ArrayList arr2 = getfac();
+        for(Object x:arr2){
+          fac.addItem(x);
+          
+          }
+        
+         ArrayList arr3 = getdep();
+        for(Object x:arr3){
+          dep.addItem(x);
+          
+          }
     }
 
     /**
@@ -66,7 +87,6 @@ public class Lecturer_view extends javax.swing.JFrame {
         nm = new javax.swing.JTextField();
         eid = new javax.swing.JTextField();
         fac = new javax.swing.JComboBox();
-        dep = new javax.swing.JTextField();
         cen = new javax.swing.JComboBox();
         buil = new javax.swing.JComboBox();
         levelCombo = new javax.swing.JComboBox();
@@ -74,6 +94,7 @@ public class Lecturer_view extends javax.swing.JFrame {
         rankbtn = new javax.swing.JButton();
         updateLec = new javax.swing.JButton();
         DeleteLec = new javax.swing.JButton();
+        dep = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
@@ -181,16 +202,13 @@ public class Lecturer_view extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Rank");
 
-        fac.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Faculty Of Computing", "Faculty Of Engineering", " " }));
         fac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facActionPerformed(evt);
             }
         });
 
-        cen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Malabe", "Metro", "Kandy", "Jaffna" }));
-
-        buil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Main Building", "Engineering Building", "New Building" }));
+        cen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Malabe", "Metro", "Kandy", "Jaffna", "Matara", "Kurunagala" }));
 
         levelCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "1", "2", "3", "4", "5", "6", "7", " " }));
         levelCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -257,7 +275,7 @@ public class Lecturer_view extends javax.swing.JFrame {
                         .addComponent(rankbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(eid)
                     .addComponent(nm)
-                    .addComponent(dep))
+                    .addComponent(dep, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(144, 144, 144))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -283,9 +301,12 @@ public class Lecturer_view extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(dep, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(dep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(cen, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -455,7 +476,78 @@ public class Lecturer_view extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_rankbtnActionPerformed
-
+    private ArrayList getbuilding(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps11 = con.prepareStatement("select name from build");
+             
+             ResultSet rs11 = ps11.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
+    
+    }
+    private ArrayList getfac(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps11 = con.prepareStatement("select name from fac");
+             
+             ResultSet rs11 = ps11.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
+    
+    }
+    private ArrayList getdep(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps12 = con.prepareStatement("select name from dep");
+             
+             ResultSet rs11 = ps12.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
+    
+    }
     private void DeleteLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteLecActionPerformed
         // TODO add your handling code here:
         int id=Integer.parseInt(edit_id.getText());
@@ -473,7 +565,7 @@ public class Lecturer_view extends javax.swing.JFrame {
         String name= nm.getText();
         int emmid=Integer.parseInt(eid.getText());
         String faculty=(String) fac.getSelectedItem();
-        String department=dep.getText();
+        String department=(String) dep.getSelectedItem();
         String center=(String) cen.getSelectedItem();
         String building=(String) buil.getSelectedItem();
         int level =Integer.parseInt((String) levelCombo.getSelectedItem());
@@ -645,7 +737,7 @@ public class Lecturer_view extends javax.swing.JFrame {
         String eid1 = String.valueOf(object.getEmmid());
         eid.setText(eid1);
         fac.setSelectedItem(object.getFaculty());
-        dep.setText(object.getDepartment());
+        dep.setSelectedItem(object.getDepartment());
         cen.setSelectedItem(object.getCenter());
         buil.setSelectedItem(object.getBuiding());
         
@@ -724,7 +816,7 @@ public class Lecturer_view extends javax.swing.JFrame {
     private javax.swing.JButton DeleteLec;
     private javax.swing.JComboBox buil;
     private javax.swing.JComboBox cen;
-    private javax.swing.JTextField dep;
+    private javax.swing.JComboBox dep;
     private javax.swing.JTextField edit_id;
     private javax.swing.JTextField eid;
     private javax.swing.JComboBox fac;
