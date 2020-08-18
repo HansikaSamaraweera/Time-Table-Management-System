@@ -417,7 +417,7 @@ public class lecturers extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(102, 0, 102));
+        jButton5.setBackground(new java.awt.Color(153, 0, 153));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Faculty and Department");
         jButton5.setBorder(null);
