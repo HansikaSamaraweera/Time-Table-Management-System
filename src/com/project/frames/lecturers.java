@@ -96,6 +96,11 @@ public class lecturers extends javax.swing.JFrame {
         });
 
         cen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Malabe", "Metro", "Kandy", "Jaffna" }));
+        cen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cenActionPerformed(evt);
+            }
+        });
 
         buil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Main Building", "Engineering Building", "New Building" }));
 
@@ -315,6 +320,10 @@ public class lecturers extends javax.swing.JFrame {
         Lecturer_view ob=new Lecturer_view();
         ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cenActionPerformed
 
     /**
      * @param args the command line arguments

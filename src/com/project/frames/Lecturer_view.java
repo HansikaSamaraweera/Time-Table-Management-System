@@ -470,8 +470,6 @@ public class Lecturer_view extends javax.swing.JFrame {
      Lecturer_view ob=new Lecturer_view();
      ob.setVisible(true);
      this.dispose();
-       
-    
 }
     /**
      * @param args the command line arguments
