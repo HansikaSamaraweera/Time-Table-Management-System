@@ -498,7 +498,7 @@ public class WorkingDays_new extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        ViewWorkingDays ob=new ViewWorkingDays();
+        WorkingDays_new ob=new WorkingDays_new();
         ob.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
