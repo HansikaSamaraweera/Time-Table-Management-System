@@ -19,9 +19,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author oshani
+ * @author Oshani
  */
-public class AddStudents_Year1 extends javax.swing.JFrame {
+public class AddStudents_Year3 extends javax.swing.JFrame {
     Connection con = null;
     
     PreparedStatement ps = null;
@@ -30,9 +30,9 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
     PreparedStatement ps3;
     PreparedStatement ps12;
     /**
-     * Creates new form AddStudents_Year1
+     * Creates new form AddStudents_Year3
      */
-    public AddStudents_Year1() {
+    public AddStudents_Year3() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
@@ -40,8 +40,6 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         
         //Database Connection
         con = (Connection) dbdetail.getCon();
-        
-        
     }
     
     /**
@@ -53,12 +51,14 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel23 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -68,8 +68,6 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        Save = new javax.swing.JButton();
-        view = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         ay = new javax.swing.JTextField();
         s1 = new javax.swing.JRadioButton();
@@ -84,6 +82,11 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         lbn1 = new javax.swing.JLabel();
         lbn2 = new javax.swing.JLabel();
         lbn3 = new javax.swing.JLabel();
+        Save = new javax.swing.JButton();
+        view = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         year1 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         year2 = new javax.swing.JPanel();
@@ -92,26 +95,6 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         year4 = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-
-        jPanel23.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel29.setText("Year 1");
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                .addGap(0, 52, Short.MAX_VALUE)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,6 +126,64 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 30));
 
+        jPanel9.setBackground(new java.awt.Color(102, 0, 102));
+
+        jButton3.setBackground(new java.awt.Color(204, 204, 255));
+        jButton3.setText("Main Menu");
+        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 590));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Time Table");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(494, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(322, 322, 322))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 30));
+
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
@@ -162,7 +203,7 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 560, 50));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 560, 50));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153)));
@@ -186,26 +227,6 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 0, 51));
         jLabel10.setText("Sub-Group ID");
-
-        Save.setBackground(new java.awt.Color(255, 255, 255));
-        Save.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-save-25.png"))); // NOI18N
-        Save.setText("Save");
-        Save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveActionPerformed(evt);
-            }
-        });
-
-        view.setBackground(new java.awt.Color(255, 255, 255));
-        view.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-view-25 (1).png"))); // NOI18N
-        view.setText("View");
-        view.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewActionPerformed(evt);
-            }
-        });
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel19.setText("Academic Year ");
@@ -266,6 +287,26 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         lbn3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbn3.setForeground(new java.awt.Color(204, 0, 0));
 
+        Save.setBackground(new java.awt.Color(255, 255, 255));
+        Save.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-save-25.png"))); // NOI18N
+        Save.setText("Save");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
+
+        view.setBackground(new java.awt.Color(255, 255, 255));
+        view.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-view-25 (1).png"))); // NOI18N
+        view.setText("View");
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -284,7 +325,7 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(7, 7, 7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addGap(49, 49, 49)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(pro, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
@@ -296,11 +337,8 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
                             .addComponent(gid, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(subno, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gsubid, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel10)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -313,7 +351,7 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(subgroupID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(groupID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 2, Short.MAX_VALUE)))
+                        .addGap(0, 29, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -359,12 +397,45 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56))
+                .addGap(57, 57, 57))
         );
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 640, 430));
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 640, 430));
 
-        year1.setBackground(new java.awt.Color(153, 0, 153));
+        jPanel12.setBackground(new java.awt.Color(102, 0, 102));
+
+        jButton4.setBackground(new java.awt.Color(204, 204, 255));
+        jButton4.setText("Main Menu");
+        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 590));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, -1, -1));
+
+        year1.setBackground(new java.awt.Color(102, 0, 102));
         year1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 year1MousePressed(evt);
@@ -388,7 +459,7 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
             .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(year1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 140, 40));
+        jPanel2.add(year1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 140, 40));
 
         year2.setBackground(new java.awt.Color(102, 0, 102));
         year2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -414,9 +485,9 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
             .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(year2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, 40));
+        jPanel2.add(year2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, 40));
 
-        year3.setBackground(new java.awt.Color(102, 0, 102));
+        year3.setBackground(new java.awt.Color(153, 0, 153));
         year3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 year3MouseClicked(evt);
@@ -440,7 +511,7 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
             .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(year3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 140, 40));
+        jPanel2.add(year3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 140, 40));
 
         year4.setBackground(new java.awt.Color(102, 0, 102));
         year4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -466,40 +537,9 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
             .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel1.add(year4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 120, 40));
+        jPanel2.add(year4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 120, 40));
 
-        jPanel9.setBackground(new java.awt.Color(102, 0, 102));
-
-        jButton3.setBackground(new java.awt.Color(204, 204, 255));
-        jButton3.setText("Main Menu");
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 590));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -509,21 +549,45 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void ayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ayMouseClicked
+        ay.setText("Y3");
+        lbn1.setText("");
+    }//GEN-LAST:event_ayMouseClicked
+
+    private void s1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_s1MouseClicked
+        lbn2.setText("");
+    }//GEN-LAST:event_s1MouseClicked
+
+    private void s2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_s2MouseClicked
+        lbn2.setText("");
+    }//GEN-LAST:event_s2MouseClicked
+
+    private void proMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_proMouseClicked
+        lbn3.setText("");
+    }//GEN-LAST:event_proMouseClicked
+
     private void groupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupIDActionPerformed
         String s = null;
         if(s1.isSelected()==true)
-            {
-                s="S1";
-            }
+        {
+            s="S1";
+        }
         if(s2.isSelected()==true){
-                s="S2";
-            }
+            s="S2";
+        }
         /*else{
             lbn2.setText("This Field is Required");
         }*/
@@ -531,7 +595,7 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
             lbn1.setText("This Field is Required");
             lbn2.setText("This Field is Required");
             lbn3.setText("This Field is Required");
-            
+
         }
         else if(ay.getText().trim().isEmpty()){
             lbn1.setText("This Field is Required");
@@ -540,11 +604,11 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
             lbn3.setText("This Field is Required");
         }
         else if(s==null){
-                lbn2.setText("This Field is Required");      
+            lbn2.setText("This Field is Required");
         }
         else{
-        String t=ay.getText()+"."+s+"."+pro.getSelectedItem()+"."+gno.getValue().toString();
-        gid.setText(t); 
+            String t=ay.getText()+"."+s+"."+pro.getSelectedItem()+"."+gno.getValue().toString();
+            gid.setText(t);
         }
     }//GEN-LAST:event_groupIDActionPerformed
 
@@ -578,22 +642,12 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_subgroupIDActionPerformed
 
-    private void ayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ayMouseClicked
-        ay.setText("Y1");
-        lbn1.setText("");
-    }//GEN-LAST:event_ayMouseClicked
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-    private void s1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_s1MouseClicked
-        lbn2.setText("");
-    }//GEN-LAST:event_s1MouseClicked
-
-    private void s2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_s2MouseClicked
-        lbn2.setText("");
-    }//GEN-LAST:event_s2MouseClicked
-
-    private void proMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_proMouseClicked
-        lbn3.setText("");
-    }//GEN-LAST:event_proMouseClicked
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void year1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_year1MousePressed
         AddStudents_Year1 y1=new AddStudents_Year1();
@@ -637,7 +691,7 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         else{
         int x=0;
         try{
-            ps1 = con.prepareStatement("select stuid from studentsY1 where stuid >= all (select stuid from studentsY1)");
+            ps1 = con.prepareStatement("select stuid from studentsY3 where stuid >= all (select stuid from studentsY3)");
 
             ResultSet rs1 = ps1.executeQuery();
 
@@ -648,7 +702,7 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
 
             }
 
-            String q = "INSERT INTO studentsY1 (stuid,year,semester,programme,grpno,grpid,subgno,subgid) values (?,?,?,?,?,?,?,?)";
+            String q = "INSERT INTO studentsY3 (stuid,year,semester,programme,grpno,grpid,subgno,subgid) values (?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(q);
             ps.setInt(1, x);
             ps.setString(2,year);
@@ -669,12 +723,12 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
             ps.execute();
 
             JOptionPane.showMessageDialog(null, "Data Save Successfully");
-            AddStudents_Year1 ob1=new  AddStudents_Year1();
-            ob1.setVisible(true);
+            AddStudents_Year3 ob3=new  AddStudents_Year3();
+            ob3.setVisible(true);
             this.setVisible(false);
 
         }  catch (SQLException ex) {
-            Logger.getLogger(AddStudents_Year1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddStudents_Year3.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
     }//GEN-LAST:event_SaveActionPerformed
@@ -684,13 +738,6 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
         view.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_viewActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        mainframe ob=new mainframe();
-        ob.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -709,20 +756,20 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddStudents_Year1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudents_Year3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddStudents_Year1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudents_Year3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddStudents_Year1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudents_Year3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddStudents_Year1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStudents_Year3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddStudents_Year1().setVisible(true);
+                new AddStudents_Year3().setVisible(true);
             }
         });
     }
@@ -735,10 +782,11 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
     private javax.swing.JButton groupID;
     private javax.swing.JTextField gsubid;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -751,12 +799,13 @@ public class AddStudents_Year1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lbn1;
     private javax.swing.JLabel lbn2;
     private javax.swing.JLabel lbn3;
