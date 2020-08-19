@@ -8,6 +8,7 @@ package com.project.frames;
 import com.project.util.dbdetail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,11 +24,13 @@ public class WorkingDays extends javax.swing.JFrame {
      */
     private static Connection con;
     private PreparedStatement ps3;
+      private PreparedStatement ps1;
      
      
     public WorkingDays() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -70,7 +73,6 @@ public class WorkingDays extends javax.swing.JFrame {
         Friday = new javax.swing.JCheckBox();
         Saturday = new javax.swing.JCheckBox();
         Sunday = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -287,13 +289,6 @@ public class WorkingDays extends javax.swing.JFrame {
 
         Sunday.setText("Sunday");
 
-        jButton1.setText("View Details");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -344,9 +339,8 @@ public class WorkingDays extends javax.swing.JFrame {
                                             .addComponent(Saturday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGap(69, 69, 69))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(addDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
@@ -388,11 +382,9 @@ public class WorkingDays extends javax.swing.JFrame {
                         .addComponent(timeSlot, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(addDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(addDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61))
         );
 
@@ -416,8 +408,9 @@ public class WorkingDays extends javax.swing.JFrame {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
-        Lecturer_view ob=new Lecturer_view();
+        WorkingDays ob=new WorkingDays();
         ob.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_cancelActionPerformed
 
     private void addDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetailsActionPerformed
@@ -517,14 +510,6 @@ public class WorkingDays extends javax.swing.JFrame {
 
     }//GEN-LAST:event_TagActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        ViewWorkingDays ob=new  ViewWorkingDays();
-        ob.setVisible(true);
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -563,6 +548,7 @@ public class WorkingDays extends javax.swing.JFrame {
             }
         });
     }
+    
         
         private void addDetails(int nodays, String Monday1,String Tuesday1, String Wednesday1, String Thursday1,String Friday1, String Saturday1,String Sunday1, String time1 , String timeSlot1 ){
 
@@ -610,7 +596,6 @@ public class WorkingDays extends javax.swing.JFrame {
     private javax.swing.JCheckBox Wednesday;
     private javax.swing.JButton addDetails;
     private javax.swing.JButton cancel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
