@@ -5,7 +5,8 @@
  */
 package com.project.frames;
 
-import com.students.add.AddStudents_Year1;
+
+import com.students.add.check;
 import com.tag.all.ViewEditDeleteTag;
 
 /**
@@ -281,8 +282,8 @@ public class mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void StudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentsActionPerformed
-       AddStudents_Year1 y1=new AddStudents_Year1();
-        y1.setVisible(true);
+        check st1=new check();
+        st1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_StudentsActionPerformed
 
