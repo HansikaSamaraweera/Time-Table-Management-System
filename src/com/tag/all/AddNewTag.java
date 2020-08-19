@@ -7,6 +7,8 @@ package com.tag.all;
 
 import com.project.frames.mainframe;
 import com.project.util.dbdetail;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,6 +36,9 @@ public class AddNewTag extends javax.swing.JFrame {
      */
     public AddNewTag() {
         initComponents();
+         Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
         con = (Connection) dbdetail.getCon();
         
         displayId();
@@ -131,8 +136,9 @@ public class AddNewTag extends javax.swing.JFrame {
 
         tName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lectures", "Lab", "Practical", "Evaluation" }));
 
-        addTag.setBackground(new java.awt.Color(255, 255, 255));
+        addTag.setBackground(new java.awt.Color(102, 0, 255));
         addTag.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addTag.setForeground(new java.awt.Color(255, 255, 255));
         addTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-save-25.png"))); // NOI18N
         addTag.setText("Save");
         addTag.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +187,9 @@ public class AddNewTag extends javax.swing.JFrame {
 
         jPanel10.setBackground(new java.awt.Color(102, 0, 102));
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 255));
+        jButton3.setBackground(new java.awt.Color(102, 0, 102));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("View");
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
