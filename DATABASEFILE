@@ -1,0 +1,25 @@
+/*Lecturers*/
+use info;
+Create table lec(id int primary key,name varchar(15) ,emmid int,faculty varchar(150),department  varchar(150),center varchar(150),building varchar(150),level float,rank123 varchar(150));
+
+use info;
+select * from lec;
+
+/*Subjects*/
+use info;
+Create table sub(id int primary key,year varchar(15) ,faculty varchar(150),sname  varchar(150),ini varchar(150),scode varchar(150),lh int,th int,labh int,evh int);
+
+use info;
+select * from sub;
+
+/*FACULTY*/
+use info;
+Create table fac(id int primary key,name varchar(150));
+insert into fac values(1,'Faculty of Computing');
+
+/*DEPARTMENT*/
+use info;
+Create table dep(id int primary key,name varchar(150));
+insert into dep values(1,'CSSE');
+
+
