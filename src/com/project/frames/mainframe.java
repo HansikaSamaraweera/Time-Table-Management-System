@@ -163,6 +163,11 @@ public class mainframe extends javax.swing.JFrame {
         jButton9.setBackground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Timetable");
         jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         Tag.setBackground(new java.awt.Color(255, 255, 255));
         Tag.setText("Tag");
@@ -266,6 +271,9 @@ public class mainframe extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        WorkingDays ob=new WorkingDays();
+        ob.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -283,6 +291,11 @@ public class mainframe extends javax.swing.JFrame {
         tag.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_TagActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments

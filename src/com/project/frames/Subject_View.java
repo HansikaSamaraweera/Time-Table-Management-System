@@ -640,7 +640,7 @@ public class Subject_View extends javax.swing.JFrame {
              con = dbdetail.getCon();
              
              
-             ps11 = con.prepareStatement("select year from studentsY1");
+             ps11 = con.prepareStatement("select yearAndsemester from yands");
              
              ResultSet rs11 = ps11.executeQuery();
              
