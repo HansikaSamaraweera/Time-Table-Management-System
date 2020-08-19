@@ -599,7 +599,7 @@ public class WorkingDays_new extends javax.swing.JFrame {
             con.setAutoCommit(false);
             con.close();
             
-            ViewWorkingDays ob1=new ViewWorkingDays();
+            ViewWorkingDays_new ob1=new ViewWorkingDays_new();
             ob1.setVisible(true);
             this.dispose();
          } catch (SQLException ex) {
