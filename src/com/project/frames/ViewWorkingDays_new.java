@@ -16,12 +16,13 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author Sithija Bimsara
  */
-public class ViewWorkingDays extends javax.swing.JFrame {
+public class ViewWorkingDays_new extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewWorkingDays
@@ -34,11 +35,11 @@ public class ViewWorkingDays extends javax.swing.JFrame {
     private PreparedStatement ps26;
 
 
-    public ViewWorkingDays() {
+    public ViewWorkingDays_new() {
         initComponents();
         this.setLocationRelativeTo(null);
         show_detail();
-        display(1);
+        
     }
 
     /**
@@ -564,6 +565,11 @@ public class ViewWorkingDays extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        DetailsView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DetailsViewMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(DetailsView);
         if (DetailsView.getColumnModel().getColumnCount() > 0) {
             DetailsView.getColumnModel().getColumn(2).setMinWidth(300);
@@ -643,7 +649,7 @@ public class ViewWorkingDays extends javax.swing.JFrame {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
-        ViewWorkingDays ob=new ViewWorkingDays();
+        ViewWorkingDays_new ob=new ViewWorkingDays_new();
         ob.setVisible(true);
     }//GEN-LAST:event_cancelActionPerformed
 
@@ -766,6 +772,17 @@ public class ViewWorkingDays extends javax.swing.JFrame {
 
     }//GEN-LAST:event_TagActionPerformed
 
+    private void DetailsViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetailsViewMouseClicked
+        // TODO add your handling code here:
+        int i=DetailsView.getSelectedRow();
+         TableModel model=DetailsView.getModel();
+        String id=model.getValueAt(i,0).toString();
+        try{
+        int y=Integer.parseInt(id);
+        display(y);
+        }catch(Exception e){}
+    }//GEN-LAST:event_DetailsViewMouseClicked
+
     
         private void delete1(int id){
         try {
@@ -774,11 +791,11 @@ public class ViewWorkingDays extends javax.swing.JFrame {
             
             ps26.execute();
             
-            ViewWorkingDays ob=new ViewWorkingDays();
+            ViewWorkingDays_new ob=new ViewWorkingDays_new();
             ob.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(ViewWorkingDays.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewWorkingDays_new.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
         
@@ -815,7 +832,7 @@ public class ViewWorkingDays extends javax.swing.JFrame {
              Logger.getLogger(WorkingDays_new.class.getName()).log(Level.SEVERE, null, ex);
          
          }
-     ViewWorkingDays ob=new ViewWorkingDays();
+     ViewWorkingDays_new ob=new ViewWorkingDays_new();
      ob.setVisible(true);
      this.dispose();
     
@@ -837,20 +854,21 @@ public class ViewWorkingDays extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewWorkingDays.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewWorkingDays_new.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewWorkingDays.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewWorkingDays_new.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewWorkingDays.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewWorkingDays_new.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewWorkingDays.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewWorkingDays_new.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewWorkingDays().setVisible(true);
+                new ViewWorkingDays_new().setVisible(true);
             }
         });
 
@@ -944,7 +962,7 @@ public class ViewWorkingDays extends javax.swing.JFrame {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(ViewWorkingDays.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewWorkingDays_new.class.getName()).log(Level.SEVERE, null, ex);
         }
         return arr;
     }

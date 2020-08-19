@@ -271,7 +271,7 @@ public class mainframe extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        WorkingDays ob=new WorkingDays();
+        WorkingDays_new ob=new WorkingDays_new();
         ob.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
