@@ -88,6 +88,12 @@ public class lecturers extends javax.swing.JFrame {
 
         jLabel8.setText("Rank");
 
+        nm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nmActionPerformed(evt);
+            }
+        });
+
         fac.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Faculty Of Computing", "Faculty Of Engineering", " " }));
         fac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,6 +321,10 @@ public class lecturers extends javax.swing.JFrame {
         Lecturer_view ob=new Lecturer_view();
         ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void nmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nmActionPerformed
 
     /**
      * @param args the command line arguments
