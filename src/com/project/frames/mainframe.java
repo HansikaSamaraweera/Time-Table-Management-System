@@ -19,6 +19,7 @@ public class mainframe extends javax.swing.JFrame {
      */
     public mainframe() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
