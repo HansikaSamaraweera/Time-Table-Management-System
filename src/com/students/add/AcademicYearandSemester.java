@@ -49,6 +49,7 @@ Connection con = null;
         con = (Connection) dbdetail.getCon();
         
         y1id.setVisible(false);
+        set.setVisible(false);
         
         show_details();
         
@@ -184,6 +185,12 @@ public void executeSQLQuery(String query,String message){
             }
         });
 
+        ays.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aysMouseClicked(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Year and Semester");
 
@@ -216,26 +223,26 @@ public void executeSQLQuery(String query,String message){
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(121, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(s1)
+                        .addGap(18, 18, 18)
+                        .addComponent(s2))
+                    .addComponent(ay, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(s1)
-                                .addGap(18, 18, 18)
-                                .addComponent(s2))
-                            .addComponent(ay, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(ays, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(set)))
-                        .addGap(113, 113, 113))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(yearandsemester, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(208, 208, 208))))
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                .addComponent(yearandsemester, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)))
+                        .addComponent(set)))
+                .addGap(113, 113, 113))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +276,7 @@ public void executeSQLQuery(String query,String message){
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
         jLabel4.setText("Academic Year and Semester");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, -1, 60));
 
@@ -281,6 +288,7 @@ public void executeSQLQuery(String query,String message){
                 "ID", "Year", "Semester", "Acedemic Year and Semester"
             }
         ));
+        acedemic.setSelectionBackground(new java.awt.Color(204, 204, 204));
         acedemic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 acedemicMouseClicked(evt);
@@ -300,7 +308,7 @@ public void executeSQLQuery(String query,String message){
                 editActionPerformed(evt);
             }
         });
-        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 580, 80, 30));
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 580, 80, 40));
 
         jButton5.setBackground(new java.awt.Color(102, 0, 255));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -312,7 +320,7 @@ public void executeSQLQuery(String query,String message){
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 580, 110, 30));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 580, 110, 40));
 
         jPanel14.setBackground(new java.awt.Color(102, 0, 102));
 
@@ -410,7 +418,18 @@ public void executeSQLQuery(String query,String message){
         String year=(String) ay.getText();
         String sem=(String) s1.getText();
         String acyearSemester=ays.getText();
-
+        /*String s = null;
+        if(s1.isSelected())
+        {
+            s="S1";
+        }
+        if(s2.isSelected()){
+            s="S2";
+        }
+        
+        
+        String acyearSemester=ay.getText()+"."+s;*/
+        ays.setText(acyearSemester);
         if(ay.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
         }
@@ -489,7 +508,7 @@ public void executeSQLQuery(String query,String message){
         
         String idd=model.getValueAt(selectedForEdit,0).toString();
         String y=model.getValueAt(selectedForEdit,1).toString();
-        String s= model.getValueAt(selectedForEdit,2).toString();
+        String s= model.getValueAt(selectedForEdit,3).toString();
 
 
         yAnds.id.setText(idd);
@@ -500,7 +519,7 @@ public void executeSQLQuery(String query,String message){
         else{
             yAnds.s2.setSelected(true);
         }
-        yAnds.ays.setText(y);
+        yAnds.ays.setText(s);
     }//GEN-LAST:event_editActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -559,6 +578,21 @@ public void executeSQLQuery(String query,String message){
         r.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_subActionPerformed
+
+    private void aysMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aysMouseClicked
+        String s = null;
+        if(s1.isSelected())
+        {
+            s="S1";
+        }
+        if(s2.isSelected()){
+            s="S2";
+        }
+        
+        
+        String set=ay.getText()+"."+s;
+        ays.setText(set);
+    }//GEN-LAST:event_aysMouseClicked
 
     /**
      * @param args the command line arguments

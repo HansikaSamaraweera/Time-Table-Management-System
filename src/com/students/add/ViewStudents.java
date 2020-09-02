@@ -11,6 +11,7 @@ import com.project.frames.lecturers;
 import com.project.frames.mainframe;
 import com.project.util.dbdetail;
 import com.students.services.students;
+import com.tag.all.ViewEditDeleteTag;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -531,7 +532,7 @@ public class ViewStudents extends javax.swing.JFrame {
                 "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
             }
         ));
-        viewtable_y4.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        viewtable_y4.setSelectionBackground(new java.awt.Color(204, 204, 204));
         viewtable_y4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewtable_y4MouseClicked(evt);
@@ -564,7 +565,7 @@ public class ViewStudents extends javax.swing.JFrame {
             }
         ));
         viewtable_y2.setGridColor(new java.awt.Color(0, 153, 102));
-        viewtable_y2.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        viewtable_y2.setSelectionBackground(new java.awt.Color(204, 204, 204));
         viewtable_y2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewtable_y2MouseClicked(evt);
@@ -621,7 +622,7 @@ public class ViewStudents extends javax.swing.JFrame {
             }
         ));
         viewtable_y1.setGridColor(new java.awt.Color(0, 153, 102));
-        viewtable_y1.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        viewtable_y1.setSelectionBackground(new java.awt.Color(204, 204, 204));
         viewtable_y1.setSelectionForeground(new java.awt.Color(0, 0, 0));
         viewtable_y1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -646,7 +647,7 @@ public class ViewStudents extends javax.swing.JFrame {
                 "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
             }
         ));
-        viewtable_y3.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        viewtable_y3.setSelectionBackground(new java.awt.Color(204, 204, 204));
         viewtable_y3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewtable_y3MouseClicked(evt);
@@ -1060,7 +1061,9 @@ public class ViewStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void TagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TagActionPerformed
-
+        ViewEditDeleteTag tg=new ViewEditDeleteTag();
+        tg.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_TagActionPerformed
 
     /**
