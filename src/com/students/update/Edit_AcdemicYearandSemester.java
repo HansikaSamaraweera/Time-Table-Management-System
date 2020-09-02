@@ -40,6 +40,8 @@ Connection con = null;
         
         //Database Connection
         con = (Connection) dbdetail.getCon();
+        
+        set.setVisible(false);
     }
 
     /**
@@ -87,6 +89,12 @@ Connection con = null;
         ay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ayMouseClicked(evt);
+            }
+        });
+
+        ays.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aysMouseClicked(evt);
             }
         });
 
@@ -217,7 +225,7 @@ Connection con = null;
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
         jLabel4.setText("Academic Year and Semester");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, -1, 60));
 
@@ -250,6 +258,17 @@ Connection con = null;
             String year=(String) ay.getText();
             String sem=(String) s1.getText();
             String acyearSemester=ays.getText();
+            
+            /*String s = null;
+            if(s1.isSelected())
+            {
+            s="S1";
+            }
+            if(s2.isSelected()){
+            s="S2";
+            }
+        
+            String acyearSemester=ay.getText()+"."+s;*/
 
             con = (Connection) dbdetail.getCon();
             ps1 = con.prepareStatement("UPDATE yands SET year=?,semester=?,yearAndsemester=?  WHERE id=? ");
@@ -280,6 +299,20 @@ Connection con = null;
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void aysMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aysMouseClicked
+       String s = null;
+        if(s1.isSelected())
+        {
+            s="S1";
+        }
+        if(s2.isSelected()){
+            s="S2";
+        }
+
+        String set=ay.getText()+"."+s;
+        ays.setText(set);
+    }//GEN-LAST:event_aysMouseClicked
 
     /**
      * @param args the command line arguments
