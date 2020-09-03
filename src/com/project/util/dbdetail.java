@@ -37,7 +37,7 @@ public class dbdetail implements dbdetailimp {
 		try {
                         
 			if (con == null || con.isClosed()) {
-				Class.forName("com.mysql.jdbc.Driver");
+				Class.forName("com.mysql.cj.jdbc.Driver");
 				con = DriverManager.getConnection(connurl, username, pwd);
                                 
 			}

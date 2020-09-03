@@ -469,17 +469,19 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
         
         String idd=model.getValueAt(selectedForEdit,0).toString();
         String y=model.getValueAt(selectedForEdit,1).toString();
+        String sem=model.getValueAt(selectedForEdit, 2).toString();
         String s= model.getValueAt(selectedForEdit,3).toString();
 
 
         yAnds.id.setText(idd);
         yAnds.ay.setText(y);
-        if(s.equals("S1")){
+        if(sem.equals("S1")){
             yAnds.s1.setSelected(true);
         }
         else{
             yAnds.s2.setSelected(true);
         }
+        
         yAnds.ays.setText(s);
     }//GEN-LAST:event_editActionPerformed
 
