@@ -6,7 +6,7 @@ public interface dbdetailimp {
 	static final String username = "root";
 	
 	/*constant keyword for pwd in dbdetail class */
-	static final String pwd = "1996";
+	static final String pwd = "12345";
 	
 	/*constant keyword for conurl in dbdetail class */
 	static final String connurl = "jdbc:mysql://localhost:3306/info";
