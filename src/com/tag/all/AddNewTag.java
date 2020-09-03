@@ -83,9 +83,9 @@ public class AddNewTag extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        tName = new javax.swing.JComboBox<>();
         addTag = new javax.swing.JButton();
         tid = new javax.swing.JLabel();
+        tName = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -105,8 +105,6 @@ public class AddNewTag extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Tag");
-
-        tName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lectures", "Lab", "Practical", "Evaluation" }));
 
         addTag.setBackground(new java.awt.Color(102, 0, 255));
         addTag.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -132,8 +130,8 @@ public class AddNewTag extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tName, 0, 162, Short.MAX_VALUE)
-                            .addComponent(tid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(tid, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(tName)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(addTag, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -148,8 +146,8 @@ public class AddNewTag extends javax.swing.JFrame {
                     .addComponent(tid, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(tName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(addTag, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(79, Short.MAX_VALUE))
@@ -231,8 +229,12 @@ public class AddNewTag extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTagActionPerformed
-        String name=(String) tName.getSelectedItem();
+        String name=(String) tName.getText();
 
+        if(tName.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
+        }
+        else{
         int x=0;
         try{
             ps1 = con.prepareStatement("select tid from tag where tid >= all (select tid from tag)");
@@ -260,6 +262,7 @@ public class AddNewTag extends javax.swing.JFrame {
 
         }  catch (SQLException ex) {
             Logger.getLogger(AddNewTag.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_addTagActionPerformed
 
@@ -316,7 +319,7 @@ public class AddNewTag extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JComboBox<String> tName;
+    private javax.swing.JTextField tName;
     private javax.swing.JLabel tid;
     // End of variables declaration//GEN-END:variables
 }

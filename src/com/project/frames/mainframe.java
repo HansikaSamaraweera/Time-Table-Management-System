@@ -6,6 +6,7 @@
 package com.project.frames;
 
 
+import com.students.add.check;
 import com.tag.all.ViewEditDeleteTag;
 
 /**
@@ -291,7 +292,9 @@ public class mainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void StudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentsActionPerformed
-       
+        check std=new check();
+        std.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_StudentsActionPerformed
 
     private void TagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TagActionPerformed

@@ -239,7 +239,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="14" style="3"/>
+              <Font name="Verdana" size="18" style="3"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Programme"/>
           </Properties>

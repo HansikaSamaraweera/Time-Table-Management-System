@@ -133,10 +133,10 @@ public void executeSQLQuery(String query,String message){
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         tid = new javax.swing.JTextField();
-        tname = new javax.swing.JComboBox<>();
         update = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        tname = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         tagEdit = new javax.swing.JButton();
@@ -172,7 +172,7 @@ public void executeSQLQuery(String query,String message){
                 "ID", "Tag Name"
             }
         ));
-        tagtable.setSelectionBackground(new java.awt.Color(102, 0, 102));
+        tagtable.setSelectionBackground(new java.awt.Color(204, 204, 204));
         tagtable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tagtableMouseClicked(evt);
@@ -187,8 +187,6 @@ public void executeSQLQuery(String query,String message){
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel8.setText("Tag");
-
-        tname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lectures", "Lab", "Paractical", "Evaluation" }));
 
         update.setBackground(new java.awt.Color(102, 0, 255));
         update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -242,8 +240,8 @@ public void executeSQLQuery(String query,String message){
                                     .addComponent(jLabel8))
                                 .addGap(22, 22, 22)
                                 .addGroup(panelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tid)
-                                    .addComponent(tname, 0, 160, Short.MAX_VALUE)))
+                                    .addComponent(tid, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                    .addComponent(tname)))
                             .addGroup(panelEditLayout.createSequentialGroup()
                                 .addGap(149, 149, 149)
                                 .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -260,10 +258,10 @@ public void executeSQLQuery(String query,String message){
                     .addComponent(jLabel7)
                     .addComponent(tid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(tname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -316,19 +314,19 @@ public void executeSQLQuery(String query,String message){
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(panelEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tagEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(delete)
                 .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,7 +334,7 @@ public void executeSQLQuery(String query,String message){
                 .addGap(57, 57, 57)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tagEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -520,7 +518,7 @@ public void executeSQLQuery(String query,String message){
         int i=tagtable.getSelectedRow();
         TableModel model=tagtable.getModel();
         tid.setText(model.getValueAt(i,0).toString());
-        tname.setSelectedItem(model.getValueAt(i,1).toString());
+        tname.setText(model.getValueAt(i,1).toString());
 
         boolean edit= tagtable.isEditing();
         if(edit==false)
@@ -556,7 +554,7 @@ public void executeSQLQuery(String query,String message){
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         try {
             int i=Integer.parseInt(tid.getText());
-            String name = (String) tname.getSelectedItem();
+            String name = (String) tname.getText();
 
             con = (Connection) dbdetail.getCon();
             ps1 = con.prepareStatement("UPDATE tag SET tname=?  WHERE tid=? ");
@@ -564,7 +562,7 @@ public void executeSQLQuery(String query,String message){
             ps1.setInt(2, i);
 
             ps1.execute();
-            JOptionPane.showMessageDialog(null, "");
+            JOptionPane.showMessageDialog(null, "Update");
 
             ViewEditDeleteTag std=new  ViewEditDeleteTag();
             this.setVisible(false);
@@ -676,7 +674,7 @@ public void executeSQLQuery(String query,String message){
     private javax.swing.JButton tagEdit;
     private javax.swing.JTable tagtable;
     private javax.swing.JTextField tid;
-    private javax.swing.JComboBox<String> tname;
+    private javax.swing.JTextField tname;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

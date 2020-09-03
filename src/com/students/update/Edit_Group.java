@@ -155,8 +155,8 @@ Connection con = null;
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        jLabel4.setText("Group Number");
+        jLabel4.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel4.setText("Main Group");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
