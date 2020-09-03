@@ -5,6 +5,7 @@
  */
 package com.project.frames;
 
+import com.project.model.Location;
 import com.project.util.dbdetail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -158,6 +161,11 @@ private static Connection con;
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 153, 0));
         jButton4.setText("Cancel");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         preview.setBackground(new java.awt.Color(95, 73, 57));
         preview.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
@@ -335,7 +343,14 @@ private static Connection con;
        int loc = getLocationId(location);
         
         addRoom(id,name,loc);
+      
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        mainframe p = new mainframe();
+        p.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,6 +424,7 @@ private static Connection con;
           RoomBuilding rb = new RoomBuilding();
             rb.setVisible(true);
             this.dispose();
+             
     } catch (SQLException ex) {
         Logger.getLogger(RoomBuilding.class.getName()).log(Level.SEVERE, null, ex);
     }

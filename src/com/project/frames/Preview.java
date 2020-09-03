@@ -467,6 +467,8 @@ private static Connection con;
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        RoomBuilding p = new RoomBuilding();
+        p.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void buildidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildidActionPerformed
@@ -485,6 +487,8 @@ private static Connection con;
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        RoomBuilding p = new RoomBuilding();
+        p.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void detActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detActionPerformed
@@ -649,6 +653,7 @@ private static Connection con;
     
 //        rName.setText(object.getRoomName());
 //        String name = String.valueOf(object.getRoomName());
+            rid.setText(String.valueOf(object.getRoomId()));
         rName.setText(object.getRoomName());
 
   String bid = String.valueOf(object.getBuildingId());
@@ -666,9 +671,9 @@ private static Connection con;
              while (set.next()) {
                 //name+emmid+faculty+department+center+building+level+rank123
                 
-//                lo.setRoomId(set.getInt(1));
-                lo.setRoomName(set.getString(1));
-                lo.setBuildingId(set.getInt(2));
+                lo.setRoomId(set.getInt(1));
+                lo.setRoomName(set.getString(2));
+                lo.setBuildingId(set.getInt(3));
            
             }
             

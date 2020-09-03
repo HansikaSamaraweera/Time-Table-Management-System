@@ -18,6 +18,27 @@ public class students {
     private String grpid;
     private int subno;
     private String subid;
+    int count;
+
+    public String getProgramme() {
+        return programme;
+    }
+
+    public void setProgram (String programme) {
+        this.programme = programme;
+    }
+
+    public students() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
     
     public students(int id,String ay,String as,String programme,int grpno,String grpid,int subno,String subid){
     this.id=id;
