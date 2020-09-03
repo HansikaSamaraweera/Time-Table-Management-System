@@ -26,16 +26,15 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author ACER
+ * @author OSHANI
  */
 public class Programme extends javax.swing.JFrame {
-Connection con = null;
+    Connection con = null;
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
-    PreparedStatement ps3;
-    PreparedStatement ps12;
+
     /**
      * Creates new form Programme
      */
@@ -48,35 +47,37 @@ Connection con = null;
         //Database Connection
         con = (Connection) dbdetail.getCon();
         
-        show_programmes();
         idd1.setVisible(false);
+        
+        show_programmes();
+        
     }
 
     public ArrayList<acdemicprogramme> addProgrammes()
     {
-        ArrayList<acdemicprogramme> newTags=new ArrayList<>();
+        ArrayList<acdemicprogramme> newProg=new ArrayList<>();
         try{
             con = (Connection) dbdetail.getCon();
             String query="select * from programme";
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(query);
             
-            acdemicprogramme pros;
+            acdemicprogramme prog;
             
             while(rs.next()){
-                pros=new acdemicprogramme(rs.getInt("pid"),rs.getString("programme"));
-                newTags.add(pros); 
+                prog=new acdemicprogramme(rs.getInt("pid"),rs.getString("programme"));
+                newProg.add(prog); 
             }
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
         
-        return newTags;
+        return newProg;
 
     }
 
-public void show_programmes(){
+    public void show_programmes(){
         ArrayList<acdemicprogramme> list=addProgrammes();
         DefaultTableModel model=(DefaultTableModel)viepro.getModel();
         
@@ -90,7 +91,7 @@ public void show_programmes(){
         }
     }
 
-public void executeSQLQuery(String query,String message){
+    public void executeSQLQuery(String query,String message){
         con = (Connection) dbdetail.getCon();
         Statement st;
         
@@ -131,7 +132,7 @@ public void executeSQLQuery(String query,String message){
         jScrollPane1 = new javax.swing.JScrollPane();
         viepro = new javax.swing.JTable();
         edit = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
         idd = new javax.swing.JLabel();
         idd1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -199,14 +200,14 @@ public void executeSQLQuery(String query,String message){
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(102, 0, 255));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/delete.jpg"))); // NOI18N
-        jButton4.setText("Delete");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Delete.setBackground(new java.awt.Color(102, 0, 255));
+        Delete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Delete.setForeground(new java.awt.Color(255, 255, 255));
+        Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/delete.jpg"))); // NOI18N
+        Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                DeleteActionPerformed(evt);
             }
         });
 
@@ -223,7 +224,7 @@ public void executeSQLQuery(String query,String message){
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(idd)
@@ -255,7 +256,7 @@ public void executeSQLQuery(String query,String message){
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -414,7 +415,7 @@ public void executeSQLQuery(String query,String message){
     }//GEN-LAST:event_programmeActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        // TODO add your handling code here:
+
         Edit_Programme proed=new Edit_Programme();
         proed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -436,8 +437,8 @@ public void executeSQLQuery(String query,String message){
 
     }//GEN-LAST:event_editActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+
          int id= Integer.parseInt(idd1.getText());
         System.out.print(id);
         try {
@@ -453,7 +454,7 @@ public void executeSQLQuery(String query,String message){
         } catch (SQLException ex) {
             Logger.getLogger(Programme.class.getName()).log(Level.SEVERE, null, ex);
         }      
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_DeleteActionPerformed
 
     private void vieproMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vieproMouseClicked
         int i=viepro.getSelectedRow();
@@ -529,12 +530,12 @@ public void executeSQLQuery(String query,String message){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Delete;
     private javax.swing.JButton edit;
     private javax.swing.JButton g;
     private javax.swing.JLabel id;
     private javax.swing.JLabel idd;
     private javax.swing.JTextField idd1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel19;

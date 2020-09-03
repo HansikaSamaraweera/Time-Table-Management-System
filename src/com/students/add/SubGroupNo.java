@@ -26,16 +26,15 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author ACER
+ * @author OSHANI
  */
 public class SubGroupNo extends javax.swing.JFrame {
-Connection con = null;
+    Connection con = null;
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
-    PreparedStatement ps3;
-    PreparedStatement ps12;
+
     /**
      * Creates new form SubGroupNo
      */
@@ -48,37 +47,38 @@ Connection con = null;
         //Database Connection
         con = (Connection) dbdetail.getCon();
         
+        idsb.setVisible(false);
+        
         show_subgroups();
         
-        idsb.setVisible(false);
     }
 
-    public ArrayList<subgroup> addTag()
+    public ArrayList<subgroup> addSubGroup()
     {
-        ArrayList<subgroup> newTags=new ArrayList<>();
+        ArrayList<subgroup> newSubgrp=new ArrayList<>();
         try{
             con = (Connection) dbdetail.getCon();
             String query="select * from subNo";
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(query);
             
-            subgroup allTags;
+            subgroup sgrp;
             
             while(rs.next()){
-                allTags=new subgroup(rs.getInt("sid"),rs.getInt("subno"));
-                newTags.add(allTags); 
+                sgrp=new subgroup(rs.getInt("sid"),rs.getInt("subno"));
+                newSubgrp.add(sgrp); 
             }
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
         
-        return newTags;
+        return newSubgrp;
 
     }
 
-public void show_subgroups(){
-        ArrayList<subgroup> list=addTag();
+    public void show_subgroups(){
+        ArrayList<subgroup> list=addSubGroup();
         DefaultTableModel model=(DefaultTableModel)subg.getModel();
         
         Object[] row=new Object[3];
@@ -91,7 +91,7 @@ public void show_subgroups(){
         }
     }
 
-public void executeSQLQuery(String query,String message){
+    public void executeSQLQuery(String query,String message){
         con = (Connection) dbdetail.getCon();
         Statement st;
         
@@ -131,7 +131,7 @@ public void executeSQLQuery(String query,String message){
         jScrollPane1 = new javax.swing.JScrollPane();
         subg = new javax.swing.JTable();
         edit = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
         idsb = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -192,14 +192,14 @@ public void executeSQLQuery(String query,String message){
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(102, 0, 255));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/delete.jpg"))); // NOI18N
-        jButton4.setText("Delete");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Delete.setBackground(new java.awt.Color(102, 0, 255));
+        Delete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Delete.setForeground(new java.awt.Color(255, 255, 255));
+        Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/delete.jpg"))); // NOI18N
+        Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                DeleteActionPerformed(evt);
             }
         });
 
@@ -227,7 +227,7 @@ public void executeSQLQuery(String query,String message){
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,7 +248,7 @@ public void executeSQLQuery(String query,String message){
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(118, 118, 118))
         );
@@ -406,7 +406,7 @@ public void executeSQLQuery(String query,String message){
         sub.subno.setValue(sn);
     }//GEN-LAST:event_editActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         int id= Integer.parseInt(idsb.getText());
         System.out.print(id);
         
@@ -423,7 +423,7 @@ public void executeSQLQuery(String query,String message){
         } catch (SQLException ex) {
             Logger.getLogger(SubGroupNo.class.getName()).log(Level.SEVERE, null, ex);
         }      
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_DeleteActionPerformed
 
     private void subgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subgMouseClicked
         int i=subg.getSelectedRow();
@@ -499,10 +499,10 @@ public void executeSQLQuery(String query,String message){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Delete;
     private javax.swing.JButton edit;
     private javax.swing.JButton g;
     private javax.swing.JTextField idsb;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;

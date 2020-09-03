@@ -26,7 +26,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author ACER
+ * @author OSHANI
  */
 public class GroupNo extends javax.swing.JFrame {
 Connection con = null;
@@ -34,8 +34,7 @@ Connection con = null;
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
-    PreparedStatement ps3;
-    PreparedStatement ps12;
+
     /**
      * Creates new form GroupNo
      */
@@ -48,37 +47,38 @@ Connection con = null;
         //Database Connection
         con = (Connection) dbdetail.getCon();
         
+        idd.setVisible(false);
+        
         show_groups();
         
-        idd.setVisible(false);
     }
 
-    public ArrayList<group> addTag()
+    public ArrayList<group> addMainGroup()
     {
-        ArrayList<group> newTags=new ArrayList<>();
+        ArrayList<group> newMain=new ArrayList<>();
         try{
             con = (Connection) dbdetail.getCon();
             String query="select * from groupNo";
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(query);
             
-            group allTags;
+            group mainGrp;
             
             while(rs.next()){
-                allTags=new group(rs.getInt("gid"),rs.getInt("grpno"));
-                newTags.add(allTags); 
+                mainGrp=new group(rs.getInt("gid"),rs.getInt("grpno"));
+                newMain.add(mainGrp); 
             }
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
         
-        return newTags;
+        return newMain;
 
     }
 
 public void show_groups(){
-        ArrayList<group> list=addTag();
+        ArrayList<group> list=addMainGroup();
         DefaultTableModel model=(DefaultTableModel)viewg.getModel();
         
         Object[] row=new Object[3];

@@ -148,6 +148,7 @@
                                           <Component id="gid" alignment="0" max="32767" attributes="0"/>
                                           <Component id="g1" alignment="0" max="32767" attributes="0"/>
                                           <Component id="y1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lbn33" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -206,7 +207,9 @@
                               <Component id="gid" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="groupID" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="lbn33" min="-2" pref="17" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="sg1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -412,6 +415,19 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbn33">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="11" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="cc" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbn33MouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
