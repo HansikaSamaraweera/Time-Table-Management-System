@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Alert;
@@ -28,11 +29,18 @@ private static Connection con;
      private PreparedStatement b2;
      private PreparedStatement b3;
      private PreparedStatement b4;
+     private PreparedStatement ps11;
     /**
      * Creates new form RoomBuilding
      */
     public RoomBuilding() {
         initComponents();
+        
+         ArrayList arr2 = getbuil();
+        for(Object x:arr2){
+          rLocation.addItem((String) x);
+          
+          }
     }
 
     /**
@@ -56,7 +64,7 @@ private static Connection con;
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         rName = new javax.swing.JTextField();
-        rLocation = new javax.swing.JComboBox<>();
+        rLocation = new javax.swing.JComboBox<String>();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         preview = new javax.swing.JButton();
@@ -145,7 +153,11 @@ private static Connection con;
 
         rName.setText(" ");
 
-        rLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New Building", "Engineering Building", "D-Block", "Main Building" }));
+        rLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rLocationActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(204, 204, 204));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -302,6 +314,58 @@ private static Connection con;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public ArrayList getbuil(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps11 = con.prepareStatement("select name from build");
+             
+             ResultSet rs11 = ps11.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
+    }
+    public int getbuilNo(String x){
+    try {
+             int id_x;
+             
+             con = dbdetail.getCon();
+               
+             String sql ="select id from build where name=?";
+
+             b3 = con.prepareStatement(sql);
+             b3.setString(1, x);
+             ResultSet rs2 = b3.executeQuery();
+             
+             while(rs2.next()) {
+                 
+                 id_x=rs2.getInt(1);
+                  
+                 
+                 return id_x;
+                 
+             }
+             
+             con.close();
+              
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+       return 0;
+    }
     private void bidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bidActionPerformed
@@ -340,7 +404,7 @@ private static Connection con;
 //        String location = "new building";
         System.out.println(name+id+location);
 //                
-       int loc = getLocationId(location);
+       int loc = getbuilNo(location);
         
         addRoom(id,name,loc);
       
@@ -351,6 +415,10 @@ private static Connection con;
         mainframe p = new mainframe();
         p.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void rLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rLocationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rLocationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -431,7 +499,7 @@ private static Connection con;
         
     }
     
-    private int getLocationId(String name){
+   /* private int getLocationId(String name){
          try {
              int x;
              
@@ -459,7 +527,7 @@ private static Connection con;
          }
         
        return 0;
-    }
+    }*/
      public int buildId() {
         
          try {
