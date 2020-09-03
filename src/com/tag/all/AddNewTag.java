@@ -5,7 +5,7 @@
  */
 package com.tag.all;
 
-import com.project.frames.mainframe;
+
 import com.project.util.dbdetail;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -13,8 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
