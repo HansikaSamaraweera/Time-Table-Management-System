@@ -769,7 +769,7 @@ public class Subject_View extends javax.swing.JFrame {
         c1.setText(object.getScode());
         lech1.setValue(object.getLh());
         t1.setValue(object.getTh());
-        l1.setValue(object.getLh());
+        l1.setValue(object.getLabh());
         e1.setValue(object.getEvh());
      
      }
