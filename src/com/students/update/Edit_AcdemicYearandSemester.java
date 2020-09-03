@@ -7,7 +7,6 @@ package com.students.update;
 
 import com.project.util.dbdetail;
 import com.students.add.AcademicYearandSemester;
-import com.students.add.ViewStudents;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -19,18 +18,17 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ACER
+ * @author OSHANI
  */
 public class Edit_AcdemicYearandSemester extends javax.swing.JFrame {
-Connection con = null;
+    Connection con = null;
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
-    PreparedStatement ps3;
-    PreparedStatement ps12;
+
     /**
-     * Creates new form edit
+     * Creates new form Edit_AcademicYearAndSemester
      */
     public Edit_AcdemicYearandSemester() {
         initComponents();
@@ -41,7 +39,6 @@ Connection con = null;
         //Database Connection
         con = (Connection) dbdetail.getCon();
         
-        set.setVisible(false);
     }
 
     /**
@@ -62,7 +59,6 @@ Connection con = null;
         jLabel8 = new javax.swing.JLabel();
         s1 = new javax.swing.JRadioButton();
         s2 = new javax.swing.JRadioButton();
-        set = new javax.swing.JButton();
         update = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
@@ -107,15 +103,6 @@ Connection con = null;
         s2.setBackground(new java.awt.Color(255, 255, 255));
         s2.setText("Semester 2");
 
-        set.setBackground(new java.awt.Color(102, 0, 255));
-        set.setForeground(new java.awt.Color(255, 255, 255));
-        set.setText("Set");
-        set.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setActionPerformed(evt);
-            }
-        });
-
         update.setBackground(new java.awt.Color(102, 0, 255));
         update.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         update.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,14 +136,11 @@ Connection con = null;
                                 .addComponent(s1)
                                 .addGap(18, 18, 18)
                                 .addComponent(s2))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(ays, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(set))
+                            .addComponent(ays, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(id, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(ay, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)))
-                        .addGap(113, 113, 113))
+                        .addGap(191, 191, 191))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(204, 204, 204))))
@@ -179,13 +163,11 @@ Connection con = null;
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(s1)
                         .addComponent(s2)))
-                .addGap(34, 34, 34)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(set)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                    .addComponent(ays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -238,20 +220,6 @@ Connection con = null;
 
     }//GEN-LAST:event_ayMouseClicked
 
-    private void setActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setActionPerformed
-        String s = null;
-        if(s1.isSelected())
-        {
-            s="S1";
-        }
-        if(s2.isSelected()){
-            s="S2";
-        }
-
-        String set=ay.getText()+"."+s;
-        ays.setText(set);
-    }//GEN-LAST:event_setActionPerformed
-
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
        try {
             int i=Integer.parseInt(id.getText());
@@ -259,17 +227,6 @@ Connection con = null;
             String sem=(String) s1.getText();
             String acyearSemester=ays.getText();
             
-            /*String s = null;
-            if(s1.isSelected())
-            {
-            s="S1";
-            }
-            if(s2.isSelected()){
-            s="S2";
-            }
-        
-            String acyearSemester=ay.getText()+"."+s;*/
-
             con = (Connection) dbdetail.getCon();
             ps1 = con.prepareStatement("UPDATE yands SET year=?,semester=?,yearAndsemester=?  WHERE id=? ");
             ps1.setString(1, year);
@@ -366,7 +323,6 @@ Connection con = null;
     private javax.swing.JPanel jPanel8;
     public javax.swing.JRadioButton s1;
     public javax.swing.JRadioButton s2;
-    private javax.swing.JButton set;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

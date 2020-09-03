@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Oshani
+ * @author OSHANI
  */
 public class check extends javax.swing.JFrame {
     Connection con = null;
@@ -29,11 +29,9 @@ public class check extends javax.swing.JFrame {
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
-    PreparedStatement ps3;
-    PreparedStatement ps12;
     PreparedStatement ps11;
     /**
-     * Creates new form AddStudents_Year4
+     * Creates new form AddStudents
      */
     public check() {
         initComponents();
@@ -44,31 +42,32 @@ public class check extends javax.swing.JFrame {
         //Database Connection
         con = (Connection) dbdetail.getCon();
         
+        //AcademicYear and Semester
         ArrayList arr2 = getyear();
         for(Object x:arr2){
           y1.addItem(x);
-          
           }
         
-         
+        //Programme 
         ArrayList arr3 = getpro();
         for(Object x:arr3){
-          p1.addItem((String) x);
-          
+          p1.addItem((String) x); 
           }
         
+        //Main Group
         ArrayList arr4 = getgroup();
         for(Object x:arr4){
           g1.addItem(x);
-          
           }
         
+        //Sub Group
         ArrayList arr5 = getsubgrp();
         for(Object x:arr5){
           sg1.addItem(x);
-          
           }
     }
+    
+    //AcademicYear and Semester
     private ArrayList getyear(){
         
         ArrayList arr=new ArrayList();
@@ -93,6 +92,8 @@ public class check extends javax.swing.JFrame {
           return arr;  
     
     }
+    
+    //Programme
     private ArrayList getpro(){
         
         ArrayList arr=new ArrayList();
@@ -117,7 +118,9 @@ public class check extends javax.swing.JFrame {
           return arr;  
     
     }
-     private ArrayList getgroup(){
+    
+    //Main Group
+    private ArrayList getgroup(){
         
         ArrayList arr=new ArrayList();
          try {
@@ -141,7 +144,9 @@ public class check extends javax.swing.JFrame {
           return arr;  
     
     }
-      private ArrayList getsubgrp(){
+    
+    //Sub Group 
+    private ArrayList getsubgrp(){
         
         ArrayList arr=new ArrayList();
          try {
@@ -199,6 +204,7 @@ public class check extends javax.swing.JFrame {
         g1 = new javax.swing.JComboBox();
         sg1 = new javax.swing.JComboBox();
         y1 = new javax.swing.JComboBox();
+        lbn33 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         prog = new javax.swing.JButton();
@@ -320,6 +326,14 @@ public class check extends javax.swing.JFrame {
             }
         });
 
+        lbn33.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbn33.setForeground(new java.awt.Color(204, 0, 0));
+        lbn33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbn33MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -344,7 +358,8 @@ public class check extends javax.swing.JFrame {
                                 .addComponent(p1, javax.swing.GroupLayout.Alignment.LEADING, 0, 199, Short.MAX_VALUE)
                                 .addComponent(gid, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(g1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(y1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(y1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbn33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                             .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -387,7 +402,9 @@ public class check extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(gid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(groupID))
-                .addGap(25, 25, 25)
+                .addGap(2, 2, 2)
+                .addComponent(lbn33, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(sg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -521,35 +538,6 @@ public class check extends javax.swing.JFrame {
         String g=(String) g1.getSelectedItem();
         String groupID= year+"."+pro+"."+g;
         gid.setText(groupID);
-        
-        /* String s = null;
-        if(s1.isSelected()==true)
-        {
-            s="S1";
-        }
-        if(s2.isSelected()==true){
-            s="S2";
-        }
-        
-        if(ay.getText().trim().isEmpty()&&p1.getSelectedItem()=="Select One"&&s==null){
-            lbn1.setText("This Field is Required");
-            lbn2.setText("This Field is Required");
-            lbn3.setText("This Field is Required");
-
-        }
-        else if(ay.getText().trim().isEmpty()){
-            lbn1.setText("This Field is Required");
-        }
-        else if(p1.getSelectedItem()=="Select One"){
-            lbn3.setText("This Field is Required");
-        }
-        else if(s==null){
-            lbn2.setText("This Field is Required");
-        }
-        else{
-            String t=ay.getText()+"."+s+"."+p1.getSelectedItem()+"."+gno.getValue().toString();
-            gid.setText(t);
-        }*/
     }//GEN-LAST:event_groupIDActionPerformed
 
     private void subgroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subgroupIDActionPerformed
@@ -559,34 +547,6 @@ public class check extends javax.swing.JFrame {
         String h=(String) sg1.getSelectedItem();
         String groupID= year+"."+pro+"."+g+"."+h;
         gsubid.setText(groupID);
-         lbn1.setText("");
-        /*String x = null;
-        if(s1.isSelected()==true)
-            {
-                x="S1";
-            }
-        if(s2.isSelected()==true){
-                x="S2";
-            }
-        if(ay.getText().trim().isEmpty()&&p1.getSelectedItem()=="Select One"&&x==null){
-            lbn1.setText("This Field is Required");
-            lbn2.setText("This Field is Required");
-            lbn3.setText("This Field is Required");
-            
-        }
-        else if(ay.getText().trim().isEmpty()){
-            lbn1.setText("This Field is Required");
-        }
-        else if(p1.getSelectedItem()=="Select One"){
-            lbn3.setText("This Field is Required");
-        }
-        else if(x==null){
-                lbn2.setText("This Field is Required");      
-        }
-        else{
-        String z=ay.getText()+"."+x+"."+p1.getSelectedItem()+"."+gno.getValue().toString()+"."+subno.getValue().toString();
-        gsubid.setText(z);
-        }*/
     }//GEN-LAST:event_subgroupIDActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
@@ -601,25 +561,12 @@ public class check extends javax.swing.JFrame {
         String B=(String) sg1.getSelectedItem();
         int subNo=Integer.parseInt(B);
         String subgrpNo=gsubid.getText();
-        /*String year=(String) ay.getText();
-        String sem=(String) s1.getText();
-        String programme=(String) p1.getSelectedItem();
-        String groupNo=(String) gno.getValue().toString();
-        String groupid=gid.getText();
-        String subNo=(String)subno.getValue().toString();
-        String subgrpNo=gsubid.getText();*/
-
-       /* if(ay.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
-        }
-        else if(ay.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
-        }*/
+        
         if(gid.getText().trim().isEmpty()&&gsubid.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
         }
         else if(gid.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields..."); 
+            lbn33.setText("This Field is Required");
         }
         else if(gsubid.getText().trim().isEmpty()){
             lbn1.setText("This Field is Required");
@@ -642,13 +589,6 @@ public class check extends javax.swing.JFrame {
             ps = con.prepareStatement(q);
             ps.setInt(1, x);
             ps.setString(2,year);
-            /*if(s1.isSelected())
-            {
-                sem="S1";
-            }
-            if(s2.isSelected()){
-                sem="S2";
-            }*/
             ps.setString(3,sem);
             ps.setString(4,programme);
             ps.setInt(5,groupNo);
@@ -711,6 +651,10 @@ public class check extends javax.swing.JFrame {
         lbn1.setText("");
     }//GEN-LAST:event_gsubidMouseClicked
 
+    private void lbn33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbn33MouseClicked
+        lbn33.setText("");
+    }//GEN-LAST:event_lbn33MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -771,6 +715,7 @@ public class check extends javax.swing.JFrame {
     private javax.swing.JLabel lbn1;
     private javax.swing.JLabel lbn2;
     private javax.swing.JLabel lbn3;
+    private javax.swing.JLabel lbn33;
     private javax.swing.JComboBox<String> p1;
     private javax.swing.JButton prog;
     private javax.swing.JComboBox sg1;

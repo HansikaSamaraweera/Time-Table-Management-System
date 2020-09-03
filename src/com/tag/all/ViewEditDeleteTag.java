@@ -13,17 +13,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import org.xml.sax.Attributes;
-import java.util.Date;
 import com.students.services.tag;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -34,27 +30,30 @@ import javax.swing.table.TableModel;
  */
 public class ViewEditDeleteTag extends javax.swing.JFrame {
     Connection con = null;
+    
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
-    PreparedStatement ps3;
+
     /**
      * Creates new form ViewEditDeleteTag
      */
     public ViewEditDeleteTag() {
         initComponents();
+        
+        //Database Connection
         con = (Connection) dbdetail.getCon();
+        
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
-        
         
         show_tag();
         
         panelEdit.setVisible(false);
     }
     
-public ArrayList<tag> addTag()
+    public ArrayList<tag> addTag()
     {
         ArrayList<tag> newTags=new ArrayList<>();
         try{
@@ -78,7 +77,7 @@ public ArrayList<tag> addTag()
 
     }
 
-public void show_tag(){
+    public void show_tag(){
         ArrayList<tag> list=addTag();
         DefaultTableModel model=(DefaultTableModel)tagtable.getModel();
         
@@ -92,7 +91,7 @@ public void show_tag(){
         }
     }
 
-public void executeSQLQuery(String query,String message){
+    public void executeSQLQuery(String query,String message){
         con = (Connection) dbdetail.getCon();
         Statement st;
         
@@ -529,7 +528,6 @@ public void executeSQLQuery(String query,String message){
     }//GEN-LAST:event_tagtableMouseClicked
 
     private void tagEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tagEditActionPerformed
-
         panelEdit.setVisible(true);
     }//GEN-LAST:event_tagEditActionPerformed
 
@@ -574,21 +572,21 @@ public void executeSQLQuery(String query,String message){
     }//GEN-LAST:event_updateActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+
         mainframe ob=new mainframe();
         ob.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
         lecturers fr1=new lecturers();
         fr1.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void StudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentsActionPerformed
@@ -596,14 +594,14 @@ public void executeSQLQuery(String query,String message){
     }//GEN-LAST:event_StudentsActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+
         Subject ob=new Subject();
         ob.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void TagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TagActionPerformed

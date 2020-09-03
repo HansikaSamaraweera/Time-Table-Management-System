@@ -5,7 +5,7 @@
  */
 package com.tag.all;
 
-import com.project.frames.mainframe;
+
 import com.project.util.dbdetail;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -13,8 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,17 +26,18 @@ public class AddNewTag extends javax.swing.JFrame {
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
-    PreparedStatement ps2;
-    PreparedStatement ps3;
     PreparedStatement ps12;
+
     /**
      * Creates new form AddNewTag
      */
     public AddNewTag() {
         initComponents();
-         Toolkit toolkit = getToolkit();
+        Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
+        //Database Connection
         con = (Connection) dbdetail.getCon();
         
         displayId();

@@ -7,7 +7,6 @@ package com.students.update;
 
 import com.project.util.dbdetail;
 import com.students.add.GroupNo;
-import com.students.add.ViewStudents;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -19,18 +18,17 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ACER
+ * @author OSHANI
  */
 public class Edit_Group extends javax.swing.JFrame {
-Connection con = null;
+    Connection con = null;
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
-    PreparedStatement ps3;
-    PreparedStatement ps12;
+
     /**
-     * Creates new form Edit_Group
+     * Creates new form Edit_MainGroup
      */
     public Edit_Group() {
         initComponents();

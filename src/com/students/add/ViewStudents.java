@@ -22,7 +22,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -30,16 +29,16 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author ACER
+ * @author OSHANI
  */
 public class ViewStudents extends javax.swing.JFrame {
-    //database connection
-    Connection con = null;
+        //database connection
+        Connection con = null;
     
         PreparedStatement ps2;
         PreparedStatement ps3;
     /**
-     * Creates new form view
+     * Creates new form viewStudents
      */
     public ViewStudents() {
         initComponents();
@@ -83,7 +82,6 @@ public class ViewStudents extends javax.swing.JFrame {
         try{
             con = (Connection) dbdetail.getCon();
             String query="select * from students where year='Y1.S1' OR year='Y1.S2' ";
-           // String query="select * from studentsY1 where year=? ";
             
             Statement st=con.createStatement();
             
@@ -94,9 +92,7 @@ public class ViewStudents extends javax.swing.JFrame {
             while(rs.next()){
                 addStdy1=new students(rs.getInt("stuid"),rs.getString("year"),rs.getString("semester"),rs.getString("programme"),rs.getInt("grpno"),rs.getString("grpid"),rs.getInt("subgno"),rs.getString("subgid"));
                 studentstListForY1.add(addStdy1);
-                
-                
-                
+    
             }
             
         }catch(Exception ex){
@@ -189,9 +185,7 @@ public class ViewStudents extends javax.swing.JFrame {
             while(rs2.next()){
                 addStdy2=new students(rs2.getInt("stuid"),rs2.getString("year"),rs2.getString("semester"),rs2.getString("programme"),rs2.getInt("grpno"),rs2.getString("grpid"),rs2.getInt("subgno"),rs2.getString("subgid"));
                 studentstListForY2.add(addStdy2);
-                
-                
-                
+    
             }
             
         }catch(Exception e){
@@ -285,9 +279,6 @@ public class ViewStudents extends javax.swing.JFrame {
             while(rs5.next()){
                 addStdy3=new students(rs5.getInt("stuid"),rs5.getString("year"),rs5.getString("semester"),rs5.getString("programme"),rs5.getInt("grpno"),rs5.getString("grpid"),rs5.getInt("subgno"),rs5.getString("subgid"));
                 studentstListForY3.add(addStdy3);
-                
-                
-                
             }
             
         }catch(Exception e){
@@ -381,9 +372,7 @@ public class ViewStudents extends javax.swing.JFrame {
             while(rs8.next()){
                 addStdy4=new students(rs8.getInt("stuid"),rs8.getString("year"),rs8.getString("semester"),rs8.getString("programme"),rs8.getInt("grpno"),rs8.getString("grpid"),rs8.getInt("subgno"),rs8.getString("subgid"));
                 studentstListForY4.add(addStdy4);
-                
-                
-                
+ 
             }
             
         }catch(Exception e){
@@ -1028,21 +1017,21 @@ public class ViewStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_dy4ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+
         mainframe ob=new mainframe();
         ob.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
         lecturers fr1=new lecturers();
         fr1.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void StudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentsActionPerformed
@@ -1050,14 +1039,14 @@ public class ViewStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_StudentsActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+
         Subject ob=new Subject();
         ob.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void TagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TagActionPerformed
