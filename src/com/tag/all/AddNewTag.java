@@ -26,17 +26,18 @@ public class AddNewTag extends javax.swing.JFrame {
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
-    PreparedStatement ps2;
-    PreparedStatement ps3;
     PreparedStatement ps12;
+
     /**
      * Creates new form AddNewTag
      */
     public AddNewTag() {
         initComponents();
-         Toolkit toolkit = getToolkit();
+        Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
+        //Database Connection
         con = (Connection) dbdetail.getCon();
         
         displayId();
