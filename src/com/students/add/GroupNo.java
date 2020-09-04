@@ -132,7 +132,7 @@ public void executeSQLQuery(String query,String message){
         jScrollPane1 = new javax.swing.JScrollPane();
         viewg = new javax.swing.JTable();
         edit = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
         idd = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -194,14 +194,14 @@ public void executeSQLQuery(String query,String message){
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(102, 0, 255));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/delete.jpg"))); // NOI18N
-        jButton4.setText("Delete");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Delete.setBackground(new java.awt.Color(102, 0, 255));
+        Delete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Delete.setForeground(new java.awt.Color(255, 255, 255));
+        Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/delete.jpg"))); // NOI18N
+        Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                DeleteActionPerformed(evt);
             }
         });
 
@@ -230,7 +230,7 @@ public void executeSQLQuery(String query,String message){
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33))))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(246, 246, 246)
@@ -252,7 +252,7 @@ public void executeSQLQuery(String query,String message){
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(Delete, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -413,24 +413,27 @@ public void executeSQLQuery(String query,String message){
         
     }//GEN-LAST:event_editActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-         int id= Integer.parseInt(idd.getText());
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(p==0){
+        int id= Integer.parseInt(idd.getText());
         System.out.print(id);
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from groupNo where gid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            JOptionPane.showConfirmDialog(null, 0);
             GroupNo ad=new GroupNo();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(GroupNo.class.getName()).log(Level.SEVERE, null, ex);
-        }      
-    }//GEN-LAST:event_jButton4ActionPerformed
+        } 
+        }
+    }//GEN-LAST:event_DeleteActionPerformed
 
     private void viewgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewgMouseClicked
         int i=viewg.getSelectedRow();
@@ -506,13 +509,13 @@ public void executeSQLQuery(String query,String message){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Delete;
     private javax.swing.JButton edit;
     private javax.swing.JButton g;
     private javax.swing.JSpinner gno;
     private javax.swing.JButton groupno;
     private javax.swing.JLabel id;
     private javax.swing.JTextField idd;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;

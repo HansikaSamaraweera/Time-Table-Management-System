@@ -407,6 +407,9 @@ public class SubGroupNo extends javax.swing.JFrame {
     }//GEN-LAST:event_editActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(p==0){
         int id= Integer.parseInt(idsb.getText());
         System.out.print(id);
         
@@ -422,7 +425,8 @@ public class SubGroupNo extends javax.swing.JFrame {
 
         } catch (SQLException ex) {
             Logger.getLogger(SubGroupNo.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        } 
+        }
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void subgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subgMouseClicked

@@ -486,7 +486,9 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
     }//GEN-LAST:event_editActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+       
+        if(p==0){
         int id= Integer.parseInt(y1id.getText());
         System.out.print(id);
         try {
@@ -494,14 +496,15 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
             ps2=con.prepareStatement("delete from yands where id=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            JOptionPane.showConfirmDialog(null, 0);
             AcademicYearandSemester ad=new AcademicYearandSemester();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(AcademicYearandSemester.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        } 
+        }
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void acedemicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acedemicMouseClicked

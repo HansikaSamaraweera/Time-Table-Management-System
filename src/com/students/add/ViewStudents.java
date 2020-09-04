@@ -933,6 +933,9 @@ public class ViewStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void dy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy1ActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(p==0){
         int id= Integer.parseInt(y1id.getText());
         System.out.print(id);
         try {
@@ -940,17 +943,21 @@ public class ViewStudents extends javax.swing.JFrame {
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            JOptionPane.showConfirmDialog(null,0);
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        } 
+        }
     }//GEN-LAST:event_dy1ActionPerformed
 
     private void dy3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy3ActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(p==0){
         int id= Integer.parseInt(y3id.getText());
         System.out.print(id);
         try {
@@ -958,14 +965,15 @@ public class ViewStudents extends javax.swing.JFrame {
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            JOptionPane.showConfirmDialog(null,0);
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
+        }
     }//GEN-LAST:event_dy3ActionPerformed
 
     private void viewtable_y1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewtable_y1MouseClicked
@@ -981,24 +989,31 @@ public class ViewStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_viewtable_y3MouseClicked
 
     private void dy2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy2ActionPerformed
-       int id= Integer.parseInt(y2id.getText());
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(p==0){
+        int id= Integer.parseInt(y2id.getText());
         System.out.print(id);
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            JOptionPane.showConfirmDialog(null, 0);
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
+        }
     }//GEN-LAST:event_dy2ActionPerformed
 
     private void dy4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy4ActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(p==0){
         int id= Integer.parseInt(y4id.getText());
         System.out.print(id);
         try {
@@ -1006,14 +1021,15 @@ public class ViewStudents extends javax.swing.JFrame {
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            JOptionPane.showConfirmDialog(null, 0);
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
+        }
     }//GEN-LAST:event_dy4ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

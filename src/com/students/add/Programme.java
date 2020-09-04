@@ -438,22 +438,25 @@ public class Programme extends javax.swing.JFrame {
     }//GEN-LAST:event_editActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-
-         int id= Integer.parseInt(idd1.getText());
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(p==0){
+        int id= Integer.parseInt(idd1.getText());
         System.out.print(id);
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from programme where pid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            JOptionPane.showConfirmDialog(null, 0);
             Programme ad=new Programme();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(Programme.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        } 
+        }
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void vieproMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vieproMouseClicked
