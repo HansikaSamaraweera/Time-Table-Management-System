@@ -532,6 +532,9 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
     }//GEN-LAST:event_tagEditActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(p==0){
         int id= Integer.parseInt(tid.getText());
         System.out.print(id);
         try {
@@ -539,13 +542,14 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
             ps2=con.prepareStatement("delete from tag where tid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showMessageDialog(null, " 1 Tag Delete Successfully");
+            JOptionPane.showMessageDialog(null,0);
             ViewEditDeleteTag ad=new ViewEditDeleteTag();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewEditDeleteTag.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_deleteActionPerformed
 
