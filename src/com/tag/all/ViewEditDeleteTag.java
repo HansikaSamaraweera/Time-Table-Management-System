@@ -534,15 +534,15 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this tag?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
         
-        if(p==0){
         int id= Integer.parseInt(tid.getText());
         System.out.print(id);
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from tag where tid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showMessageDialog(null,0);
+
             ViewEditDeleteTag ad=new ViewEditDeleteTag();
             ad.setVisible(true);
             this.setVisible(false);

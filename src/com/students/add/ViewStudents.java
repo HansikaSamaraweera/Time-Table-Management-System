@@ -935,15 +935,15 @@ public class ViewStudents extends javax.swing.JFrame {
     private void dy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy1ActionPerformed
         int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
         
-        if(p==0){
         int id= Integer.parseInt(y1id.getText());
         System.out.print(id);
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null,0);
+            
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
@@ -957,15 +957,15 @@ public class ViewStudents extends javax.swing.JFrame {
     private void dy3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy3ActionPerformed
         int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
         
-        if(p==0){
         int id= Integer.parseInt(y3id.getText());
         System.out.print(id);
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null,0);
+            
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
@@ -990,16 +990,17 @@ public class ViewStudents extends javax.swing.JFrame {
 
     private void dy2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy2ActionPerformed
         int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
-        
-        if(p==0){
+
         int id= Integer.parseInt(y2id.getText());
         System.out.print(id);
+                
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, 0);
+            
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
@@ -1013,15 +1014,15 @@ public class ViewStudents extends javax.swing.JFrame {
     private void dy4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy4ActionPerformed
         int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
         
-        if(p==0){
         int id= Integer.parseInt(y4id.getText());
         System.out.print(id);
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, 0);
+            
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);

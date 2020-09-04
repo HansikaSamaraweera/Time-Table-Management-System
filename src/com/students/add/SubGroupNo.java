@@ -408,17 +408,17 @@ public class SubGroupNo extends javax.swing.JFrame {
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
-        
-        if(p==0){
+
         int id= Integer.parseInt(idsb.getText());
         System.out.print(id);
-        
+                
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from subNo where sid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+
             SubGroupNo ad=new SubGroupNo();
             ad.setVisible(true);
             this.setVisible(false);
