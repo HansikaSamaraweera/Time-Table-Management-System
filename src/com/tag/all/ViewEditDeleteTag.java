@@ -532,7 +532,7 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
     }//GEN-LAST:event_tagEditActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this tag?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
         
         if(p==0){
         int id= Integer.parseInt(tid.getText());
