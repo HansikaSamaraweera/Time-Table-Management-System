@@ -21,7 +21,15 @@ public class SubjectsModel {
     int th;
     int labh;
     int evh;
+int count;
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
     public int getId() {
         return id;
     }

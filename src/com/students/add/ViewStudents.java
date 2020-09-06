@@ -6,13 +6,12 @@
 package com.students.add;
 
 
+import com.project.frames.Subject;
+import com.project.frames.lecturers;
 import com.project.frames.mainframe;
 import com.project.util.dbdetail;
 import com.students.services.students;
-import com.students.update.EditStudents_Year1;
-import com.students.update.EditStudents_Year2;
-import com.students.update.EditStudents_Year3;
-import com.students.update.EditStudents_Year4;
+import com.tag.all.ViewEditDeleteTag;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -23,7 +22,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -31,16 +29,16 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author ACER
+ * @author OSHANI
  */
 public class ViewStudents extends javax.swing.JFrame {
-    //database connection
-    Connection con = null;
+        //database connection
+        Connection con = null;
     
         PreparedStatement ps2;
         PreparedStatement ps3;
     /**
-     * Creates new form view
+     * Creates new form viewStudents
      */
     public ViewStudents() {
         initComponents();
@@ -83,8 +81,10 @@ public class ViewStudents extends javax.swing.JFrame {
         ArrayList<students> studentstListForY1=new ArrayList<>();
         try{
             con = (Connection) dbdetail.getCon();
-            String query="select * from students where year='Y1'";
+            String query="select * from students where year='Y1.S1' OR year='Y1.S2' ";
+            
             Statement st=con.createStatement();
+            
             ResultSet rs=st.executeQuery(query);
             
             students addStdy1;
@@ -92,9 +92,7 @@ public class ViewStudents extends javax.swing.JFrame {
             while(rs.next()){
                 addStdy1=new students(rs.getInt("stuid"),rs.getString("year"),rs.getString("semester"),rs.getString("programme"),rs.getInt("grpno"),rs.getString("grpid"),rs.getInt("subgno"),rs.getString("subgid"));
                 studentstListForY1.add(addStdy1);
-                
-                
-                
+    
             }
             
         }catch(Exception ex){
@@ -178,7 +176,7 @@ public class ViewStudents extends javax.swing.JFrame {
         ArrayList<students> studentstListForY2=new ArrayList<>();
         try{
             con = (Connection) dbdetail.getCon();
-            String query="select * from students where year='Y2'";
+            String query="select * from students where year='Y2.S1' OR year='Y2.S2'";
             Statement st2=con.createStatement();
             ResultSet rs2=st2.executeQuery(query);
             
@@ -187,9 +185,7 @@ public class ViewStudents extends javax.swing.JFrame {
             while(rs2.next()){
                 addStdy2=new students(rs2.getInt("stuid"),rs2.getString("year"),rs2.getString("semester"),rs2.getString("programme"),rs2.getInt("grpno"),rs2.getString("grpid"),rs2.getInt("subgno"),rs2.getString("subgid"));
                 studentstListForY2.add(addStdy2);
-                
-                
-                
+    
             }
             
         }catch(Exception e){
@@ -274,7 +270,7 @@ public class ViewStudents extends javax.swing.JFrame {
         ArrayList<students> studentstListForY3=new ArrayList<>();
         try{
             con = (Connection) dbdetail.getCon();
-            String query="select * from students where year='Y3'";
+            String query="select * from students where year='Y3.S1' OR year='Y3.S2'";
             Statement st3=con.createStatement();
             ResultSet rs5=st3.executeQuery(query);
             
@@ -283,9 +279,6 @@ public class ViewStudents extends javax.swing.JFrame {
             while(rs5.next()){
                 addStdy3=new students(rs5.getInt("stuid"),rs5.getString("year"),rs5.getString("semester"),rs5.getString("programme"),rs5.getInt("grpno"),rs5.getString("grpid"),rs5.getInt("subgno"),rs5.getString("subgid"));
                 studentstListForY3.add(addStdy3);
-                
-                
-                
             }
             
         }catch(Exception e){
@@ -370,7 +363,7 @@ public class ViewStudents extends javax.swing.JFrame {
         ArrayList<students> studentstListForY4=new ArrayList<>();
         try{
             con = (Connection) dbdetail.getCon();
-            String query="select * from students where year='Y4'";
+            String query="select * from students where year='Y4.S1' OR year='Y4.S2'";
             Statement st4=con.createStatement();
             ResultSet rs8=st4.executeQuery(query);
             
@@ -379,9 +372,7 @@ public class ViewStudents extends javax.swing.JFrame {
             while(rs8.next()){
                 addStdy4=new students(rs8.getInt("stuid"),rs8.getString("year"),rs8.getString("semester"),rs8.getString("programme"),rs8.getInt("grpno"),rs8.getString("grpid"),rs8.getInt("subgno"),rs8.getString("subgid"));
                 studentstListForY4.add(addStdy4);
-                
-                
-                
+ 
             }
             
         }catch(Exception e){
@@ -463,7 +454,6 @@ public class ViewStudents extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        edity1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         viewtable_y4 = new javax.swing.JTable();
         dy1 = new javax.swing.JButton();
@@ -474,25 +464,30 @@ public class ViewStudents extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         dy3 = new javax.swing.JButton();
-        edity3 = new javax.swing.JButton();
-        edity4 = new javax.swing.JButton();
         dy4 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         viewtable_y1 = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         viewtable_y3 = new javax.swing.JTable();
         dy2 = new javax.swing.JButton();
-        edit_year2 = new javax.swing.JButton();
         y2id = new javax.swing.JLabel();
         y3id = new javax.swing.JLabel();
         y4id = new javax.swing.JLabel();
         y1id = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        Students = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        Tag = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
 
         abcd.setText("Edit");
         abcd.addActionListener(new java.awt.event.ActionListener() {
@@ -518,23 +513,15 @@ public class ViewStudents extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        edity1.setBackground(new java.awt.Color(255, 255, 255));
-        edity1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-create-25.png"))); // NOI18N
-        edity1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edity1ActionPerformed(evt);
-            }
-        });
-
         viewtable_y4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Year", "Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
+                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
             }
         ));
-        viewtable_y4.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        viewtable_y4.setSelectionBackground(new java.awt.Color(204, 204, 204));
         viewtable_y4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewtable_y4MouseClicked(evt);
@@ -545,6 +532,9 @@ public class ViewStudents extends javax.swing.JFrame {
             viewtable_y4.getColumnModel().getColumn(0).setMinWidth(0);
             viewtable_y4.getColumnModel().getColumn(0).setPreferredWidth(0);
             viewtable_y4.getColumnModel().getColumn(0).setMaxWidth(0);
+            viewtable_y4.getColumnModel().getColumn(1).setMinWidth(0);
+            viewtable_y4.getColumnModel().getColumn(1).setPreferredWidth(0);
+            viewtable_y4.getColumnModel().getColumn(1).setMaxWidth(0);
         }
 
         dy1.setBackground(new java.awt.Color(255, 255, 255));
@@ -560,11 +550,11 @@ public class ViewStudents extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Year", "Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
+                "ID", "Year", " Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
             }
         ));
         viewtable_y2.setGridColor(new java.awt.Color(0, 153, 102));
-        viewtable_y2.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        viewtable_y2.setSelectionBackground(new java.awt.Color(204, 204, 204));
         viewtable_y2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewtable_y2MouseClicked(evt);
@@ -575,22 +565,25 @@ public class ViewStudents extends javax.swing.JFrame {
             viewtable_y2.getColumnModel().getColumn(0).setMinWidth(0);
             viewtable_y2.getColumnModel().getColumn(0).setPreferredWidth(0);
             viewtable_y2.getColumnModel().getColumn(0).setMaxWidth(0);
+            viewtable_y2.getColumnModel().getColumn(1).setMinWidth(0);
+            viewtable_y2.getColumnModel().getColumn(1).setPreferredWidth(0);
+            viewtable_y2.getColumnModel().getColumn(1).setMaxWidth(0);
         }
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel4.setForeground(new java.awt.Color(102, 0, 102));
         jLabel4.setText("Year 2");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel5.setForeground(new java.awt.Color(102, 0, 102));
         jLabel5.setText("Year 3");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel6.setForeground(new java.awt.Color(102, 0, 102));
         jLabel6.setText("Year 1");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel7.setForeground(new java.awt.Color(102, 0, 102));
         jLabel7.setText("Year 4");
 
         dy3.setBackground(new java.awt.Color(255, 255, 255));
@@ -598,22 +591,6 @@ public class ViewStudents extends javax.swing.JFrame {
         dy3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dy3ActionPerformed(evt);
-            }
-        });
-
-        edity3.setBackground(new java.awt.Color(255, 255, 255));
-        edity3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-create-25.png"))); // NOI18N
-        edity3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edity3ActionPerformed(evt);
-            }
-        });
-
-        edity4.setBackground(new java.awt.Color(255, 255, 255));
-        edity4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-create-25.png"))); // NOI18N
-        edity4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edity4ActionPerformed(evt);
             }
         });
 
@@ -630,11 +607,11 @@ public class ViewStudents extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Year", "Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
+                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
             }
         ));
         viewtable_y1.setGridColor(new java.awt.Color(0, 153, 102));
-        viewtable_y1.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        viewtable_y1.setSelectionBackground(new java.awt.Color(204, 204, 204));
         viewtable_y1.setSelectionForeground(new java.awt.Color(0, 0, 0));
         viewtable_y1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -646,6 +623,9 @@ public class ViewStudents extends javax.swing.JFrame {
             viewtable_y1.getColumnModel().getColumn(0).setMinWidth(0);
             viewtable_y1.getColumnModel().getColumn(0).setPreferredWidth(0);
             viewtable_y1.getColumnModel().getColumn(0).setMaxWidth(0);
+            viewtable_y1.getColumnModel().getColumn(1).setMinWidth(0);
+            viewtable_y1.getColumnModel().getColumn(1).setPreferredWidth(0);
+            viewtable_y1.getColumnModel().getColumn(1).setMaxWidth(0);
         }
 
         viewtable_y3.setModel(new javax.swing.table.DefaultTableModel(
@@ -653,10 +633,10 @@ public class ViewStudents extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Year", "Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
+                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
             }
         ));
-        viewtable_y3.setSelectionBackground(new java.awt.Color(153, 0, 153));
+        viewtable_y3.setSelectionBackground(new java.awt.Color(204, 204, 204));
         viewtable_y3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewtable_y3MouseClicked(evt);
@@ -667,6 +647,9 @@ public class ViewStudents extends javax.swing.JFrame {
             viewtable_y3.getColumnModel().getColumn(0).setMinWidth(0);
             viewtable_y3.getColumnModel().getColumn(0).setPreferredWidth(0);
             viewtable_y3.getColumnModel().getColumn(0).setMaxWidth(0);
+            viewtable_y3.getColumnModel().getColumn(1).setMinWidth(0);
+            viewtable_y3.getColumnModel().getColumn(1).setPreferredWidth(0);
+            viewtable_y3.getColumnModel().getColumn(1).setMaxWidth(0);
         }
 
         dy2.setBackground(new java.awt.Color(255, 255, 255));
@@ -674,14 +657,6 @@ public class ViewStudents extends javax.swing.JFrame {
         dy2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dy2ActionPerformed(evt);
-            }
-        });
-
-        edit_year2.setBackground(new java.awt.Color(255, 255, 255));
-        edit_year2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-create-25.png"))); // NOI18N
-        edit_year2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edit_year2ActionPerformed(evt);
             }
         });
 
@@ -693,16 +668,8 @@ public class ViewStudents extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(edity4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dy4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(edit_year2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dy2)))
+                .addGap(0, 657, Short.MAX_VALUE)
+                .addComponent(dy2)
                 .addGap(4, 4, 4))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
@@ -721,9 +688,7 @@ public class ViewStudents extends javax.swing.JFrame {
                                 .addComponent(y2id, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 582, Short.MAX_VALUE)
-                        .addComponent(edity1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(dy1)
                         .addGap(6, 6, 6))
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -741,9 +706,9 @@ public class ViewStudents extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(edity3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dy3)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dy3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dy4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -756,9 +721,7 @@ public class ViewStudents extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(edity1)
-                    .addComponent(dy1))
+                .addComponent(dy1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -767,8 +730,7 @@ public class ViewStudents extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(edit_year2))
+                        .addGap(0, 52, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(dy2)))
@@ -782,9 +744,7 @@ public class ViewStudents extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dy3)
-                    .addComponent(edity3))
+                .addComponent(dy3)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -792,43 +752,32 @@ public class ViewStudents extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(edity4)
-                    .addComponent(dy4))
+                .addComponent(dy4)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 720, 930));
 
-        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Time Table");
+        jLabel8.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel8.setText("View Students");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 203, 50));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(541, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(355, 355, 355))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel5.setBackground(new java.awt.Color(102, 0, 102));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 30));
+        jButton4.setBackground(new java.awt.Color(204, 204, 255));
+        jButton4.setText("Main Menu");
+        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
-        jPanel10.setBackground(new java.awt.Color(102, 0, 102));
-
-        jButton3.setBackground(new java.awt.Color(204, 204, 255));
-        jButton3.setText("Main Menu");
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Lecturers");
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -836,31 +785,116 @@ public class ViewStudents extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Time Slots");
+        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        Students.setBackground(new java.awt.Color(255, 255, 255));
+        Students.setText("Students");
+        Students.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        Students.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StudentsActionPerformed(evt);
+            }
+        });
+
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Subjects");
+        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Statistics");
+        jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Sessions");
+        jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setBackground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Locations");
+        jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+
+        jButton10.setBackground(new java.awt.Color(255, 255, 255));
+        jButton10.setText("Timetable");
+        jButton10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+
+        Tag.setBackground(new java.awt.Color(255, 255, 255));
+        Tag.setText("Tag");
+        Tag.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        Tag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TagActionPerformed(evt);
+            }
+        });
+
+        jButton11.setBackground(new java.awt.Color(255, 255, 255));
+        jButton11.setText("Not Available");
+        jButton11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Students, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Tag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(962, Short.MAX_VALUE))
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Students, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Tag, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(429, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 1010));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
-        jLabel8.setText("View Students");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 203, 50));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 1040));
 
         jScrollPane3.setViewportView(jPanel3);
 
@@ -877,41 +911,6 @@ public class ViewStudents extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void edity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edity1ActionPerformed
-        EditStudents_Year1 edy1=new EditStudents_Year1();
-        edy1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        int selectedForEdit = viewtable_y1.getSelectedRow();
-        TableModel model=viewtable_y1.getModel();
-        if(selectedForEdit==-1){
-            JOptionPane.showMessageDialog(null,"No row selected!!!");
-        }
-        else{
-           edy1.setVisible(true); 
-        }
-        
-        String idd=model.getValueAt(selectedForEdit,0).toString();
-        String y=model.getValueAt(selectedForEdit,1).toString();
-        String s= model.getValueAt(selectedForEdit,2).toString();
-        String p=model.getValueAt(selectedForEdit,3).toString();
-        int gn=(int) model.getValueAt(selectedForEdit,4);
-        int sn=(int) model.getValueAt(selectedForEdit,6);
-
-        edy1.id.setText(idd);
-        edy1.ay.setText(y);
-        if(s.equals("S1")){
-            edy1.s1.setSelected(true);
-        }
-        else{
-            edy1.s2.setSelected(true);
-        }
-        edy1.pro.setSelectedItem(p);
-        edy1.gno.setValue(gn);
-        edy1.subno.setValue(sn);
-        
-
-    }//GEN-LAST:event_edity1ActionPerformed
 
     private void viewtable_y4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewtable_y4MouseClicked
         int i=viewtable_y4.getSelectedRow();
@@ -934,39 +933,47 @@ public class ViewStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void dy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy1ActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
         int id= Integer.parseInt(y1id.getText());
         System.out.print(id);
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        } 
+        }
     }//GEN-LAST:event_dy1ActionPerformed
 
     private void dy3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy3ActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
         int id= Integer.parseInt(y3id.getText());
         System.out.print(id);
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
+        }
     }//GEN-LAST:event_dy3ActionPerformed
 
     private void viewtable_y1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewtable_y1MouseClicked
@@ -981,147 +988,89 @@ public class ViewStudents extends javax.swing.JFrame {
         y3id.setText(model.getValueAt(i,0).toString());
     }//GEN-LAST:event_viewtable_y3MouseClicked
 
-    private void edit_year2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_year2ActionPerformed
-        EditStudents_Year2 edy2=new EditStudents_Year2();
-        edy2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        int selectedForEdit = viewtable_y2.getSelectedRow();
-        TableModel model=viewtable_y2.getModel();
-        if(selectedForEdit==-1){
-            JOptionPane.showMessageDialog(null,"No row selected!!!");
-        }
-        else{
-           edy2.setVisible(true); 
-        }
-
-        String idd=model.getValueAt(selectedForEdit,0).toString();
-        String y=model.getValueAt(selectedForEdit,1).toString();
-        String s= model.getValueAt(selectedForEdit,2).toString();
-        String p=model.getValueAt(selectedForEdit,3).toString();
-        int gn=(int) model.getValueAt(selectedForEdit,4);
-        int sn=(int) model.getValueAt(selectedForEdit,6);
-
-        edy2.id.setText(idd);
-        edy2.ay.setText(y);
-        if(s.equals("S1")){
-            edy2.s1.setSelected(true);
-        }
-        else{
-            edy2.s2.setSelected(true);
-        }
-        edy2.pro.setSelectedItem(p);
-        edy2.gno.setValue(gn);
-        edy2.subno.setValue(sn);
-    }//GEN-LAST:event_edit_year2ActionPerformed
-
-    private void edity3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edity3ActionPerformed
-       EditStudents_Year3 edy3=new EditStudents_Year3();
-       edy3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        int selectedForEdit = viewtable_y3.getSelectedRow();
-        TableModel model=viewtable_y3.getModel();
-        if(selectedForEdit==-1){
-            JOptionPane.showMessageDialog(null,"No row selected!!!");
-        }
-        else{
-           edy3.setVisible(true); 
-        }
-
-        String idd=model.getValueAt(selectedForEdit,0).toString();
-        String y=model.getValueAt(selectedForEdit,1).toString();
-        String s= model.getValueAt(selectedForEdit,2).toString();
-        String p=model.getValueAt(selectedForEdit,3).toString();
-        int gn=(int) model.getValueAt(selectedForEdit,4);
-        int sn=(int) model.getValueAt(selectedForEdit,6);
-
-        edy3.id.setText(idd);
-        edy3.ay.setText(y);
-        if(s.equals("S1")){
-            edy3.s1.setSelected(true);
-        }
-        else{
-            edy3.s2.setSelected(true);
-        }
-        edy3.pro.setSelectedItem(p);
-        edy3.gno.setValue(gn);
-        edy3.subno.setValue(sn);
-    }//GEN-LAST:event_edity3ActionPerformed
-
-    private void edity4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edity4ActionPerformed
-        EditStudents_Year4 edy4=new EditStudents_Year4();
-        edy4.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        int selectedForEdit = viewtable_y4.getSelectedRow();
-        TableModel model=viewtable_y4.getModel();
-        if(selectedForEdit==-1){
-            JOptionPane.showMessageDialog(null,"No row selected!!!");
-        }
-        else{
-           edy4.setVisible(true); 
-        }
-
-        String idd=model.getValueAt(selectedForEdit,0).toString();
-        String y=model.getValueAt(selectedForEdit,1).toString();
-        String s= model.getValueAt(selectedForEdit,2).toString();
-        String p=model.getValueAt(selectedForEdit,3).toString();
-        int gn=(int) model.getValueAt(selectedForEdit,4);
-        int sn=(int) model.getValueAt(selectedForEdit,6);
-
-        edy4.id.setText(idd);
-        edy4.ay.setText(y);
-        if(s.equals("S1")){
-            edy4.s1.setSelected(true);
-        }
-        else{
-            edy4.s2.setSelected(true);
-        }
-        edy4.pro.setSelectedItem(p);
-        edy4.gno.setValue(gn);
-        edy4.subno.setValue(sn);
-    }//GEN-LAST:event_edity4ActionPerformed
-
     private void dy2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy2ActionPerformed
-       int id= Integer.parseInt(y2id.getText());
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+
+        int id= Integer.parseInt(y2id.getText());
         System.out.print(id);
+                
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
+        }
     }//GEN-LAST:event_dy2ActionPerformed
 
     private void dy4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy4ActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
         int id= Integer.parseInt(y4id.getText());
         System.out.print(id);
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from students where stuid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showConfirmDialog(null, "Are you want to delete this item?");
+            
             ViewStudents ad=new ViewStudents();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        }
+        }
     }//GEN-LAST:event_dy4ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         mainframe ob=new mainframe();
         ob.setVisible(true);
         this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        lecturers fr1=new lecturers();
+        fr1.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void StudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentsActionPerformed
+
+    }//GEN-LAST:event_StudentsActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+        Subject ob=new Subject();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void TagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TagActionPerformed
+        ViewEditDeleteTag tg=new ViewEditDeleteTag();
+        tg.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_TagActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1160,27 +1109,31 @@ public class ViewStudents extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Students;
+    private javax.swing.JButton Tag;
     private javax.swing.JButton abcd;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton dy1;
     private javax.swing.JButton dy2;
     private javax.swing.JButton dy3;
     private javax.swing.JButton dy4;
-    private javax.swing.JButton edit_year2;
-    private javax.swing.JButton edity1;
-    private javax.swing.JButton edity3;
-    private javax.swing.JButton edity4;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

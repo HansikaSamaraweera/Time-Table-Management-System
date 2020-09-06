@@ -5,14 +5,14 @@
  */
 package com.tag.all;
 
-import com.project.frames.mainframe;
+
 import com.project.util.dbdetail;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -26,14 +26,18 @@ public class AddNewTag extends javax.swing.JFrame {
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
-    PreparedStatement ps2;
-    PreparedStatement ps3;
     PreparedStatement ps12;
+
     /**
      * Creates new form AddNewTag
      */
     public AddNewTag() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
+        //Database Connection
         con = (Connection) dbdetail.getCon();
         
         displayId();
@@ -75,18 +79,15 @@ public class AddNewTag extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        tName = new javax.swing.JComboBox<>();
         addTag = new javax.swing.JButton();
         tid = new javax.swing.JLabel();
+        tName = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -94,31 +95,6 @@ public class AddNewTag extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Time Table");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(413, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(313, 313, 313))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 30));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
@@ -129,10 +105,9 @@ public class AddNewTag extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Tag");
 
-        tName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lectures", "Lab", "Practical", "Evaluation" }));
-
-        addTag.setBackground(new java.awt.Color(255, 255, 255));
+        addTag.setBackground(new java.awt.Color(102, 0, 255));
         addTag.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addTag.setForeground(new java.awt.Color(255, 255, 255));
         addTag.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-save-25.png"))); // NOI18N
         addTag.setText("Save");
         addTag.addActionListener(new java.awt.event.ActionListener() {
@@ -154,8 +129,8 @@ public class AddNewTag extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tName, 0, 162, Short.MAX_VALUE)
-                            .addComponent(tid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(tid, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(tName)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(addTag, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -170,8 +145,8 @@ public class AddNewTag extends javax.swing.JFrame {
                     .addComponent(tid, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(tName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(addTag, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(79, Short.MAX_VALUE))
@@ -181,7 +156,9 @@ public class AddNewTag extends javax.swing.JFrame {
 
         jPanel10.setBackground(new java.awt.Color(102, 0, 102));
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 255));
+        jButton3.setBackground(new java.awt.Color(102, 0, 102));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("View");
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -207,14 +184,10 @@ public class AddNewTag extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 460));
+        jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 490));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        jLabel4.setText("Add Students");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -226,16 +199,19 @@ public class AddNewTag extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(198, Short.MAX_VALUE)
+                .addContainerGap(191, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addGap(98, 98, 98))
+                .addGap(105, 105, 105))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 430, 50));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 430, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,8 +228,12 @@ public class AddNewTag extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addTagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTagActionPerformed
-        String name=(String) tName.getSelectedItem();
+        String name=(String) tName.getText();
 
+        if(tName.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
+        }
+        else{
         int x=0;
         try{
             ps1 = con.prepareStatement("select tid from tag where tid >= all (select tid from tag)");
@@ -281,6 +261,7 @@ public class AddNewTag extends javax.swing.JFrame {
 
         }  catch (SQLException ex) {
             Logger.getLogger(AddNewTag.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_addTagActionPerformed
 
@@ -330,17 +311,14 @@ public class AddNewTag extends javax.swing.JFrame {
     private javax.swing.JButton addTag;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JComboBox<String> tName;
+    private javax.swing.JTextField tName;
     private javax.swing.JLabel tid;
     // End of variables declaration//GEN-END:variables
 }

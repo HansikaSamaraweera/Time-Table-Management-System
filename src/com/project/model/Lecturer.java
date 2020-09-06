@@ -20,6 +20,15 @@ public class Lecturer {
     String buiding;
     int level;
     String rank123;
+    int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public String getName() {
         return name;
