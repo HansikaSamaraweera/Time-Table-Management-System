@@ -792,7 +792,7 @@ public class ViewWorkingDays extends javax.swing.JFrame {
                         int Id = DD.getId();
                         //UPDATE addEvent5 SET ename = ? ,information=?,schools=?,noSeats=?, noStudents=?, noTeachers=?, materials=? WHERE eid=? 
                        // ps3 = con.prepareStatement("insert into lec(name,emmid,faculty,department,center,building,level,rank123) values(?,?,?,?,?,?,?,?) where id=? ");
-                        ps3 = con.prepareStatement("UPDATE Details SET nodays=?,monday=?,tuesday=?,wednesday=?,thursday=?,friday=?,saturday=?,sunday=?,time=?,timeslot=?  where DId=1 ");
+                        ps3 = con.prepareStatement("UPDATE Details SET nodays=?,monday=?,tuesday=?,wednesday=?,thursday=?,friday=?,saturday=?,sunday=?,time=?,timeslot=?  where DId=1");
                         
                         ps3.setInt(1,nodays);
                         ps3.setString(2,Monday1);

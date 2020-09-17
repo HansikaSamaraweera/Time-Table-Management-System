@@ -271,6 +271,12 @@ public class check extends javax.swing.JFrame {
             }
         });
 
+        gid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gidMouseClicked(evt);
+            }
+        });
+
         gsubid.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 gsubidMouseClicked(evt);
@@ -654,6 +660,10 @@ public class check extends javax.swing.JFrame {
     private void lbn33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbn33MouseClicked
         lbn33.setText("");
     }//GEN-LAST:event_lbn33MouseClicked
+
+    private void gidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gidMouseClicked
+        lbn33.setText("");
+    }//GEN-LAST:event_gidMouseClicked
 
     /**
      * @param args the command line arguments
