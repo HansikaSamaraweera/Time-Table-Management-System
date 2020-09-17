@@ -376,7 +376,7 @@ public class AddSessions extends javax.swing.JFrame {
     
         try {
             con = dbdetail.getCon();
-            ps6 = con.prepareStatement("insert into sessions(id,lec,tag,s_grp,sub_grp,subject_c,no_students,duration) values(?,?,?,?,?,?,?,?) ");
+            ps6 = con.prepareStatement("insert into sessions(id,lec,tag,s_grp,sub_grp,subject_c,no_students,duration,status) values(?,?,?,?,?,?,?,?,?) ");
             ps6.setInt(1,id);
             ps6.setString(2,lec_g);
             ps6.setString(3,tag_g);
@@ -385,6 +385,7 @@ public class AddSessions extends javax.swing.JFrame {
             ps6.setString(6, subject_c_g);
             ps6.setInt(7, no_students_g);
             ps6.setInt(8, duration_g);
+            ps6.setString(9,"normal");
             ps6.execute();
            // System.out.println("hello");
             

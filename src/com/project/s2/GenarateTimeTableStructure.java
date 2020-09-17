@@ -10,6 +10,7 @@ import com.project.frames.Preview;
 import com.project.frames.ViewWorkingDays_new;
 import com.project.model.DayDetails;
 import com.project.util.dbdetail;
+import com.students.add.ViewStudents;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -71,6 +72,8 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
         s_tt = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         jLabel6.setText("Time Table ID");
 
@@ -156,9 +159,33 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("jButton6");
+        jButton6.setText("View Lecture IDS");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("jButton7");
+        jButton7.setText("View Time Table for Lectuers");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("View Student IDS");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("View Time Table for Students");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,12 +218,14 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jButton3)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -233,15 +262,17 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
                     .addComponent(jButton7))
                 .addGap(18, 18, 18)
                 .addComponent(geararate_tt_lec)
-                .addGap(104, 104, 104)
+                .addGap(103, 103, 103)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(s_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(s_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(s_tt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(s_tt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8))
+                .addGap(10, 10, 10)
                 .addComponent(jButton1)
                 .addGap(21, 21, 21))
         );
@@ -273,8 +304,16 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
         int id=Integer.parseInt(r_id.getText());
         int ttid=Integer.parseInt(rtt.getText());
         //System.out.println(id);
-        genaratettstructure(id,ttid);
-         JOptionPane.showMessageDialog(null, "Succseesfully Created the table.You View it from View Room Time Tables by providung th room id");
+        //Checking the time table has created
+        int r_i = roomtablecheck(id);
+        if(r_i==-90){
+            JOptionPane.showMessageDialog(null, "Table has Alredy Created.");
+        }else{
+            genaratettstructure(id,ttid);
+            JOptionPane.showMessageDialog(null, "Succseesfully Created the table.You View it from View Room Time Tables by providung th room id");
+        }
+        
+         
         
     }//GEN-LAST:event_r_gActionPerformed
 
@@ -309,8 +348,17 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
         int id_lec=Integer.parseInt(l_id.getText());
         int ttid_lec=Integer.parseInt(tt_id_lec.getText());
         //System.out.println(id);
-        genaratettstructureLectuer(id_lec,ttid_lec);
-        JOptionPane.showMessageDialog(null, "Succseesfully Created the table.You can View it from View Lecturers Time Tables by providung the Lectuers id");
+        //genaratettstructureLectuer(id_lec,ttid_lec);
+        //JOptionPane.showMessageDialog(null, "Succseesfully Created the table.You can View it from View Lecturers Time Tables by providung the Lectuers id");
+        
+        //Checking the time table has created
+        int r_i = lectablecheck(id_lec);
+        if(r_i==-90){
+            JOptionPane.showMessageDialog(null, "Table has Alredy Created.");
+        }else{
+            genaratettstructureLectuer(id_lec,ttid_lec);
+            JOptionPane.showMessageDialog(null, "Succseesfully Created the table.You can View it from View Lecturers Time Tables by providung the Lectuers id");
+        }
     }//GEN-LAST:event_geararate_tt_lecActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -318,10 +366,118 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
         int id_stu=Integer.parseInt(s_id.getText());
         int ttid_stu=Integer.parseInt(s_tt.getText());
         //System.out.println(id);
-        genaratettstructureStudent(id_stu,ttid_stu);
-         JOptionPane.showMessageDialog(null, "Succseesfully Created the table.You can View it from View Students Time Tables by providung the Students id");
-        
+        //genaratettstructureStudent(id_stu,ttid_stu);
+         //JOptionPane.showMessageDialog(null, "Succseesfully Created the table.You can View it from View Students Time Tables by providung the Students id");
+        int r_i = stutablecheck(id_stu);
+        if(r_i==-90){
+            JOptionPane.showMessageDialog(null, "Table has Alredy Created.");
+        }else{
+            genaratettstructureStudent(id_stu,ttid_stu);
+            JOptionPane.showMessageDialog(null, "Succseesfully Created the table.You can View it from Students Time Tables by providung the Students id");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        Lecturer_view ob=new Lecturer_view();
+        ob.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        DisplayLecturersTimetable ob1=new DisplayLecturersTimetable();
+        ob1.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        ViewStudents ob3=new ViewStudents();
+        ob3.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        DisplayStudentsTimetable ob4=new DisplayStudentsTimetable();
+        ob4.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+    private int roomtablecheck(int id){
+        
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             ps5 = con.prepareStatement("select * from room_timetable where roomid =?");
+             ps5.setInt(1, id);
+             ResultSet rs2 = ps5.executeQuery();
+             
+             while (rs2.next()) {
+                 
+                 
+                 
+                 
+                 return (-90);
+                 
+             }
+             
+             con.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(GenarateTimeTableStructure.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return 0;
+    }
+    private int lectablecheck(int id){
+        
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             ps5 = con.prepareStatement("select * from lec_timetable where lecid =?");
+             ps5.setInt(1, id);
+             ResultSet rs2 = ps5.executeQuery();
+             
+             while (rs2.next()) {
+                 
+                 
+                 
+                 
+                 return (-90);
+                 
+             }
+             
+             con.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(GenarateTimeTableStructure.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return 0;
+    }
+     private int stutablecheck(int id){
+        
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             ps5 = con.prepareStatement("select * from stu_timetable where stuid =?");
+             ps5.setInt(1, id);
+             ResultSet rs2 = ps5.executeQuery();
+             
+             while (rs2.next()) {
+                 
+                 
+                 
+                 
+                 return (-90);
+                 
+             }
+             
+             con.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(GenarateTimeTableStructure.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return 0;
+    }
     private void genaratettstructureStudent(int stu_id,int stu_timetabletype){
        DayDetails object=new DayDetails();
        object=getOneDetail(stu_timetabletype);
@@ -850,8 +1006,10 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

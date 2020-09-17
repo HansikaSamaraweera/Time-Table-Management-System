@@ -38,6 +38,8 @@ public class ViewSessions extends javax.swing.JFrame {
     private PreparedStatement ps1;
     private PreparedStatement ps2;
     private PreparedStatement ps3;
+    private PreparedStatement ps5;
+    private PreparedStatement ps9;
     public ViewSessions() {
         initComponents();
         show_sessions();
@@ -145,7 +147,12 @@ public class ViewSessions extends javax.swing.JFrame {
 
         jLabel7.setText("Make Sure Raw ID is belong to session, students");
 
-        jButton2.setText("View Creted Tables");
+        jButton2.setText("View Creted Students Tables ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,22 +246,69 @@ public class ViewSessions extends javax.swing.JFrame {
         int i=session_view_table.getSelectedRow();
          TableModel model=session_view_table.getModel();
         String id=model.getValueAt(i,0).toString();
+        String status=model.getValueAt(i, 2).toString();
         try{
+        if(!status.equalsIgnoreCase("normal")){
+         JOptionPane.showMessageDialog(null,"Yon cannot Add this session to the table.");
+        }else{    
         int y=Integer.parseInt(id);
-        JOptionPane.showMessageDialog(null, "You Have Selected Session:"+y);
+            int k_id=studentId(y);
+        JOptionPane.showMessageDialog(null, "You Have Selected Session:"+y+"  Student group ID:"+k_id);
         SID.setText(id);
+        }
         }catch(Exception e){}
         
     }//GEN-LAST:event_session_view_tableMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        GenarateTimeTableStructure ob9=new GenarateTimeTableStructure();
+        ob9.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    private int studentId(int id){
+        int student_id=-89;
+        try {
+            
+            con = dbdetail.getCon();
+            
+            ps5 = con.prepareStatement("select s_grp from sessions where id =?");
+            ps5.setInt(1, id);
+            ResultSet rs2 = ps5.executeQuery();
+            String student_grp="";
+            while (rs2.next()) {
+                
+                student_grp=rs2.getString(1);
+                
+                
+               
+                
+            }
+            
+            
+            ps9 = con.prepareStatement("select stuid from students where grpid =? LIMIT 1");
+            ps9.setString(1, student_grp);
+            ResultSet rs7 = ps9.executeQuery();
+            
+            while (rs7.next()) {
+                
+                student_id =rs7.getInt(1);
+                
+                
+               
+                
+            }
+            
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewSessions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return student_id;     
+    }
     private void AddSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSessionActionPerformed
-        // TODO add your handling code here:
+        //Calling the main method
         int y=calledByAddSessions();
-        if(y==-77){
+        if(y==-45){}
+        else if(y==-77){
         JOptionPane.showMessageDialog(null, "Students table has not created yet.Plese create it and try again.");
         }else if(y==-79){
         JOptionPane.showMessageDialog(null, "Location table has not created yet.Plese create it and try again.");
@@ -262,12 +316,19 @@ public class ViewSessions extends javax.swing.JFrame {
         else if(y==-34){
         JOptionPane.showMessageDialog(null, "location and students time slots are not matching");
         }else if(y==-900){
-            JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in students time table or Yoour Raw ID is not correct");
+            JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in students time table or Yoour Raw ID is not belong to the selected student grp");
         }else if(y==-800){
             JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in location time table");
         }
         
     }//GEN-LAST:event_AddSessionActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DisplayStudentsTimetable ob6=new DisplayStudentsTimetable();
+        ob6.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
     private int calledByAddSessions(){
     try{
             
@@ -314,7 +375,8 @@ public class ViewSessions extends javax.swing.JFrame {
         int rawid=(int) R_ID.getValue();
         
         //getting the details(session) that need to store in time table 
-        String sessionDeatils=ob.getLec()+ob.getS_grp()+ob.getSub_grp()+ob.getSubject_c()+ob.getTag()+","+locationID;
+        String ll=gettinnglocationName(locationID);
+        String sessionDeatils="<html>"+ob.getLec()+"<br>"+ob.getS_grp()+"<br>"+ob.getSub_grp()+"<br>"+ob.getSubject_c()+"<br>"+ob.getTag()+"<br>"+","+ll+"</html>";
         
         //getting the table format(1 hour or 30 min) and timslot
         float[] checkts= getTimeSlots(rawid);
@@ -435,7 +497,36 @@ public class ViewSessions extends javax.swing.JFrame {
     
     return 0;
     }
-    
+     private String gettinnglocationName(int id){
+     try {
+             String x;
+             
+             con = dbdetail.getCon();
+             
+             ps5 = con.prepareStatement("select name from room where id =?");
+             ps5.setInt(1, id);
+             ResultSet rs2 = ps5.executeQuery();
+             
+             while (rs2.next()) {
+                 
+                 x=rs2.getString(1);
+                
+                 
+                 return x;
+                 
+             }
+             
+             con.close();
+             
+             
+             
+            
+         } catch (SQLException ex) {
+             Logger.getLogger(GenarateTimeTableStructure.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+         return "notfound"; 
+    }
     private float[] getTimeSlotsLoc(float timeslott,int locationID){
        // JOptionPane.showMessageDialog(null, "INSIDE getTimeSlotLoc");
         int k1=-78;
@@ -520,9 +611,21 @@ public class ViewSessions extends javax.swing.JFrame {
         
     
     }
-   /* private float next(int id){
-    
-    }*/
+    private void UpdateSession(){
+         try {
+             int id=Integer.parseInt(SID.getText());
+           con = dbdetail.getCon();
+            ps2 = con.prepareStatement("UPDATE sessions set status='Normal_Added' where id=?");
+             ps2.setInt(1, id);
+            ps2.execute();
+             
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
     private void AddSeesionstott(int rid,String cid,int loc,String session,int stuid){
 
         /*
@@ -550,6 +653,7 @@ public class ViewSessions extends javax.swing.JFrame {
                        
                         ps3.execute();
                         //System.out.println("hello");
+                        UpdateSession();
         
             con.setAutoCommit(false);
             con.close();
@@ -581,7 +685,7 @@ public class ViewSessions extends javax.swing.JFrame {
                        
                         ps3.execute();
                         //System.out.println("hello");
-        
+                        UpdateSession();
             con.setAutoCommit(false);
             con.close();
          } catch (Exception ex) {
@@ -722,7 +826,7 @@ public class ViewSessions extends javax.swing.JFrame {
         Session ar=new Session();
         try {
            con = dbdetail.getCon();
-            ps2 = con.prepareStatement("select id,lec,tag,s_grp,sub_grp,subject_c,no_students,duration from sessions where id=?");
+            ps2 = con.prepareStatement("select id,lec,tag,s_grp,sub_grp,subject_c,no_students,duration,status from sessions where id=?");
              ps2.setInt(1, id);
             ResultSet rs11 = ps2.executeQuery();
              while (rs11.next()) {
@@ -735,6 +839,7 @@ public class ViewSessions extends javax.swing.JFrame {
                 ar.setSubject_c(rs11.getString(6));
                 ar.setN0_students(rs11.getInt(7));
                 ar.setDuration(rs11.getInt(8));
+                ar.setStatus(rs11.getString(9));
                 
                
                 
@@ -842,7 +947,7 @@ public class ViewSessions extends javax.swing.JFrame {
         //lec,tag,s_grp,sub_grp,subject_c,no_students,duration
         String sess="<html>"+"<br>"+object.getLec()+"<br>"+object.getTag()+"<br>"+object.getS_grp()+"<br>"+object.getSub_grp()+"<br>"+object.getSubject_c()+"<br>"+"No of Students"+object.getN0_students()+"<br>"+"Duration"+object.getDuration()+"<br>"+"</html>";
         row[1]=sess;
-        
+        row[2]=object.getStatus();
        
         model1.addRow(row);
         }
@@ -854,7 +959,7 @@ private ArrayList getsessions(){
            
             
             con = dbdetail.getCon();
-            ps1 = con.prepareStatement("select id,lec,tag,s_grp,sub_grp,subject_c,no_students,duration from sessions");
+            ps1 = con.prepareStatement("select id,lec,tag,s_grp,sub_grp,subject_c,no_students,duration,status from sessions");
             ResultSet rs12 = ps1.executeQuery();
             
             while (rs12.next()) {
@@ -868,7 +973,7 @@ private ArrayList getsessions(){
                 ar.setSubject_c(rs12.getString(6));
                 ar.setN0_students(rs12.getInt(7));
                 ar.setDuration(rs12.getInt(8));
-                
+                ar.setStatus(rs12.getString(9));
                 
                 arr.add(ar);
                 

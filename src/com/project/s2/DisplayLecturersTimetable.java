@@ -7,8 +7,10 @@ package com.project.s2;
 
 import com.project.frames.ViewWorkingDays_new;
 import com.project.model.DayDetails;
+import com.project.model.LectuersStructure;
 import com.project.model.Lecturer;
 import com.project.model.RoomStructure;
+import com.project.model.StudentStructure;
 import com.project.util.dbdetail;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -26,14 +28,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author vnaso
  */
-public class DisplayRoomTimetable extends javax.swing.JFrame {
+public class DisplayLecturersTimetable extends javax.swing.JFrame {
 
     /**
      * Creates new form DisplayTimetable
      */
      private static Connection con;
     private PreparedStatement ps1;
-    public DisplayRoomTimetable() {
+    public DisplayLecturersTimetable() {
         initComponents();
         makeFrameFullSize(this);
     }
@@ -85,7 +87,7 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
             roomstructure_tab.getColumnModel().getColumn(2).setMaxWidth(60);
         }
 
-        jLabel1.setText("Room ID");
+        jLabel1.setText("Lectuerer ID");
 
         jButton1.setText("SUBMIT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +96,7 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Room Time Table");
+        jLabel2.setText("Lectuerer Time Table");
 
         show_room_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -159,8 +161,8 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        int rid=Integer.parseInt(r_id.getText());
-        getroomName(rid);
+        int lid=Integer.parseInt(r_id.getText());
+        getLectuerName(lid);
         DefaultTableModel model1 =(DefaultTableModel)roomstructure_tab.getModel();
         
         while (model1.getRowCount() > 0){
@@ -172,13 +174,13 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
         
         Object[] row=new Object[10];
         
-        ArrayList<RoomStructure> ar= getRoomttStr(rid);
+        ArrayList<LectuersStructure> ar= getStudentStr(lid);
         
         for(Object x:ar){
-            RoomStructure object=new RoomStructure();
-            object = (RoomStructure) x;
+            LectuersStructure object=new LectuersStructure();
+            object = (LectuersStructure) x;
          row[0]=object.getId();    
-        row[1]=object.getRoomid();
+        row[1]=object.getLec();
         row[2]=object.getTimeslot();
         row[3]=object.getMon();
         row[4]=object.getTue();
@@ -191,10 +193,10 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
         model1.addRow(row);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-   private void getroomName(int rid){
+   private void getLectuerName(int rid){
          try {
              con = dbdetail.getCon();
-             ps1 = con.prepareStatement("select name from room where id=?");
+             ps1 = con.prepareStatement("select name from lec where id=?");
              ps1.setInt(1,rid);
              ResultSet rs12 = ps1.executeQuery();
              
@@ -205,22 +207,22 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
                  
              }
          } catch (SQLException ex) {
-             Logger.getLogger(DisplayRoomTimetable.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(DisplayLecturersTimetable.class.getName()).log(Level.SEVERE, null, ex);
          }
    }
-    private ArrayList<RoomStructure> getRoomttStr(int rid){
+    private ArrayList<LectuersStructure> getStudentStr(int rid){
          ArrayList arr=new ArrayList();
         try {
             con = dbdetail.getCon();
-            ps1 = con.prepareStatement("select id,roomid,timeslot,mon,tue,wed,thur,fri,sat,sun from room_timetable where roomid=?");
+            ps1 = con.prepareStatement("select id,lecid,timeslot,mon,tue,wed,thur,fri,sat,sun from lec_timetable where lecid=?");
             ps1.setInt(1,rid);
             ResultSet rs12 = ps1.executeQuery();
             
             while (rs12.next()) {
                 //name+emmid+faculty+department+center+building+level+rank123
-                RoomStructure ar=new RoomStructure();
+                LectuersStructure ar=new LectuersStructure();
                 ar.setId(rs12.getInt(1));
-                ar.setRoomid(rs12.getInt(2));
+                ar.setLec(rs12.getInt(2));
                 ar.setTimeslot(rs12.getFloat(3));
                 ar.setMon(rs12.getString(4));
                 ar.setTue(rs12.getString(5));
@@ -235,7 +237,7 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(DisplayRoomTimetable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DisplayLecturersTimetable.class.getName()).log(Level.SEVERE, null, ex);
         }
         return arr;
     }
@@ -256,21 +258,27 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DisplayRoomTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplayLecturersTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DisplayRoomTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplayLecturersTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DisplayRoomTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplayLecturersTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DisplayRoomTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DisplayLecturersTimetable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DisplayRoomTimetable().setVisible(true);
+                new DisplayLecturersTimetable().setVisible(true);
             }
         });
     }

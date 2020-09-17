@@ -177,7 +177,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Room ID"/>
+            <Property name="text" type="java.lang.String" value="Lectuerer ID"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="r_id">
@@ -192,7 +192,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Room Time Table"/>
+            <Property name="text" type="java.lang.String" value="Lectuerer Time Table"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="show_room_name">
