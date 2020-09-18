@@ -11,6 +11,7 @@ import com.project.frames.Subject;
 import com.project.frames.WorkingDays_new;
 import com.project.frames.lecturers;
 import com.project.frames.mainframe;
+import com.project.s2.ViewSessions;
 import com.project.util.dbdetail;
 import com.tag.all.ViewEditDeleteTag;
 import java.awt.Dimension;
@@ -22,7 +23,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -136,9 +139,10 @@ public class ConsecutiveSession extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ts = new javax.swing.JComboBox<>();
         ls = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        Add = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cid = new javax.swing.JLabel();
+        view = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         notAV = new javax.swing.JLabel();
 
@@ -300,14 +304,21 @@ public class ConsecutiveSession extends javax.swing.JFrame {
 
         jLabel2.setText("Session 2");
 
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Add.setText("Add");
+        Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AddActionPerformed(evt);
             }
         });
 
         jLabel3.setText("ID");
+
+        view.setText("View");
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -321,10 +332,13 @@ public class ConsecutiveSession extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ts, 0, 244, Short.MAX_VALUE)
                     .addComponent(ls, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -343,7 +357,9 @@ public class ConsecutiveSession extends javax.swing.JFrame {
                     .addComponent(ls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Add, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
         );
 
@@ -472,7 +488,7 @@ public class ConsecutiveSession extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_notAVMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         String t1=(String) ts.getSelectedItem();
         String l1=(String) ls.getSelectedItem();
         
@@ -505,7 +521,42 @@ public class ConsecutiveSession extends javax.swing.JFrame {
         }  catch (SQLException ex) {
             Logger.getLogger(ConsecutiveSession.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_AddActionPerformed
+
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+        try {
+            con = (Connection) dbdetail.getCon();
+            ps1 = con.prepareStatement("UPDATE sessions SET status=?  WHERE id IN(select tuteid from consecutive) ");
+            ps1.setString(1,"consecutive");
+            //ps1.setString(2,idd);
+
+            ps1.execute();
+            //JOptionPane.showMessageDialog(null, "Data Update Successful");
+
+            /*ViewSessions add=new  ViewSessions();
+            this.setVisible(false);
+            add.setVisible(true);*/
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(ViewSessions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            con = (Connection) dbdetail.getCon();
+            ps1 = con.prepareStatement("UPDATE sessions SET status=?  WHERE id IN(select lecid from consecutive) ");
+            ps1.setString(1,"consecutive");
+            //ps1.setString(2,idd);
+
+            ps1.execute();
+            JOptionPane.showMessageDialog(null, "Data Update Successful");
+
+            ViewSessions add=new  ViewSessions();
+            this.setVisible(false);
+            add.setVisible(true);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewSessions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_viewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -543,10 +594,10 @@ public class ConsecutiveSession extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Add;
     private javax.swing.JButton Students;
     private javax.swing.JButton Tag;
     private javax.swing.JLabel cid;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
@@ -568,5 +619,6 @@ public class ConsecutiveSession extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ls;
     private javax.swing.JLabel notAV;
     private javax.swing.JComboBox<String> ts;
+    private javax.swing.JButton view;
     // End of variables declaration//GEN-END:variables
 }
