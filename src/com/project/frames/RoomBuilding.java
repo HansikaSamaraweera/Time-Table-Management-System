@@ -519,8 +519,6 @@ private static Connection con;
              
              con.close();
              
-             
-             
              return 0; 
          } catch (SQLException ex) {
              Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
