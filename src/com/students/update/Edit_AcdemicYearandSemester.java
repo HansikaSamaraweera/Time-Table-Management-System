@@ -5,6 +5,7 @@
  */
 package com.students.update;
 
+import com.project.frames.mainframe;
 import com.project.util.dbdetail;
 import com.students.add.AcademicYearandSemester;
 import java.awt.Dimension;
@@ -61,7 +62,7 @@ public class Edit_AcdemicYearandSemester extends javax.swing.JFrame {
         s2 = new javax.swing.JRadioButton();
         update = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
+        id = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -131,15 +132,14 @@ public class Edit_AcdemicYearandSemester extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel20))
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(s1)
                                 .addGap(18, 18, 18)
                                 .addComponent(s2))
-                            .addComponent(ays, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(id, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ay, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)))
+                            .addComponent(ays, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(ay, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(191, 191, 191))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,11 +148,11 @@ public class Edit_AcdemicYearandSemester extends javax.swing.JFrame {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -254,7 +254,9 @@ public class Edit_AcdemicYearandSemester extends javax.swing.JFrame {
     }//GEN-LAST:event_updateActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void aysMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aysMouseClicked
@@ -310,7 +312,7 @@ public class Edit_AcdemicYearandSemester extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField ay;
     public javax.swing.JTextField ays;
-    public javax.swing.JTextField id;
+    public javax.swing.JLabel id;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel19;
