@@ -12,6 +12,7 @@ import com.project.model.DayDetails;
 import com.project.model.Lecturer;
 import com.project.model.Session;
 import com.project.util.dbdetail;
+import java.awt.List;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -97,7 +98,6 @@ public class ViewSessions extends javax.swing.JFrame {
         if (session_view_table.getColumnModel().getColumnCount() > 0) {
             session_view_table.getColumnModel().getColumn(0).setMaxWidth(50);
             session_view_table.getColumnModel().getColumn(1).setResizable(false);
-            session_view_table.getColumnModel().getColumn(2).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -106,8 +106,8 @@ public class ViewSessions extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,6 +252,7 @@ public class ViewSessions extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(null,"Yon cannot Add this session to the table.");
         }else{    
         int y=Integer.parseInt(id);
+        
             int k_id=studentId(y);
         JOptionPane.showMessageDialog(null, "You Have Selected Session:"+y+"  Student group ID:"+k_id);
         SID.setText(id);
@@ -285,8 +286,9 @@ public class ViewSessions extends javax.swing.JFrame {
             }
             
             
-            ps9 = con.prepareStatement("select stuid from students where grpid =? LIMIT 1");
+            ps9 = con.prepareStatement("select stuid from students where grpid =?");
             ps9.setString(1, student_grp);
+           
             ResultSet rs7 = ps9.executeQuery();
             
             while (rs7.next()) {
@@ -304,10 +306,38 @@ public class ViewSessions extends javax.swing.JFrame {
         }
         return student_id;     
     }
+    private int findLecId(String name){
+        int lec_id=-89;
+        try {
+            
+            con = dbdetail.getCon();
+            
+            ps5 = con.prepareStatement("select id from lec where name =?");
+            ps5.setString(1, name);
+            ResultSet rs2 = ps5.executeQuery();
+            
+            while (rs2.next()) {
+                
+                lec_id=rs2.getInt(1);
+                
+                
+               
+                
+            }
+            
+             con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewSessions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lec_id;     
+    }
     private void AddSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSessionActionPerformed
         //Calling the main method
         int y=calledByAddSessions();
         if(y==-45){}
+        else if(y==-89){
+        JOptionPane.showMessageDialog(null, "All the lectuers ,that belong to this sessions tables have not created yet.Please create it and try again.");
+        }
         else if(y==-77){
         JOptionPane.showMessageDialog(null, "Students table has not created yet.Plese create it and try again.");
         }else if(y==-79){
@@ -315,11 +345,20 @@ public class ViewSessions extends javax.swing.JFrame {
         }
         else if(y==-34){
         JOptionPane.showMessageDialog(null, "location and students time slots are not matching");
+        }else if(y==-64){
+        JOptionPane.showMessageDialog(null, "lectuers and students time slots are not matching");
         }else if(y==-900){
             JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in students time table or Yoour Raw ID is not belong to the selected student grp");
         }else if(y==-800){
             JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in location time table");
+        }else if(y==-880){
+            JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in some lectuers time table time table");
         }
+        
+        ViewSessions ob4=new ViewSessions();
+        ob4.setVisible(true);
+        
+        this.setVisible(false);
         
     }//GEN-LAST:event_AddSessionActionPerformed
 
@@ -348,10 +387,28 @@ public class ViewSessions extends javax.swing.JFrame {
         String lec=ob.getLec();
         String[] arrLec = lec.split(",");
         
-        for(String jj:arrLec){
-        System.out.println("spliit array"+jj);
+        int lec_count = arrLec.length;
+        int[] lecArr=new int[lec_count];
         
+        int lec_cc=-1;
+        for(String jj:arrLec){
+       // System.out.println("spliit array"+jj);
+            int xxx = findLecId(jj);
+            //System.out.println("lec id******************"+xxx);
+            lec_cc++;
+            lecArr[lec_cc]=xxx;
+            
+        //lecArr.add();
         }
+        //getting the lecturer tables has created
+        for(int i=0;i<=lec_cc;i++){
+            int lec_yy=findLectuersHasCreatedTheTable(lecArr[i]);
+            if(lec_yy==-1){
+             return -89;
+            }
+            
+        }
+        
         
         //getting the student group by
         int sudentgroupID=getOneDetaillStudent(ob.getS_grp());
@@ -387,11 +444,51 @@ public class ViewSessions extends javax.swing.JFrame {
         //checking wheather room tt has the same time slot and timeslot type
         //JOptionPane.showMessageDialog(null, timeslott);
         float[] checks_location=getTimeSlotsLoc(timeslott,locationID);
-        
-        //returning if not available time slots
+        //checking lectuers also have the same time slot and timeslot type
+         //returning if not available time slots
         if(checks_location[0]==-100){
          return -34;
         }
+        
+        //all the lec checking process.
+        
+        for(int j=0;j<=lec_cc;j++){
+            float[] checks_lec = getTimeSlotsLectueres(timeslott,lecArr[j]);
+            if(checks_lec[0]==-500){
+            return -64;
+            }
+            
+            if(checks_lec[0]==-1){
+        
+            for(int y=0;y<duration;y++){
+            int no1=(int) (y+checks_lec[1]);    
+            String rrr = checkIfLec(no1,columnId,locationID,sessionDeatils,lecArr[j]);    
+            System.out.println("checkfree  "+y+rrr);
+            if(!rrr.equalsIgnoreCase("Yes")){
+               //int s=Integer.parseInt("ttt");
+                return -880;
+            }
+            
+            }
+            
+        
+        }else{
+            for(int y=0;y<duration*2;y++){
+             int no2=(int) (y+checks_lec[1]);    
+             String rrr1 = checkIfLec(no2,columnId,locationID,sessionDeatils,lecArr[j]);        
+             System.out.println("checkfree  "+y+"*******"+rrr1);
+             if(!rrr1.equalsIgnoreCase("Yes")){
+               //int s=Integer.parseInt("ttt");
+                 return -880;
+            }
+            }
+            
+        }
+            
+            
+        }
+        
+       JOptionPane.showMessageDialog(null, "Checking Whether all lectuers tables have, all the time slots available, is succedded.Other parts are proceeding");
         
         //checking whether the students,locations,lectuers slots are available else add
         
@@ -489,12 +586,35 @@ public class ViewSessions extends javax.swing.JFrame {
         
         
         }
-         JOptionPane.showMessageDialog(null, "Locations time table is Updated.");
+         JOptionPane.showMessageDialog(null, "Locations time table is Updated.Other things are proceeding");
+         //Adding Lectuers
+        for(int j=0;j<=lec_cc;j++){
+            float[] checks_lec = getTimeSlotsLectueres(timeslott,lecArr[j]);
+            if(checks_lec[0]==-1){
+            for(int y=0;y<duration;y++){
+            int no1=(int) (y+checks_lec[1]);
+            AddSeesionstottLect(no1,columnId,locationID,sessionDeatils,lecArr[j]);
+            }
         
+        }else{
+            
+            
+            for(int y=0;y<duration*2;y++){
+            int no2=(int) (y+checks_lec[1]);
+            AddSeesionstottLect(no2,columnId,locationID,sessionDeatils,lecArr[j]);
+            }
+            
+        
+        
+        }
+        
+        
+        }
+         JOptionPane.showMessageDialog(null, "All lectuers  time tables are Updated.");
         }catch(Exception e){
         
         }
-    
+        
     return 0;
     }
      private String gettinnglocationName(int id){
@@ -549,6 +669,46 @@ public class ViewSessions extends javax.swing.JFrame {
              return re;
              }
              ps3 = con.prepareStatement("select timeslot from stu_timetable where id=?");
+             ps3.setInt(1,k1+1);
+            ResultSet rs12 = ps3.executeQuery();
+             while (rs12.next()) {
+                 
+              k2=rs12.getFloat(1);
+               
+                
+            }
+            
+            re[0]=timeslott-k2;
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //System.out.println("checking time slottttt"+re);
+        return re;
+        
+    
+    } 
+    private float[] getTimeSlotsLectueres(float timeslott,int lecID){
+       // JOptionPane.showMessageDialog(null, "INSIDE getTimeSlotLoc");
+        int k1=-78;
+        float k2=0;
+        float re[]=new float[2];
+    try {
+           con = dbdetail.getCon();
+            ps2 = con.prepareStatement("select id from lec_timetable where lecid=? and timeslot=?");
+             ps2.setInt(1, lecID);
+             ps2.setFloat(2, timeslott);
+            ResultSet rs11 = ps2.executeQuery();
+             while (rs11.next()) {
+                 //JOptionPane.showMessageDialog(null, "INSIDE getTimeSlotLoc 1st while loop");
+              k1=rs11.getInt(1);
+              re[1]=k1;
+                
+            }
+             if(k1==-78){
+                 re[0]=-500;
+             return re;
+             }
+             ps3 = con.prepareStatement("select timeslot from lec_timetable where id=?");
              ps3.setInt(1,k1+1);
             ResultSet rs12 = ps3.executeQuery();
              while (rs12.next()) {
@@ -696,6 +856,37 @@ public class ViewSessions extends javax.swing.JFrame {
    
     
     }
+    private void AddSeesionstottLect(int rid,String cid,int loc,String session,int locId){
+
+       
+         try {
+                       String  sql = "UPDATE lec_timetable"
+                        + " SET `" + cid + "` = ?"
+                        + " WHERE id = ? AND lecid=?";
+                        con = dbdetail.getCon();
+                        
+                        //ps3 = con.prepareStatement("UPDATE stu_timetable SET mon=?,tue=? where id=? ");
+                        ps3 = con.prepareStatement(sql);
+                        ps3.setString(1,session);
+                        ps3.setInt(2,rid);
+                        ps3.setInt(3,locId);
+                        
+                        
+                        
+                       
+                        ps3.execute();
+                        //System.out.println("hello");
+                        UpdateSession();
+            con.setAutoCommit(false);
+            con.close();
+         } catch (Exception ex) {
+             
+             Logger.getLogger(WorkingDays_new.class.getName()).log(Level.SEVERE, null, ex);
+         
+         }
+   
+    
+    }
     private String checkIfFree(int rid,String cid,int loc,String session,int stuid){
             String ret="";
             int k=0;
@@ -762,6 +953,53 @@ public class ViewSessions extends javax.swing.JFrame {
          try {
                        con = dbdetail.getCon();
                         ps3 = con.prepareStatement("select mon,tue,wed,thur,fri,sat,sun from room_timetable where id = ? AND roomid=?");
+                        ps3.setInt(1,rid);
+                        ps3.setInt(2,stuid);
+                        
+                        if(cid.equals("mon")){
+                        k=1;
+                        }else if(cid.equals("tue")){
+                        k=2;
+                        }else if(cid.equals("wed")){
+                        k=3;
+                        }else if(cid.equals("thur")){
+                        k=4;
+                        }else if(cid.equals("fri")){
+                        k=5;
+                        }else if(cid.equals("sat")){
+                        k=6;
+                        }else if(cid.equals("sun")){
+                        k=7;
+                        }
+                        
+                        ResultSet rs11 = ps3.executeQuery();
+                        while (rs11.next()) {
+                 
+                        ret=rs11.getString(k);
+                        
+                
+                        }
+                        
+                        
+                        
+        
+            con.setAutoCommit(false);
+            con.close();
+         } catch (Exception ex) {
+             
+             Logger.getLogger(WorkingDays_new.class.getName()).log(Level.SEVERE, null, ex);
+         
+         }
+    return ret;
+    
+    }
+    private String checkIfLec(int rid,String cid,int loc,String session,int stuid){
+            String ret="";
+            int k=0;
+      
+         try {
+                       con = dbdetail.getCon();
+                        ps3 = con.prepareStatement("select mon,tue,wed,thur,fri,sat,sun from lec_timetable where id = ? AND lecid=?");
                         ps3.setInt(1,rid);
                         ps3.setInt(2,stuid);
                         
@@ -876,6 +1114,26 @@ public class ViewSessions extends javax.swing.JFrame {
         try {
            con = dbdetail.getCon();
             ps2 = con.prepareStatement("select * from room_timetable where roomid=?");
+             ps2.setInt(1, id);
+            ResultSet rs11 = ps2.executeQuery();
+             while (rs11.next()) {
+                 
+              
+               return 890;
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    } 
+    private int findLectuersHasCreatedTheTable(int id){
+        
+        try {
+           con = dbdetail.getCon();
+            ps2 = con.prepareStatement("select * from lec_timetable where lecid=?");
              ps2.setInt(1, id);
             ResultSet rs11 = ps2.executeQuery();
              while (rs11.next()) {

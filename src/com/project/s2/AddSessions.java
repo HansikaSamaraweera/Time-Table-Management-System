@@ -385,7 +385,12 @@ public class AddSessions extends javax.swing.JFrame {
             ps6.setString(6, subject_c_g);
             ps6.setInt(7, no_students_g);
             ps6.setInt(8, duration_g);
-            ps6.setString(9,"normal");
+            if(sub_grp_g.equals("null")){
+            ps6.setString(9,"Normal");
+            }
+            else{
+            ps6.setString(9,"Normal_Sub_Grp");
+            }
             ps6.execute();
            // System.out.println("hello");
             
@@ -518,7 +523,7 @@ public class AddSessions extends javax.swing.JFrame {
              con = dbdetail.getCon();
              
              
-             ps12 = con.prepareStatement("select subgid from students");
+             ps12 = con.prepareStatement("select subgrp from subgrp");
              
              ResultSet rs11 = ps12.executeQuery();
              

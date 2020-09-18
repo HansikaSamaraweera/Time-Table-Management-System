@@ -23,18 +23,17 @@ import javax.swing.JOptionPane;
  *
  * @author OSHANI
  */
-public class check extends javax.swing.JFrame {
+public class check_backup extends javax.swing.JFrame {
     Connection con = null;
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
     PreparedStatement ps11;
-    PreparedStatement ps10;
     /**
      * Creates new form AddStudents
      */
-    public check() {
+    public check_backup() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
@@ -61,7 +60,11 @@ public class check extends javax.swing.JFrame {
           g1.addItem(x);
           }
         
-        
+        //Sub Group
+        ArrayList arr5 = getsubgrp();
+        for(Object x:arr5){
+          sg1.addItem(x);
+          }
     }
     
     //AcademicYear and Semester
@@ -142,7 +145,31 @@ public class check extends javax.swing.JFrame {
     
     }
     
+    //Sub Group 
+    private ArrayList getsubgrp(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps11 = con.prepareStatement("select subno from subNo");
+             
+             ResultSet rs11 = ps11.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
     
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -161,16 +188,21 @@ public class check extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         p1 = new javax.swing.JComboBox<String>();
         gid = new javax.swing.JTextField();
+        gsubid = new javax.swing.JTextField();
         groupID = new javax.swing.JButton();
+        subgroupID = new javax.swing.JButton();
         lbn1 = new javax.swing.JLabel();
         lbn2 = new javax.swing.JLabel();
         lbn3 = new javax.swing.JLabel();
         Save = new javax.swing.JButton();
         view = new javax.swing.JButton();
         g1 = new javax.swing.JComboBox();
+        sg1 = new javax.swing.JComboBox();
         y1 = new javax.swing.JComboBox();
         lbn33 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
@@ -223,6 +255,13 @@ public class check extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(51, 0, 51));
         jLabel8.setText("Group ID");
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setText("Sub-Group No");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel10.setText("Sub-Group ID");
+
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel19.setText("Academic Year and Semester ");
 
@@ -238,12 +277,27 @@ public class check extends javax.swing.JFrame {
             }
         });
 
+        gsubid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gsubidMouseClicked(evt);
+            }
+        });
+
         groupID.setBackground(new java.awt.Color(0, 153, 102));
         groupID.setForeground(new java.awt.Color(255, 255, 255));
         groupID.setText("Generate Group ID");
         groupID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 groupIDActionPerformed(evt);
+            }
+        });
+
+        subgroupID.setBackground(new java.awt.Color(0, 153, 102));
+        subgroupID.setForeground(new java.awt.Color(255, 255, 255));
+        subgroupID.setText("Generate Sub-Group ID");
+        subgroupID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subgroupIDActionPerformed(evt);
             }
         });
 
@@ -292,31 +346,42 @@ public class check extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel6)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel7)))
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(p1, javax.swing.GroupLayout.Alignment.LEADING, 0, 199, Short.MAX_VALUE)
-                            .addComponent(gid, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(g1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(y1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbn33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel9)
+                        .addGap(142, 142, 142)
+                        .addComponent(sg1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel19)
+                                .addComponent(jLabel6)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7)))
+                            .addGap(49, 49, 49)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(p1, javax.swing.GroupLayout.Alignment.LEADING, 0, 199, Short.MAX_VALUE)
+                                .addComponent(gid, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(g1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(y1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbn33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                            .addComponent(view, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gsubid, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(groupID, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
+                    .addComponent(subgroupID, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(groupID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -326,7 +391,7 @@ public class check extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(y1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -345,7 +410,16 @@ public class check extends javax.swing.JFrame {
                     .addComponent(groupID))
                 .addGap(2, 2, 2)
                 .addComponent(lbn33, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(sg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gsubid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(subgroupID))
+                .addGap(5, 5, 5)
                 .addComponent(lbn1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -472,6 +546,15 @@ public class check extends javax.swing.JFrame {
         gid.setText(groupID);
     }//GEN-LAST:event_groupIDActionPerformed
 
+    private void subgroupIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subgroupIDActionPerformed
+        String year=(String) y1.getSelectedItem();
+        String pro=(String) p1.getSelectedItem();
+        String g=(String) g1.getSelectedItem();
+        String h=(String) sg1.getSelectedItem();
+        String groupID= year+"."+pro+"."+g+"."+h;
+        gsubid.setText(groupID);
+    }//GEN-LAST:event_subgroupIDActionPerformed
+
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         
         String year=(String) y1.getSelectedItem();
@@ -481,30 +564,22 @@ public class check extends javax.swing.JFrame {
         int groupNo=Integer.parseInt(A);
         String groupid=gid.getText();
         
+        String B=(String) sg1.getSelectedItem();
+        int subNo=Integer.parseInt(B);
+        String subgrpNo=gsubid.getText();
         
-        
-        if(gid.getText().trim().isEmpty()){
+        if(gid.getText().trim().isEmpty()&&gsubid.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null,"Error!!!...Please Fill the Fields...");   
         }
         else if(gid.getText().trim().isEmpty()){
             lbn33.setText("This Field is Required");
         }
-       
+        else if(gsubid.getText().trim().isEmpty()){
+            lbn1.setText("This Field is Required");
+        }
         else{
         int x=0;
         try{
-            ps10 = con.prepareStatement("select stuid from students where grpid=?");
-            ps10.setString(1, groupid);
-            ResultSet rs10 = ps10.executeQuery();
-
-            while (rs10.next()) {
-
-               int y= Integer.parseInt("damn!");
-
-            }
-            
-            /***********/
-            
             ps1 = con.prepareStatement("select stuid from students where stuid >= all (select stuid from students)");
 
             ResultSet rs1 = ps1.executeQuery();
@@ -516,7 +591,7 @@ public class check extends javax.swing.JFrame {
 
             }
 
-            String q = "INSERT INTO students (stuid,year,semester,programme,grpno,grpid) values (?,?,?,?,?,?)";
+            String q = "INSERT INTO students (stuid,year,semester,programme,grpno,grpid,subgno,subgid) values (?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(q);
             ps.setInt(1, x);
             ps.setString(2,year);
@@ -524,22 +599,22 @@ public class check extends javax.swing.JFrame {
             ps.setString(4,programme);
             ps.setInt(5,groupNo);
             ps.setString(6,groupid);
-           
+            ps.setInt(7,subNo);
+            ps.setString(8,subgrpNo);
 
             ps.execute();
 
             JOptionPane.showMessageDialog(null, "Data Save Successfully");
-            check ob4=new  check();
+            check_backup ob4=new  check_backup();
             ob4.setVisible(true);
             this.setVisible(false);
 
-        }  catch (Exception  ex) {
-            Logger.getLogger(check.class.getName()).log(Level.SEVERE, null, ex);
-             JOptionPane.showMessageDialog(null, "Error!");
+        }  catch (SQLException ex) {
+            Logger.getLogger(check_backup.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
     }//GEN-LAST:event_SaveActionPerformed
-    
+
     private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
         ViewStudents view=new ViewStudents();
         view.setVisible(true);
@@ -578,6 +653,10 @@ public class check extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_subActionPerformed
 
+    private void gsubidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gsubidMouseClicked
+        lbn1.setText("");
+    }//GEN-LAST:event_gsubidMouseClicked
+
     private void lbn33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbn33MouseClicked
         lbn33.setText("");
     }//GEN-LAST:event_lbn33MouseClicked
@@ -603,21 +682,23 @@ public class check extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(check.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(check_backup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(check.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(check_backup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(check.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(check_backup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(check.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(check_backup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new check().setVisible(true);
+                new check_backup().setVisible(true);
             }
         });
     }
@@ -628,13 +709,16 @@ public class check extends javax.swing.JFrame {
     private javax.swing.JComboBox g1;
     private javax.swing.JTextField gid;
     private javax.swing.JButton groupID;
+    private javax.swing.JTextField gsubid;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
@@ -646,7 +730,9 @@ public class check extends javax.swing.JFrame {
     private javax.swing.JLabel lbn33;
     private javax.swing.JComboBox<String> p1;
     private javax.swing.JButton prog;
+    private javax.swing.JComboBox sg1;
     private javax.swing.JButton sub;
+    private javax.swing.JButton subgroupID;
     private javax.swing.JButton view;
     private javax.swing.JComboBox y1;
     private javax.swing.JButton yand;
