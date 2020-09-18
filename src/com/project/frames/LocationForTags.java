@@ -5,6 +5,8 @@
  */
 package com.project.frames;
 
+import com.project.model.Location;
+import com.project.model.Tag;
 import com.project.util.dbdetail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,6 +44,8 @@ public class LocationForTags extends javax.swing.JFrame {
         for(Object x:a){
           room.addItem((String) x);
           }
+        
+        displayRoomTag();
     }
 
     /**
@@ -155,6 +160,50 @@ public class LocationForTags extends javax.swing.JFrame {
         return 0;
         
     }
+   
+    private void displayRoomTag(){
+    DefaultTableModel model1 =(DefaultTableModel)loc.getModel();
+        Object[] row=new Object[10];
+        
+        ArrayList<Location> ar= getroomtag();
+        
+        for(Object x:ar){
+            Tag object=new Tag();
+            object = (Tag) x;
+         row[0]=object.getId();    
+        row[1]=object.getTname();
+        row[2] = object.getLocation();
+         
+       
+        model1.addRow(row);
+        }
+}
+       private ArrayList<Location> getroomtag(){
+         ArrayList arr=new ArrayList();
+        try {
+            con = dbdetail.getCon();
+            b2 = con.prepareStatement("select * from tagLocation");
+            ResultSet set = b2.executeQuery();
+            
+            while (set.next()) {
+                
+                Tag lo=new Tag();
+                lo.setId(set.getInt(1));
+                lo.setTname(set.getString(2));
+                lo.setLocation(set.getString(3));
+                
+                arr.add(lo);
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationForTags.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arr;
+    }
+   
+   
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -168,7 +217,7 @@ public class LocationForTags extends javax.swing.JFrame {
         room = new javax.swing.JComboBox<>();
         save = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        loc = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         tag = new javax.swing.JComboBox<>();
 
@@ -230,15 +279,15 @@ public class LocationForTags extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        loc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Tag", "Location"
+                "ID", "Tag", "Location"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(loc);
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("Location for Tags");
@@ -264,8 +313,8 @@ public class LocationForTags extends javax.swing.JFrame {
                                     .addComponent(tag, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -353,7 +402,7 @@ public class LocationForTags extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable loc;
     private javax.swing.JComboBox<String> room;
     private javax.swing.JButton save;
     private javax.swing.JComboBox<String> tag;

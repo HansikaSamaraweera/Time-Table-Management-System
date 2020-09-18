@@ -521,7 +521,7 @@ private static Connection con;
              
              return 0; 
          } catch (SQLException ex) {
-             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(RoomBuilding.class.getName()).log(Level.SEVERE, null, ex);
          }
         
         return 0;
@@ -554,7 +554,7 @@ private static Connection con;
              
              return 0; 
          } catch (SQLException ex) {
-             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(RoomBuilding.class.getName()).log(Level.SEVERE, null, ex);
          }
         
         return 0;

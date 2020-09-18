@@ -694,7 +694,7 @@ private static Connection con;
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Preview.class.getName()).log(Level.SEVERE, null, ex);
         }
         return arr;
     }
