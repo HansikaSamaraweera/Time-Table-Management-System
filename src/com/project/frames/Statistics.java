@@ -6,11 +6,10 @@
 package com.project.frames;
 
 import com.project.model.Lecturer;
-import com.project.model.Location;
 import com.project.model.Student;
 import com.project.model.SubjectsModel;
 import com.project.util.dbdetail;
-import com.students.services.students;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +18,12 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -58,14 +63,17 @@ public class Statistics extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lec = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         subject = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         student = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,18 +138,32 @@ public class Statistics extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(lec);
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton1.setText("Bar Chart");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap(18, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,6 +172,8 @@ public class Statistics extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -168,17 +192,32 @@ public class Statistics extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(subject);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton2.setText("Bar Chart");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addContainerGap(23, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel9))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(97, 97, 97)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -188,6 +227,8 @@ public class Statistics extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(49, 49, 49)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -206,6 +247,14 @@ public class Statistics extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(student);
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton3.setText("Bar Chart");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -217,7 +266,10 @@ public class Statistics extends javax.swing.JFrame {
                         .addComponent(jLabel10))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -227,7 +279,9 @@ public class Statistics extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jButton3)
+                .addContainerGap(331, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
@@ -282,6 +336,77 @@ public class Statistics extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        Integer a =  (Integer) lec.getModel().getValueAt(0,1);
+        String fac1 = (String) lec.getModel().getValueAt(0, 0);
+        Integer b =  (Integer) lec.getModel().getValueAt(1,1);
+         String fac2 = (String) lec.getModel().getValueAt(1, 0);
+          
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.setValue(a,"Count", fac1);
+        dataset.setValue(b,"Count", fac2);
+        
+        JFreeChart chart = ChartFactory.createBarChart("Lecture Count", "Faculty Name","Count", dataset, PlotOrientation.VERTICAL,  false, true, false);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.black);
+        ChartFrame frame = new ChartFrame("bar chart for Lecturers", chart);
+        frame.setVisible(true);
+        frame.setSize(450,350);  
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Integer a =  (Integer) subject.getModel().getValueAt(0,1);
+        String fac1 = (String) subject.getModel().getValueAt(0, 0);
+        Integer b =  (Integer) subject.getModel().getValueAt(1,1);
+         String fac2 = (String) subject.getModel().getValueAt(1, 0);
+         Integer c =  (Integer) subject.getModel().getValueAt(2,1);
+         String fac3 = (String) subject.getModel().getValueAt(2, 0);
+         Integer d =  (Integer) subject.getModel().getValueAt(3,1);
+         String fac4 = (String) subject.getModel().getValueAt(3, 0);
+          
+        DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
+        dataset1.setValue(a,"Count", fac1);
+        dataset1.setValue(b,"Count", fac2);
+        dataset1.setValue(c,"Count", fac3);
+        dataset1.setValue(d,"Count", fac4);
+        
+        JFreeChart chart = ChartFactory.createBarChart("Subject Count", "Faculty Name","Count", dataset1, PlotOrientation.VERTICAL,  false, true, false);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.black);
+        ChartFrame frame = new ChartFrame("bar chart for Subjects", chart);
+        frame.setVisible(true);
+        frame.setSize(450,350); 
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+         Integer a =  (Integer) student.getModel().getValueAt(0,1);
+        String fac1 = (String) student.getModel().getValueAt(0, 0);
+        Integer b =  (Integer) student.getModel().getValueAt(1,1);
+         String fac2 = (String) student.getModel().getValueAt(1, 0);
+         Integer c =  (Integer) student.getModel().getValueAt(2,1);
+         String fac3 = (String) student.getModel().getValueAt(2, 0);
+          
+        DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
+        dataset1.setValue(a,"Count", fac1);
+        dataset1.setValue(b,"Count", fac2);
+        dataset1.setValue(c,"Count", fac3);
+         
+        
+        JFreeChart chart = ChartFactory.createBarChart("Student Count", "Faculty Name","Count", dataset1, PlotOrientation.VERTICAL,  false, true, false);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.black);
+        ChartFrame frame = new ChartFrame("bar chart for Student", chart);
+        frame.setVisible(true);
+        frame.setSize(450,350);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,6 +566,9 @@ public class Statistics extends javax.swing.JFrame {
         
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

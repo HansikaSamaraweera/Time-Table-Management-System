@@ -53,7 +53,6 @@ private static Connection con;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -76,34 +75,15 @@ private static Connection con;
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 51));
 
-        jButton5.setBackground(new java.awt.Color(204, 204, 255));
-        jButton5.setText("Main Menu");
-        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 186, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 622, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(292, 292, 292)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(293, Short.MAX_VALUE)))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(95, 62, 25));
@@ -232,13 +212,19 @@ private static Connection con;
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton4))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel7)
-                                        .addComponent(jLabel8)))
-                                .addGap(23, 23, 23)
+                                        .addGap(43, 43, 43))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(24, 24, 24)
+                                                .addComponent(jLabel8))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addComponent(jLabel3)))
+                                        .addGap(23, 23, 23)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(rName)
@@ -252,24 +238,31 @@ private static Connection con;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bName1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addGap(133, 133, 133))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bName1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(81, 81, 81))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(81, 81, 81)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
                 .addGap(25, 25, 25)
                 .addComponent(jLabel5)
-                .addGap(44, 44, 44)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(rName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(rLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -278,7 +271,7 @@ private static Connection con;
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addGap(37, 37, 37)
-                .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addGap(26, 26, 26))
         );
 
@@ -341,7 +334,6 @@ private static Connection con;
         // TODO add your handling code here:
         Preview p = new Preview();
         p.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_previewActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -349,10 +341,17 @@ private static Connection con;
 //        int id=Integer.parseInt(bId.getText());
         int id = buildId();
 //       int id = Integer.parseInt(bid.getText());
-        String bname = bName1.getText(); 
+
+            if(bName1.getText().isEmpty()){
+//                JOptionPane.showMessageDialog(null,"please enter a value!");
+                    System.out.println(id+bName1.getText()+"null");
+            }
+            else{
+                String bname = bName1.getText();
+                System.out.println(id+bname);
+                addBuilding(id,bname);
+            }
         
-        System.out.println(id+bname);
-        addBuilding(id,bname);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bName1ActionPerformed
@@ -361,16 +360,23 @@ private static Connection con;
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
+        if(rName.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null,"please enter a value!");
+            System.out.print("Empty");
+        }
+        else{  
+        
        String name = rName.getText();
        int id = roomId();
        String location=(String) rLocation.getSelectedItem();
-//        String location = "new building";
-        System.out.println(name+id+location);
-//                
+ 
+       System.out.println(name+id+location);
+                 
        int loc = getbuilNo(location);
         
-        addRoom(id,name,loc);
-      
+       addRoom(id,name,loc);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -382,14 +388,6 @@ private static Connection con;
     private void rLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rLocationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rLocationActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        mainframe ob=new mainframe();
-        ob.setVisible(true);
-        this.setVisible(false);
-
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -521,11 +519,9 @@ private static Connection con;
              
              con.close();
              
-             
-             
              return 0; 
          } catch (SQLException ex) {
-             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(RoomBuilding.class.getName()).log(Level.SEVERE, null, ex);
          }
         
         return 0;
@@ -558,7 +554,7 @@ private static Connection con;
              
              return 0; 
          } catch (SQLException ex) {
-             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(RoomBuilding.class.getName()).log(Level.SEVERE, null, ex);
          }
         
         return 0;
@@ -571,7 +567,6 @@ private static Connection con;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
