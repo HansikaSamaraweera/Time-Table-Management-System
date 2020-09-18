@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -358,7 +359,7 @@ private static Connection con;
                                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel6)
                                             .addComponent(jLabel7))
-                                        .addGap(614, 614, 614)
+                                        .addGap(617, 617, 617)
                                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +378,7 @@ private static Connection con;
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 514, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,13 +401,13 @@ private static Connection con;
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(183, 183, 183)
+                                .addGap(186, 186, 186)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(20, 20, 20)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -456,12 +457,16 @@ private static Connection con;
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         
+        if(rid.getText().isEmpty()|| build.getText().isEmpty()){
+//          JOptionPane.showMessageDialog(null,"Please enter Id!");
+            System.out.println("Empty!!!");
+        }else{
         int id = Integer.parseInt(rid.getText().trim());
         String name = rName.getText();
         int bid = Integer.parseInt(build.getText().trim());
         
         editRoom(id,name,bid);
-                
+        }       
          
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -477,12 +482,14 @@ private static Connection con;
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        if(buildid.getText().isEmpty()|| buildName.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null,"Please enter Id!");
+            System.out.println("Empty!!!");
+        }else{
         int id = Integer.parseInt(buildid.getText().trim());
         String name = buildName.getText();
-         
-        
         editBuilding(id,name);
-        
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -497,16 +504,25 @@ private static Connection con;
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        if(det.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null,"Please enter Id!");
+            System.out.println("Empty!!!");
+        }else{
         int id = Integer.parseInt(det.getText().trim());
          deleteBuilding(id);
-        
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(rid.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null,"Please enter Id!");
+            System.out.println("Empty!!!");
+        }else{
+        
         int id = Integer.parseInt(rid.getText().trim());
          displayLoc(id);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void buildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildActionPerformed
@@ -515,14 +531,24 @@ private static Connection con;
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(deleteR.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null,"Please enter Id!");
+            System.out.println("Empty!!!");
+        }else{
         int id = Integer.parseInt(deleteR.getText().trim());
         deleteRoom(id);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+          if(buildid.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null,"Please enter Id!");
+            System.out.println("Empty!!!");
+        }else{
         int id = Integer.parseInt(buildid.getText().trim());
         displayBuild(id);
+          }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -798,6 +824,8 @@ private static Connection con;
             ob.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
+               werning w = new werning();
+               w.setVisible(true);
             Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
