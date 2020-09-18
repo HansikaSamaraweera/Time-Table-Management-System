@@ -397,12 +397,12 @@ public class SubGroupNo extends javax.swing.JFrame {
            sub.setVisible(true); 
         }
         
-        String idd=model.getValueAt(selectedForEdit,0).toString();
+        String id6=model.getValueAt(selectedForEdit,0).toString();
         int sn=(int) model.getValueAt(selectedForEdit,1);
 
 
 
-        sub.id.setText(idd);
+        sub.id.setText(id6);
         sub.subno.setValue(sn);
     }//GEN-LAST:event_editActionPerformed
 

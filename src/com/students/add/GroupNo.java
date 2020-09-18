@@ -403,12 +403,12 @@ public void executeSQLQuery(String query,String message){
            grp.setVisible(true); 
         }
         
-        String idd=model.getValueAt(selectedForEdit,0).toString();
+        String id2=model.getValueAt(selectedForEdit,0).toString();
         int gn=(int) model.getValueAt(selectedForEdit,1);
 
 
 
-        grp.id.setText(idd);
+        grp.id.setText(id2);
         grp.gno.setValue(gn);
         
     }//GEN-LAST:event_editActionPerformed

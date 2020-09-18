@@ -428,11 +428,11 @@ public class Programme extends javax.swing.JFrame {
            proed.setVisible(true); 
         }
         
-        String idd=model.getValueAt(selectedForEdit,0).toString();
+        String ide=model.getValueAt(selectedForEdit,0).toString();
         String y=model.getValueAt(selectedForEdit,1).toString();
 
 
-        proed.id.setText(idd);
+        proed.id.setText(ide);
         proed.pro.setText(y);
 
     }//GEN-LAST:event_editActionPerformed
