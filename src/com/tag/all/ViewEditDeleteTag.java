@@ -277,14 +277,13 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addGap(148, 148, 148))
+                .addGap(210, 210, 210))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(jLabel6)
-                .addContainerGap())
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         tagEdit.setBackground(new java.awt.Color(102, 0, 255));
@@ -532,20 +531,24 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
     }//GEN-LAST:event_tagEditActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this tag?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
         int id= Integer.parseInt(tid.getText());
         System.out.print(id);
+        if(p==0){
         try {
             con = (Connection) dbdetail.getCon();
             ps2=con.prepareStatement("delete from tag where tid=?");
             ps2.setInt(1,id);
             ps2.execute();
-            JOptionPane.showMessageDialog(null, " 1 Tag Delete Successfully");
+
             ViewEditDeleteTag ad=new ViewEditDeleteTag();
             ad.setVisible(true);
             this.setVisible(false);
 
         } catch (SQLException ex) {
             Logger.getLogger(ViewEditDeleteTag.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_deleteActionPerformed
 
