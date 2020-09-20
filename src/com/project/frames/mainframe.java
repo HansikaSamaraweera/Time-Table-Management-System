@@ -7,6 +7,7 @@ package com.project.frames;
 
 
 import com.project.s2.AddSessions;
+import com.project.s2.GenarateTimeTableStructure;
 import com.students.add.check;
 import com.tag.all.ViewEditDeleteTag;
 
@@ -309,7 +310,9 @@ public class mainframe extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        
+        GenarateTimeTableStructure ob=new GenarateTimeTableStructure();
+        ob.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
