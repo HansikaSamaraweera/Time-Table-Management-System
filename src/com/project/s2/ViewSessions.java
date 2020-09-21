@@ -8,10 +8,12 @@ package com.project.s2;
 import com.project.frames.Lecturer_view;
 import com.project.frames.ViewWorkingDays_new;
 import com.project.frames.WorkingDays_new;
+import com.project.frames.mainframe;
 import com.project.model.DayDetails;
 import com.project.model.Lecturer;
 import com.project.model.Session;
 import com.project.util.dbdetail;
+import java.awt.List;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -72,12 +74,15 @@ public class ViewSessions extends javax.swing.JFrame {
         R_ID = new javax.swing.JSpinner();
         jLabel7 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(102, 0, 102));
 
         session_view_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,7 +102,6 @@ public class ViewSessions extends javax.swing.JFrame {
         if (session_view_table.getColumnModel().getColumnCount() > 0) {
             session_view_table.getColumnModel().getColumn(0).setMaxWidth(50);
             session_view_table.getColumnModel().getColumn(1).setResizable(false);
-            session_view_table.getColumnModel().getColumn(2).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -106,14 +110,14 @@ public class ViewSessions extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
@@ -139,12 +143,19 @@ public class ViewSessions extends javax.swing.JFrame {
 
         jLabel4.setText("ADD DATE COLUMN ID");
 
-        jLabel5.setText("Time Table creation for Students");
+        jLabel5.setText("Time Table creation");
 
         jLabel6.setText("ADD RAW ID");
 
         C_ID.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "mon", "tue", "wed", "thur", "fri", "sat", "sun" }));
+        C_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C_IDActionPerformed(evt);
+            }
+        });
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 0, 51));
         jLabel7.setText("Make Sure Raw ID is belong to session, students");
 
         jButton2.setText("View Creted Students Tables ");
@@ -154,40 +165,62 @@ public class ViewSessions extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setBackground(new java.awt.Color(204, 204, 255));
+        jButton8.setText("Main Menu");
+        jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Filter Session");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(loc_id))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C_ID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(loc_id)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
-                    .addComponent(AddSession, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(R_ID))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(R_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(10, 10, 10)
+                        .addComponent(C_ID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(0, 43, Short.MAX_VALUE))
+                            .addComponent(AddSession, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -196,35 +229,39 @@ public class ViewSessions extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jButton1)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addContainerGap()
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SID, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loc_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(C_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(R_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
                 .addComponent(AddSession)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(63, 63, 63)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,6 +289,7 @@ public class ViewSessions extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(null,"Yon cannot Add this session to the table.");
         }else{    
         int y=Integer.parseInt(id);
+        
             int k_id=studentId(y);
         JOptionPane.showMessageDialog(null, "You Have Selected Session:"+y+"  Student group ID:"+k_id);
         SID.setText(id);
@@ -282,8 +320,9 @@ public class ViewSessions extends javax.swing.JFrame {
             }
             
             
-            ps9 = con.prepareStatement("select stuid from students where grpid =? LIMIT 1");
+            ps9 = con.prepareStatement("select stuid from students where grpid =?");
             ps9.setString(1, student_grp);
+           
             ResultSet rs7 = ps9.executeQuery();
             
             while (rs7.next()) {
@@ -301,10 +340,38 @@ public class ViewSessions extends javax.swing.JFrame {
         }
         return student_id;     
     }
+    private int findLecId(String name){
+        int lec_id=-89;
+        try {
+            
+            con = dbdetail.getCon();
+            
+            ps5 = con.prepareStatement("select id from lec where name =?");
+            ps5.setString(1, name);
+            ResultSet rs2 = ps5.executeQuery();
+            
+            while (rs2.next()) {
+                
+                lec_id=rs2.getInt(1);
+                
+                
+               
+                
+            }
+            
+             con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewSessions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lec_id;     
+    }
     private void AddSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSessionActionPerformed
         //Calling the main method
         int y=calledByAddSessions();
         if(y==-45){}
+        else if(y==-89){
+        JOptionPane.showMessageDialog(null, "All the lectuers ,that belong to this sessions tables have not created yet.Please create it and try again.");
+        }
         else if(y==-77){
         JOptionPane.showMessageDialog(null, "Students table has not created yet.Plese create it and try again.");
         }else if(y==-79){
@@ -312,11 +379,20 @@ public class ViewSessions extends javax.swing.JFrame {
         }
         else if(y==-34){
         JOptionPane.showMessageDialog(null, "location and students time slots are not matching");
+        }else if(y==-64){
+        JOptionPane.showMessageDialog(null, "lectuers and students time slots are not matching");
         }else if(y==-900){
             JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in students time table or Yoour Raw ID is not belong to the selected student grp");
         }else if(y==-800){
             JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in location time table");
+        }else if(y==-880){
+            JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in some lectuers time table time table");
         }
+        
+        ViewSessions ob4=new ViewSessions();
+        ob4.setVisible(true);
+        
+        this.setVisible(false);
         
     }//GEN-LAST:event_AddSessionActionPerformed
 
@@ -325,6 +401,24 @@ public class ViewSessions extends javax.swing.JFrame {
         DisplayStudentsTimetable ob6=new DisplayStudentsTimetable();
         ob6.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         FilterSessions ob=new FilterSessions();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void C_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C_IDActionPerformed
     
     private int calledByAddSessions(){
     try{
@@ -345,10 +439,28 @@ public class ViewSessions extends javax.swing.JFrame {
         String lec=ob.getLec();
         String[] arrLec = lec.split(",");
         
-        for(String jj:arrLec){
-        System.out.println("spliit array"+jj);
+        int lec_count = arrLec.length;
+        int[] lecArr=new int[lec_count];
         
+        int lec_cc=-1;
+        for(String jj:arrLec){
+       // System.out.println("spliit array"+jj);
+            int xxx = findLecId(jj);
+            //System.out.println("lec id******************"+xxx);
+            lec_cc++;
+            lecArr[lec_cc]=xxx;
+            
+        //lecArr.add();
         }
+        //getting the lecturer tables has created
+        for(int i=0;i<=lec_cc;i++){
+            int lec_yy=findLectuersHasCreatedTheTable(lecArr[i]);
+            if(lec_yy==-1){
+             return -89;
+            }
+            
+        }
+        
         
         //getting the student group by
         int sudentgroupID=getOneDetaillStudent(ob.getS_grp());
@@ -384,11 +496,51 @@ public class ViewSessions extends javax.swing.JFrame {
         //checking wheather room tt has the same time slot and timeslot type
         //JOptionPane.showMessageDialog(null, timeslott);
         float[] checks_location=getTimeSlotsLoc(timeslott,locationID);
-        
-        //returning if not available time slots
+        //checking lectuers also have the same time slot and timeslot type
+         //returning if not available time slots
         if(checks_location[0]==-100){
          return -34;
         }
+        
+        //all the lec checking process.
+        
+        for(int j=0;j<=lec_cc;j++){
+            float[] checks_lec = getTimeSlotsLectueres(timeslott,lecArr[j]);
+            if(checks_lec[0]==-500){
+            return -64;
+            }
+            
+            if(checks_lec[0]==-1){
+        
+            for(int y=0;y<duration;y++){
+            int no1=(int) (y+checks_lec[1]);    
+            String rrr = checkIfLec(no1,columnId,locationID,sessionDeatils,lecArr[j]);    
+            System.out.println("checkfree  "+y+rrr);
+            if(!rrr.equalsIgnoreCase("Yes")){
+               //int s=Integer.parseInt("ttt");
+                return -880;
+            }
+            
+            }
+            
+        
+        }else{
+            for(int y=0;y<duration*2;y++){
+             int no2=(int) (y+checks_lec[1]);    
+             String rrr1 = checkIfLec(no2,columnId,locationID,sessionDeatils,lecArr[j]);        
+             System.out.println("checkfree  "+y+"*******"+rrr1);
+             if(!rrr1.equalsIgnoreCase("Yes")){
+               //int s=Integer.parseInt("ttt");
+                 return -880;
+            }
+            }
+            
+        }
+            
+            
+        }
+        
+       JOptionPane.showMessageDialog(null, "Checking Whether all lectuers tables have, all the time slots available, is succedded.Other parts are proceeding");
         
         //checking whether the students,locations,lectuers slots are available else add
         
@@ -483,12 +635,35 @@ public class ViewSessions extends javax.swing.JFrame {
         
         
         }
-         JOptionPane.showMessageDialog(null, "Locations time table is Updated.");
+         JOptionPane.showMessageDialog(null, "Locations time table is Updated.Other things are proceeding");
+         //Adding Lectuers
+        for(int j=0;j<=lec_cc;j++){
+            float[] checks_lec = getTimeSlotsLectueres(timeslott,lecArr[j]);
+            if(checks_lec[0]==-1){
+            for(int y=0;y<duration;y++){
+            int no1=(int) (y+checks_lec[1]);
+            AddSeesionstottLect(no1,columnId,locationID,sessionDeatils,lecArr[j]);
+            }
         
+        }else{
+            
+            
+            for(int y=0;y<duration*2;y++){
+            int no2=(int) (y+checks_lec[1]);
+            AddSeesionstottLect(no2,columnId,locationID,sessionDeatils,lecArr[j]);
+            }
+            
+        
+        
+        }
+        
+        
+        }
+         JOptionPane.showMessageDialog(null, "All lectuers  time tables are Updated.");
         }catch(Exception e){
         
         }
-    
+        
     return 0;
     }
      private String gettinnglocationName(int id){
@@ -543,6 +718,46 @@ public class ViewSessions extends javax.swing.JFrame {
              return re;
              }
              ps3 = con.prepareStatement("select timeslot from stu_timetable where id=?");
+             ps3.setInt(1,k1+1);
+            ResultSet rs12 = ps3.executeQuery();
+             while (rs12.next()) {
+                 
+              k2=rs12.getFloat(1);
+               
+                
+            }
+            
+            re[0]=timeslott-k2;
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //System.out.println("checking time slottttt"+re);
+        return re;
+        
+    
+    } 
+    private float[] getTimeSlotsLectueres(float timeslott,int lecID){
+       // JOptionPane.showMessageDialog(null, "INSIDE getTimeSlotLoc");
+        int k1=-78;
+        float k2=0;
+        float re[]=new float[2];
+    try {
+           con = dbdetail.getCon();
+            ps2 = con.prepareStatement("select id from lec_timetable where lecid=? and timeslot=?");
+             ps2.setInt(1, lecID);
+             ps2.setFloat(2, timeslott);
+            ResultSet rs11 = ps2.executeQuery();
+             while (rs11.next()) {
+                 //JOptionPane.showMessageDialog(null, "INSIDE getTimeSlotLoc 1st while loop");
+              k1=rs11.getInt(1);
+              re[1]=k1;
+                
+            }
+             if(k1==-78){
+                 re[0]=-500;
+             return re;
+             }
+             ps3 = con.prepareStatement("select timeslot from lec_timetable where id=?");
              ps3.setInt(1,k1+1);
             ResultSet rs12 = ps3.executeQuery();
              while (rs12.next()) {
@@ -690,6 +905,37 @@ public class ViewSessions extends javax.swing.JFrame {
    
     
     }
+    private void AddSeesionstottLect(int rid,String cid,int loc,String session,int locId){
+
+       
+         try {
+                       String  sql = "UPDATE lec_timetable"
+                        + " SET `" + cid + "` = ?"
+                        + " WHERE id = ? AND lecid=?";
+                        con = dbdetail.getCon();
+                        
+                        //ps3 = con.prepareStatement("UPDATE stu_timetable SET mon=?,tue=? where id=? ");
+                        ps3 = con.prepareStatement(sql);
+                        ps3.setString(1,session);
+                        ps3.setInt(2,rid);
+                        ps3.setInt(3,locId);
+                        
+                        
+                        
+                       
+                        ps3.execute();
+                        //System.out.println("hello");
+                        UpdateSession();
+            con.setAutoCommit(false);
+            con.close();
+         } catch (Exception ex) {
+             
+             Logger.getLogger(WorkingDays_new.class.getName()).log(Level.SEVERE, null, ex);
+         
+         }
+   
+    
+    }
     private String checkIfFree(int rid,String cid,int loc,String session,int stuid){
             String ret="";
             int k=0;
@@ -756,6 +1002,53 @@ public class ViewSessions extends javax.swing.JFrame {
          try {
                        con = dbdetail.getCon();
                         ps3 = con.prepareStatement("select mon,tue,wed,thur,fri,sat,sun from room_timetable where id = ? AND roomid=?");
+                        ps3.setInt(1,rid);
+                        ps3.setInt(2,stuid);
+                        
+                        if(cid.equals("mon")){
+                        k=1;
+                        }else if(cid.equals("tue")){
+                        k=2;
+                        }else if(cid.equals("wed")){
+                        k=3;
+                        }else if(cid.equals("thur")){
+                        k=4;
+                        }else if(cid.equals("fri")){
+                        k=5;
+                        }else if(cid.equals("sat")){
+                        k=6;
+                        }else if(cid.equals("sun")){
+                        k=7;
+                        }
+                        
+                        ResultSet rs11 = ps3.executeQuery();
+                        while (rs11.next()) {
+                 
+                        ret=rs11.getString(k);
+                        
+                
+                        }
+                        
+                        
+                        
+        
+            con.setAutoCommit(false);
+            con.close();
+         } catch (Exception ex) {
+             
+             Logger.getLogger(WorkingDays_new.class.getName()).log(Level.SEVERE, null, ex);
+         
+         }
+    return ret;
+    
+    }
+    private String checkIfLec(int rid,String cid,int loc,String session,int stuid){
+            String ret="";
+            int k=0;
+      
+         try {
+                       con = dbdetail.getCon();
+                        ps3 = con.prepareStatement("select mon,tue,wed,thur,fri,sat,sun from lec_timetable where id = ? AND lecid=?");
                         ps3.setInt(1,rid);
                         ps3.setInt(2,stuid);
                         
@@ -885,6 +1178,26 @@ public class ViewSessions extends javax.swing.JFrame {
         }
         return -1;
     } 
+    private int findLectuersHasCreatedTheTable(int id){
+        
+        try {
+           con = dbdetail.getCon();
+            ps2 = con.prepareStatement("select * from lec_timetable where lecid=?");
+             ps2.setInt(1, id);
+            ResultSet rs11 = ps2.executeQuery();
+             while (rs11.next()) {
+                 
+              
+               return 890;
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    } 
 
     /**
      * @param args the command line arguments
@@ -986,6 +1299,8 @@ private ArrayList getsessions(){
     private javax.swing.JLabel SID;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
