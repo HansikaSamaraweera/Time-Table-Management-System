@@ -23,9 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LocationForTags extends javax.swing.JFrame {
     private static Connection con;
-     
-    
-     private PreparedStatement b1;
+    private PreparedStatement b1;
      private PreparedStatement b2;
       private PreparedStatement b3;
        private PreparedStatement b4;
@@ -75,7 +73,7 @@ public class LocationForTags extends javax.swing.JFrame {
                  
              }
          } catch (SQLException ex) {
-             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(LocationForTags.class.getName()).log(Level.SEVERE, null, ex);
          }
           return a;  
     }
@@ -291,8 +289,6 @@ public class LocationForTags extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel5.setText("Location for Tags");
-
-        tag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

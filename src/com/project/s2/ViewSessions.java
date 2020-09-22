@@ -316,10 +316,7 @@ public class ViewSessions extends javax.swing.JFrame {
             while (rs2.next()) {
                 
                 student_grp=rs2.getString(1);
-                
-                
-               
-                
+
             }
             
             
@@ -613,14 +610,11 @@ public class ViewSessions extends javax.swing.JFrame {
         
         }else{
             
-            
             for(int y=0;y<duration*2;y++){
             
             AddSeesionstott(y+rawid,columnId,locationID,sessionDeatils,sudentgroupID);
             }
-            
-        
-        
+  
         }
         JOptionPane.showMessageDialog(null, "Students time table is Updated.Other parts are proceeding");
         //Addning locations
