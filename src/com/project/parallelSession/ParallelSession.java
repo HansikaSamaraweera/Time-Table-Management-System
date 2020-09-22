@@ -3,24 +3,43 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.students.add;
+package com.project.parallelSession;
 
+import com.project.frames.Lecturer_view;
 import com.project.frames.LocationHome;
 import com.project.frames.Statistics;
 import com.project.frames.Subject;
 import com.project.frames.WorkingDays_new;
 import com.project.frames.lecturers;
 import com.project.frames.mainframe;
+import com.project.model.Session;
+import com.project.s2.ViewSessions;
+import com.project.util.dbdetail;
+import com.students.add.check;
 import com.tag.all.ViewEditDeleteTag;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ACER
  */
 public class ParallelSession extends javax.swing.JFrame {
-
+    Connection con = null;
+    
+    PreparedStatement ps = null;
+    PreparedStatement ps29;
+    PreparedStatement ps12;
+    PreparedStatement ps9;
+    PreparedStatement ps2;
     /**
      * Creates new form ParallelSession
      */
@@ -29,8 +48,126 @@ public class ParallelSession extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
+        displayId();
+        
+        //Database Connection
+        con = (Connection) dbdetail.getCon();
+        
+        ArrayList arr2 = getNormalSessionId();
+        for(Object x:arr2){
+          ns.addItem((String) x);
+          }
+        
+        ArrayList arr4 = getConSessionId();
+        for(Object y:arr4){
+          cs.addItem((String) y);
+          }
     }
 
+    private ArrayList getNormalSessionId(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps29 = con.prepareStatement("select id from sessions where  sub_grp!='null'");
+             
+             ResultSet rs11 = ps29.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(ParallelSession.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
+    
+    }
+     private Session getOneDetailSession(int id){
+        Session ar=new Session();
+        try {
+           con = dbdetail.getCon();
+            ps2 = con.prepareStatement("select id,lec,tag,s_grp,sub_grp,subject_c,no_students,duration,status from sessions where id=?");
+             ps2.setInt(1, id);
+            ResultSet rs11 = ps2.executeQuery();
+             while (rs11.next()) {
+                 
+                ar.setId(rs11.getInt(1));
+                ar.setLec(rs11.getString(2));
+                 ar.setTag(rs11.getString(3));
+                ar.setS_grp(rs11.getString(4));
+                ar.setSub_grp(rs11.getString(5));
+                ar.setSubject_c(rs11.getString(6));
+                ar.setN0_students(rs11.getInt(7));
+                ar.setDuration(rs11.getInt(8));
+                ar.setStatus(rs11.getString(9));
+                
+               
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ar;
+    }
+    
+    private ArrayList getConSessionId(){
+        
+        ArrayList arr=new ArrayList();
+         try {
+             
+             
+             con = dbdetail.getCon();
+             
+             
+             ps29 = con.prepareStatement("select id from sessions where sub_grp!='null'");
+             
+             ResultSet rs11 = ps29.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 arr.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(ParallelSession.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return arr;  
+    
+    }
+    
+    private int displayId(){
+         con = dbdetail.getCon();
+         try {
+             ps12= con.prepareStatement("select pid from parallel where pid >= all (select pid from parallel)");
+             ResultSet rs12 = ps12.executeQuery();
+             int x=0;
+            while (rs12.next()) {
+                
+                x=rs12.getInt(1);
+                x++;
+                
+                
+            }
+            String y=String.valueOf(x);
+            pid.setText(y);
+            
+            return x;
+         } catch (SQLException ex) {
+             Logger.getLogger(ParallelSession.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
+           
+           return -99; }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,11 +183,12 @@ public class ParallelSession extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
-        jComboBox2 = new javax.swing.JComboBox<String>();
-        jButton1 = new javax.swing.JButton();
+        ns = new javax.swing.JComboBox<String>();
+        cs = new javax.swing.JComboBox<String>();
+        add = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        pid = new javax.swing.JLabel();
+        view = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         notAV = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -79,19 +217,25 @@ public class ParallelSession extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102), 2));
 
-        jLabel1.setText("Add Session");
+        jLabel1.setText("Session ID 1");
 
-        jLabel2.setText("Add Consecutive Session");
+        jLabel2.setText("Session ID 2");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton1.setBackground(new java.awt.Color(102, 0, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/add.jpg"))); // NOI18N
-        jButton1.setText("Add");
+        add.setText("Add");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("ID");
+
+        view.setText("n");
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -100,22 +244,24 @@ public class ParallelSession extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pid, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)))
+                                .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cs, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ns, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(73, 73, 73))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -123,19 +269,21 @@ public class ParallelSession extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pid, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(62, 62, 62)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(view, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
@@ -169,7 +317,7 @@ public class ParallelSession extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,10 +547,135 @@ public class ParallelSession extends javax.swing.JFrame {
     }//GEN-LAST:event_TagActionPerformed
 
     private void notAVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_notAVMouseClicked
-        NOTOVERLAPSESSION n=new NOTOVERLAPSESSION();
+       /* NOTOVERLAPSESSION n=new NOTOVERLAPSESSION();
         n.setVisible(true);
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_notAVMouseClicked
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        int no=callAddConsecutiveSessions();
+        if(no==-56){
+        JOptionPane.showMessageDialog(null, "Please select different Sessions.");
+        }else if(no==-34){
+        JOptionPane.showMessageDialog(null, "2 sessions durations are not same.");
+        }else if(no==-99){
+        JOptionPane.showMessageDialog(null, "Selected sessions cannot add as parralel.Sudents group need to be same.");
+        }
+    }//GEN-LAST:event_addActionPerformed
+
+    private int callAddConsecutiveSessions(){
+         try{
+            
+        String n1=(String) ns.getSelectedItem();
+        int n2=Integer.parseInt(n1);
+        String c1=(String) cs.getSelectedItem();
+        int c2=Integer.parseInt(c1);
+        
+        Session ob33= getOneDetailSession(n2);
+        String s4=ob33.getS_grp();
+        int du1=ob33.getDuration();
+        
+         Session ob45= getOneDetailSession(c2);
+        String s5=ob45.getS_grp();
+         int du2=ob45.getDuration();
+         
+        if(n2==c2){
+           // JOptionPane.showMessageDialog(null, "Please select different Sessions.");
+           // int yyy=Integer.parseInt("sd");
+            return -56;
+        }else if(du1!=du2){
+        //JOptionPane.showMessageDialog(null, "2 sessions durations are not same.");
+            return -34;
+        }
+        else
+        if(!s4.equals(s5)){
+       
+       // JOptionPane.showMessageDialog(null, "Selected sessions cannot add as parralel.Sudents group need to be same.");
+        // int xxx=Integer.parseInt("sd");
+            return -99;
+        }
+        
+        int x=0;
+        
+            ps9 = con.prepareStatement("select pid from parallel where pid >= all (select pid from parallel)");
+
+            ResultSet rs1 = ps9.executeQuery();
+
+            while (rs1.next()) {
+
+                x=rs1.getInt(1);
+                x++;
+
+            }
+
+            String q = "INSERT INTO parallel (pid,norid1,norid2) values (?,?,?)";
+            ps = con.prepareStatement(q);
+            ps.setInt(1, x);
+            ps.setString(2,n1);
+            ps.setString(3,c1);
+
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Data Save Successfully");
+            ParallelSession ob4=new  ParallelSession();
+            ob4.setVisible(true);
+            this.setVisible(false);
+            
+            UpdateSessions();
+
+        }  catch (Exception ex) {
+            //Logger.getLogger(ParallelSession.class.getName()).log(Level.SEVERE, null, ex);
+             //JOptionPane.showMessageDialog(null, "Selected sessions cannot add as parralel.Sudents group need to be same.");
+        }
+         return 0;
+    
+    }
+    private void UpdateSessions(){
+        String n1=(String) ns.getSelectedItem();
+            int n2=Integer.parseInt(n1);
+            String c1=(String) cs.getSelectedItem();
+             int c2=Integer.parseInt(c1); 
+        try {
+            
+       
+            con = (Connection) dbdetail.getCon();
+            ps9 = con.prepareStatement("UPDATE sessions SET status=?  WHERE id=? ");
+            ps9.setString(1,"parallel,"+n2+","+c2);
+            ps9.setInt(2,n2);
+            //ps1.setString(2,idd);
+
+            ps9.execute();
+            //JOptionPane.showMessageDialog(null, "View Parallel Session");
+
+            /*ViewSessions add=new  ViewSessions();
+            this.setVisible(false);
+            add.setVisible(true);*/
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(ViewSessions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+             
+            con = (Connection) dbdetail.getCon();
+            ps9 = con.prepareStatement("UPDATE sessions SET status=?  WHERE id=? ");
+            ps9.setString(1,"parallel,"+n2+","+c2);
+            ps9.setInt(2,c2);
+            //ps1.setString(2,idd);
+
+            ps9.execute();
+            JOptionPane.showMessageDialog(null, "View Parallel Session");
+
+            addParallelSession add=new  addParallelSession();
+            this.setVisible(false);
+            add.setVisible(true);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(addParallelSession.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+            
+    }//GEN-LAST:event_viewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -442,7 +715,8 @@ public class ParallelSession extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Students;
     private javax.swing.JButton Tag;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton add;
+    private javax.swing.JComboBox<String> cs;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
@@ -452,18 +726,18 @@ public class ParallelSession extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel notAV;
+    private javax.swing.JComboBox<String> ns;
+    private javax.swing.JLabel pid;
+    private javax.swing.JButton view;
     // End of variables declaration//GEN-END:variables
 }

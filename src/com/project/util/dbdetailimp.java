@@ -20,3 +20,4 @@ public interface dbdetailimp {
 	
 	static final String connurl = "jdbc:mysql://db4free.net:3306/database_newdb";*/
 }
+

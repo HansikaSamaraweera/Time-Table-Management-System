@@ -289,7 +289,7 @@ public class Add_subgrps_to_grps extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Add_subgrps_to_grps.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return 0;
+        return x;
     }
     private void add(int x,int y,String z){
         try {

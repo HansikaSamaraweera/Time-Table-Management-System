@@ -555,8 +555,8 @@ public class Subject_View extends javax.swing.JFrame {
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
-        //mainframe ob=new mainframe();
-        //ob.setVisible(true);
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
 
     }//GEN-LAST:event_jButton13ActionPerformed
 

@@ -78,7 +78,7 @@ public class DisplayStudentsTimetable extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        roomstructure_tab.setRowHeight(100);
+        roomstructure_tab.setRowHeight(200);
         jScrollPane1.setViewportView(roomstructure_tab);
         if (roomstructure_tab.getColumnModel().getColumnCount() > 0) {
             roomstructure_tab.getColumnModel().getColumn(0).setMaxWidth(30);
