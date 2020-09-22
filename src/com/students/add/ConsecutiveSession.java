@@ -36,6 +36,7 @@ public class ConsecutiveSession extends javax.swing.JFrame {
     
     PreparedStatement ps = null;
     PreparedStatement ps11;
+    PreparedStatement ps12;
     PreparedStatement ps1;
     /**
      * Creates new form ConsecutiveSession
@@ -45,6 +46,8 @@ public class ConsecutiveSession extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
+        displayId();
         
         //Database Connection
         con = (Connection) dbdetail.getCon();
@@ -69,7 +72,7 @@ public class ConsecutiveSession extends javax.swing.JFrame {
              con = dbdetail.getCon();
              
              
-             ps11 = con.prepareStatement("select id from sessions where tag='Tute'");
+             ps11 = con.prepareStatement("select id from sessions where status='Normal' OR status='Normal_Sub_Grp'");
              
              ResultSet rs11 = ps11.executeQuery();
              
@@ -79,7 +82,7 @@ public class ConsecutiveSession extends javax.swing.JFrame {
                  
              }
          } catch (SQLException ex) {
-             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(ConsecutiveSession.class.getName()).log(Level.SEVERE, null, ex);
          }
           return arr;  
     
@@ -94,7 +97,7 @@ public class ConsecutiveSession extends javax.swing.JFrame {
              con = dbdetail.getCon();
              
              
-             ps11 = con.prepareStatement("select id from sessions where tag='Lecture'");
+             ps11 = con.prepareStatement("select id from sessions where status='Normal' OR status='Normal_Sub_Grp'");
              
              ResultSet rs11 = ps11.executeQuery();
              
@@ -104,11 +107,36 @@ public class ConsecutiveSession extends javax.swing.JFrame {
                  
              }
          } catch (SQLException ex) {
-             Logger.getLogger(lecturers.class.getName()).log(Level.SEVERE, null, ex);
+             Logger.getLogger(ConsecutiveSession.class.getName()).log(Level.SEVERE, null, ex);
          }
           return arr;  
     
     }
+    
+    private int displayId(){
+         con = dbdetail.getCon();
+         try {
+             ps12= con.prepareStatement("select cid from consecutive where cid >= all (select cid from consecutive)");
+             ResultSet rs12 = ps12.executeQuery();
+             int x=0;
+            while (rs12.next()) {
+                
+                x=rs12.getInt(1);
+                x++;
+                
+                
+            }
+            String y=String.valueOf(x);
+            cid.setText(y);
+            
+            return x;
+         } catch (SQLException ex) {
+             Logger.getLogger(ConsecutiveSession.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
+           
+           return -99; }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -490,8 +518,14 @@ public class ConsecutiveSession extends javax.swing.JFrame {
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         String t1=(String) ts.getSelectedItem();
+        int tt=Integer.parseInt(t1);
         String l1=(String) ls.getSelectedItem();
-        
+        int ll=Integer.parseInt(l1);
+
+        if(tt==ll){
+            JOptionPane.showMessageDialog(null, "2 sessions can not be same");
+        }
+        else{
         int x=0;
         try{
             ps1 = con.prepareStatement("select cid from consecutive where cid >= all (select cid from consecutive)");
@@ -504,8 +538,9 @@ public class ConsecutiveSession extends javax.swing.JFrame {
                 x++;
 
             }
-
-            String q = "INSERT INTO consecutive (cid,tuteid,lecid) values (?,?,?)";
+            
+            
+            String q = "INSERT INTO consecutive (cid,sid1,sid2) values (?,?,?)";
             ps = con.prepareStatement(q);
             ps.setInt(1, x);
             ps.setString(2,t1);
@@ -521,12 +556,13 @@ public class ConsecutiveSession extends javax.swing.JFrame {
         }  catch (SQLException ex) {
             Logger.getLogger(ConsecutiveSession.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
     }//GEN-LAST:event_AddActionPerformed
 
     private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
         try {
             con = (Connection) dbdetail.getCon();
-            ps1 = con.prepareStatement("UPDATE sessions SET status=?  WHERE id IN(select tuteid from consecutive) ");
+            ps1 = con.prepareStatement("UPDATE sessions SET status=?  WHERE id IN(select sid1 from consecutive) ");
             ps1.setString(1,"consecutive");
             //ps1.setString(2,idd);
 
@@ -542,12 +578,12 @@ public class ConsecutiveSession extends javax.swing.JFrame {
         }
          try {
             con = (Connection) dbdetail.getCon();
-            ps1 = con.prepareStatement("UPDATE sessions SET status=?  WHERE id IN(select lecid from consecutive) ");
+            ps1 = con.prepareStatement("UPDATE sessions SET status=?  WHERE id IN(select sid2 from consecutive) ");
             ps1.setString(1,"consecutive");
             //ps1.setString(2,idd);
 
             ps1.execute();
-            JOptionPane.showMessageDialog(null, "Data Update Successful");
+            JOptionPane.showMessageDialog(null, "View Consecutive Session");
 
             ViewSessions add=new  ViewSessions();
             this.setVisible(false);
