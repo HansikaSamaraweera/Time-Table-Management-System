@@ -48,7 +48,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder>
+                <LineBorder thickness="2">
                   <Color PropertyName="color" blue="99" green="0" red="99" type="rgb"/>
                 </LineBorder>
               </Border>
@@ -83,7 +83,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="edit" min="-2" pref="86" max="-2" attributes="0"/>
@@ -255,7 +255,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="18" style="3"/>
+              <Font name="Verdana" size="20" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sub Group"/>
           </Properties>

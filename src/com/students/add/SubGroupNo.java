@@ -49,6 +49,7 @@ public class SubGroupNo extends javax.swing.JFrame {
         
         idsb.setVisible(false);
         
+        //display details
         show_subgroups();
         
     }
@@ -149,7 +150,7 @@ public class SubGroupNo extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153)));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153), 2));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Sub-Group No");
@@ -222,7 +223,7 @@ public class SubGroupNo extends javax.swing.JFrame {
                         .addComponent(idsb, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(0, 26, Short.MAX_VALUE)
+                .addGap(0, 24, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,7 +259,7 @@ public class SubGroupNo extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel4.setText("Sub Group");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, 60));
 
@@ -353,6 +354,10 @@ public class SubGroupNo extends javax.swing.JFrame {
     private void subgroupnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subgroupnoActionPerformed
         String subNum=(String)subno.getValue().toString();
 
+        if(subNum.equalsIgnoreCase("0")){
+            JOptionPane.showMessageDialog(null, "Subgroup No can not be zero.Please Enter valid Subgroup Number");
+        }
+        else{
         int x=0;
         try{
             ps1 = con.prepareStatement("select sid from subNo where sid >= all (select sid from subNo)");
@@ -373,7 +378,7 @@ public class SubGroupNo extends javax.swing.JFrame {
 
             ps.execute();
 
-            JOptionPane.showMessageDialog(null, "Add");
+            JOptionPane.showMessageDialog(null, "Added");
             SubGroupNo sq=new  SubGroupNo();
             sq.setVisible(true);
             this.setVisible(false);
@@ -381,6 +386,7 @@ public class SubGroupNo extends javax.swing.JFrame {
         }  catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "");
             Logger.getLogger(SubGroupNo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_subgroupnoActionPerformed
 

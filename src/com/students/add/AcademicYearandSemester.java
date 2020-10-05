@@ -49,6 +49,7 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
         
         y1id.setVisible(false);
         
+        //display details
         show_details();
         
     }
@@ -77,6 +78,7 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
 
     }
 
+    //display details in table
     public void show_details(){
         ArrayList<acedemic> list=addDetails();
         DefaultTableModel model=(DefaultTableModel)acedemic.getModel();
@@ -157,7 +159,7 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153)));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153), 2));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Semester");
@@ -209,7 +211,7 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
                 .addComponent(y1id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addContainerGap(119, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
                     .addComponent(jLabel6)
@@ -254,7 +256,7 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
                     .addComponent(ays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(yearandsemester, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 640, 310));
@@ -262,9 +264,9 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel4.setText("Academic Year and Semester");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, -1, 60));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 0, 350, 60));
 
         acedemic.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -442,7 +444,7 @@ public class AcademicYearandSemester extends javax.swing.JFrame {
 
             ps.execute();
 
-            JOptionPane.showMessageDialog(null, "Add");
+            JOptionPane.showMessageDialog(null, "Added");
             AcademicYearandSemester ad=new  AcademicYearandSemester();
             ad.setVisible(true);
             this.setVisible(false);

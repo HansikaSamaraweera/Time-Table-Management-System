@@ -7,11 +7,14 @@ package com.project.parallelSession;
 
 import com.project.frames.Lecturer_view;
 import com.project.frames.WorkingDays_new;
+import com.project.frames.mainframe;
 import com.project.model.Session;
 import com.project.s2.DisplayStudentsTimetable;
 import com.project.s2.GenarateTimeTableStructure;
 import com.project.s2.ViewSessions;
 import com.project.util.dbdetail;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,10 +28,10 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author ACER
+ * @author OSHANI
  */
 public class addParallelSession extends javax.swing.JFrame {
-private static Connection con;
+    private static Connection con;
     private PreparedStatement ps1;
     private PreparedStatement ps2;
     private PreparedStatement ps3;
@@ -39,6 +42,11 @@ private static Connection con;
      */
     public addParallelSession() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
+        //display session details
         show_sessions();
     }
     
@@ -78,7 +86,6 @@ private static Connection con;
             ResultSet rs12 = ps1.executeQuery();
             
             while (rs12.next()) {
-                //name+emmid+faculty+department+center+building+level+rank123
                 Session ar=new Session();
                 ar.setId(rs12.getInt(1));
                 ar.setLec(rs12.getString(2));
@@ -114,13 +121,9 @@ private static Connection con;
             while (rs2.next()) {
                 
                 student_grp=rs2.getString(1);
-                
-                
-               
-                
+   
             }
-            
-            
+
             ps9 = con.prepareStatement("select stuid from students where grpid =?");
             ps9.setString(1, student_grp);
            
@@ -129,12 +132,8 @@ private static Connection con;
             while (rs7.next()) {
                 
                 student_id =rs7.getInt(1);
-                
-                
-               
-                
-            }
-            
+   
+            } 
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(ViewSessions.class.getName()).log(Level.SEVERE, null, ex);
@@ -162,16 +161,20 @@ private static Connection con;
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         R_ID = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         loc_id1 = new javax.swing.JTextField();
         AddSession = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        DisplayStudentsTimetable = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        GenarateTimeTableStructure = new javax.swing.JButton();
+        main = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         session_view_table = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         jLabel8.setText("YOU HAVE SELECTED SESSIONS");
 
@@ -179,9 +182,11 @@ private static Connection con;
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102), 2));
 
         SID1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Time Table creation for Students");
 
         jLabel2.setText("Add Location ID for Session 2");
@@ -190,16 +195,17 @@ private static Connection con;
 
         C_ID.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "mon", "tue", "wed", "thur", "fri", "sat", "sun" }));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Make Sure Raw ID is belong to session, students");
 
         jLabel6.setText("ADD RAW ID");
-
-        jLabel3.setText("Parallel Session");
 
         jLabel9.setText("YOU HAVE SELECTED SESSION 1");
 
         jLabel10.setText("Add Location ID for Session 1");
 
+        AddSession.setBackground(new java.awt.Color(102, 0, 255));
+        AddSession.setForeground(new java.awt.Color(255, 255, 255));
         AddSession.setText("Add Session");
         AddSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,14 +213,35 @@ private static Connection con;
             }
         });
 
-        jButton2.setText("View Creted Students Tables ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        DisplayStudentsTimetable.setBackground(new java.awt.Color(204, 204, 255));
+        DisplayStudentsTimetable.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        DisplayStudentsTimetable.setText("View Created Students Tables ");
+        DisplayStudentsTimetable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                DisplayStudentsTimetableActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Selecting one Session is enough.Automatically other one will update.");
+
+        GenarateTimeTableStructure.setBackground(new java.awt.Color(204, 204, 255));
+        GenarateTimeTableStructure.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        GenarateTimeTableStructure.setText("Genarate Time Table Structure ");
+        GenarateTimeTableStructure.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenarateTimeTableStructureActionPerformed(evt);
+            }
+        });
+
+        main.setBackground(new java.awt.Color(204, 204, 255));
+        main.setText("Main Menu");
+        main.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        main.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -228,9 +255,10 @@ private static Connection con;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
@@ -256,24 +284,25 @@ private static Connection con;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)))
+                        .addComponent(jLabel7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-                            .addComponent(AddSession, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel1))
+                            .addComponent(DisplayStudentsTimetable, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                            .addComponent(AddSession, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(GenarateTimeTableStructure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(8, 8, 8)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SID1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -300,16 +329,20 @@ private static Connection con;
                         .addGap(27, 27, 27)
                         .addComponent(jLabel6))
                     .addComponent(R_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                .addGap(34, 34, 34)
                 .addComponent(AddSession)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(DisplayStudentsTimetable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(GenarateTimeTableStructure, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 440, 590));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(153, 0, 153));
 
         session_view_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -333,24 +366,53 @@ private static Connection con;
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 470, 520));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 480, 590));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel3.setText("Parallel Sessions");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(349, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(273, 273, 273)
+                .addComponent(jLabel11))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addGap(0, 29, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void session_view_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_session_view_tableMouseClicked
-        // TODO add your handling code here:
         int i=session_view_table.getSelectedRow();
         TableModel model=session_view_table.getModel();
         
@@ -367,13 +429,9 @@ private static Connection con;
 
                 int k_id=studentId(y);
                 JOptionPane.showMessageDialog(null, "You Have Selected Session:"+y+"  Student group ID:"+k_id);
-                SID1.setText(id);
-               
+                SID1.setText(id);      
             }
         }catch(Exception e){}
-     
-       
-
     }//GEN-LAST:event_session_view_tableMouseClicked
 
     private void AddSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSessionActionPerformed
@@ -396,34 +454,43 @@ private static Connection con;
             JOptionPane.showMessageDialog(null, "All the lectuers ,that belong to this sessions tables have not created yet.Please create it and try again.");
         }
         else if(y==-77){
-            JOptionPane.showMessageDialog(null, "Students table has not created yet.Plese create it and try again.");
+            JOptionPane.showMessageDialog(null, "Students table has not created yet.Please create it and try again.");
         }else if(y==-79){
-            JOptionPane.showMessageDialog(null, "Location table has not created yet.Plese create it and try again.");
+            JOptionPane.showMessageDialog(null, "Location table has not created yet.Please create it and try again.");
         }
         else if(y==-34){
             JOptionPane.showMessageDialog(null, "location and students time slots are not matching");
         }else if(y==-64){
             JOptionPane.showMessageDialog(null, "lectuers and students time slots are not matching");
         }else if(y==-900){
-            JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in students time table or Yoour Raw ID is not belong to the selected student grp");
+            JOptionPane.showMessageDialog(null, "Not enough time slots for the duration in students time table or Your Raw ID is not belong to the selected student group");
         }else if(y==-800){
-            JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in location time table");
+            JOptionPane.showMessageDialog(null, "Not enough time slots for the duration in location time table");
         }else if(y==-880){
-            JOptionPane.showMessageDialog(null, "Not enough time slots for for the duration in some lectuers time table time table");
+            JOptionPane.showMessageDialog(null, "Not enough time slots for the duration in some lectuers time table");
         }
 
         addParallelSession ob4=new addParallelSession();
         ob4.setVisible(true);
-
         this.setVisible(false);
 
     }//GEN-LAST:event_AddSessionActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    private void DisplayStudentsTimetableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayStudentsTimetableActionPerformed
         DisplayStudentsTimetable ob6=new DisplayStudentsTimetable();
         ob6.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_DisplayStudentsTimetableActionPerformed
+
+    private void GenarateTimeTableStructureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenarateTimeTableStructureActionPerformed
+        GenarateTimeTableStructure ob9=new GenarateTimeTableStructure();
+        ob9.setVisible(true);
+    }//GEN-LAST:event_GenarateTimeTableStructureActionPerformed
+
+    private void mainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainActionPerformed
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mainActionPerformed
 
     private int findLecId(String name){
         int lec_id=-89;
@@ -438,10 +505,7 @@ private static Connection con;
             while (rs2.next()) {
                 
                 lec_id=rs2.getInt(1);
-                
-                
-               
-                
+    
             }
             
              con.close();
@@ -454,11 +518,9 @@ private static Connection con;
  
             
         String hh1=loc_id.getText();
-        /*###########*/
         String hh2=loc_id1.getText();
         //getting location id by input
         int locationID1=Integer.parseInt(hh1);
-        /*###########*/
         int locationID2=Integer.parseInt(hh2);
         
         if(locationID1==locationID2){
@@ -468,14 +530,12 @@ private static Connection con;
         
         //getting session id by input
         int sessionID1=Integer.parseInt(arrSession[1]);
-        /*###########*/
         int sessionID2=Integer.parseInt(arrSession[2]);
         
        
         Session ob1=new Session();
         ob1=getOneDetailSession(sessionID1);
         
-        /*###########*/
         Session ob2=new Session();
         ob2=getSecondDetailSession(sessionID2);
         
@@ -493,7 +553,7 @@ private static Connection con;
         
         int lec_cc1=-1;
         for(String jj:arrLec1){
-       // System.out.println("spliit array"+jj);
+        // System.out.println("spliit array"+jj);
             int xxx = findLecId(jj);
             System.out.println("lec id******************"+xxx);
             lec_cc1++;
@@ -511,7 +571,7 @@ private static Connection con;
         
         int lec_cc2=-1;
         for(String jj:arrLec2){
-       // System.out.println("spliit array"+jj);
+        // System.out.println("spliit array"+jj);
             int xxx = findLecId(jj);
             System.out.println("lec id******************"+xxx);
             lec_cc2++;
@@ -563,11 +623,11 @@ private static Connection con;
         String columnId=(String) C_ID.getSelectedItem();
         int rawid=(int) R_ID.getValue();
         
-         String val1=gettinnglocationName(locationID1);
-        String sessionDeatils1=ob1.getLec()+"<br>"+ob1.getS_grp()+"<br>"+ob1.getSub_grp()+"<br>"+ob1.getSubject_c()+"<br>"+ob1.getTag()+"<br>"+","+val1;
+        String val1=gettinnglocationName(locationID1);
+        String sessionDeatils1=ob1.getLec()+"<br>"+ob1.getS_grp()+"<br>"+ob1.getSub_grp()+"<br>"+ob1.getSubject_c()+"<br>"+ob1.getTag()+"<br>"+val1+"<br>"+"<br>";
         
-         String val2=gettinnglocationName(locationID1);
-        String sessionDeatils2=ob2.getLec()+"<br>"+ob2.getS_grp()+"<br>"+ob2.getSub_grp()+"<br>"+ob2.getSubject_c()+"<br>"+ob2.getTag()+"<br>"+","+val2;
+        String val2=gettinnglocationName(locationID2);
+        String sessionDeatils2=ob2.getLec()+"<br>"+ob2.getS_grp()+"<br>"+ob2.getSub_grp()+"<br>"+ob2.getSubject_c()+"<br>"+ob2.getTag()+"<br>"+val2;
        
         
         //student time table checking
@@ -579,13 +639,13 @@ private static Connection con;
         
         float[] checks_location1=getTimeSlotsLoc(timeslott,locationID1);
         //checking lectuers also have the same time slot and timeslot type
-         //returning if not available time slots
+        //returning if not available time slots
         if(checks_location1[0]==-100){
          return -34;
         }
         float[] checks_location2=getTimeSlotsLoc(timeslott,locationID2);
         //checking lectuers also have the same time slot and timeslot type
-         //returning if not available time slots
+        //returning if not available time slots
         if(checks_location2[0]==-100){
          return -34;
         }
@@ -779,7 +839,7 @@ private static Connection con;
             
             for(int y=0;y<duration2;y++){
             
-            AddSeesionstott(y+rawid,columnId,locationID1,sessionDeatils1,sessionDeatils2,sudentgroupID);
+            AddSeesionstott(y+rawid,columnId,locationID2,sessionDeatils1,sessionDeatils2,sudentgroupID);
             }
         
         }else{
@@ -1035,7 +1095,7 @@ private static Connection con;
         //System.out.println("checking time slottttt"+re);
         return re;
         
-    /*############################################################*/
+
     }
     private void UpdateSession(int sid){
          try {
@@ -1381,7 +1441,6 @@ private static Connection con;
         return ar;
     }
     
-    /*************************/
     private Session getSecondDetailSession(int id){
         Session ar=new Session();
         try {
@@ -1411,8 +1470,7 @@ private static Connection con;
         }
         return ar;
     }
-    
-    /*************/
+
     private int findStudentHasCreatedTheTable(int id){
         
         try {
@@ -1513,11 +1571,13 @@ private static Connection con;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddSession;
     private javax.swing.JComboBox C_ID;
+    private javax.swing.JButton DisplayStudentsTimetable;
+    private javax.swing.JButton GenarateTimeTableStructure;
     private javax.swing.JSpinner R_ID;
     private javax.swing.JLabel SID1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1528,9 +1588,11 @@ private static Connection con;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField loc_id;
     private javax.swing.JTextField loc_id1;
+    private javax.swing.JButton main;
     private javax.swing.JTable session_view_table;
     // End of variables declaration//GEN-END:variables
 }

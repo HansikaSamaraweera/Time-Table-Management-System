@@ -90,11 +90,11 @@ private static Connection con;
         jLabel17 = new javax.swing.JLabel();
         build = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(153, 153, 0));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
 
         jButton9.setBackground(new java.awt.Color(204, 204, 255));
         jButton9.setText("Main Menu");
@@ -126,7 +126,7 @@ private static Connection con;
                     .addContainerGap(293, Short.MAX_VALUE)))
         );
 
-        jPanel2.setBackground(new java.awt.Color(95, 62, 25));
+        jPanel2.setBackground(new java.awt.Color(153, 0, 153));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -398,7 +398,7 @@ private static Connection con;
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 514, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -607,6 +607,8 @@ private static Connection con;
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -734,7 +736,7 @@ private static Connection con;
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Preview.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lo;
     }

@@ -78,8 +78,9 @@ public class ViewSessions extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         loc_id = new javax.swing.JComboBox();
         ll_f = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
@@ -199,6 +200,8 @@ public class ViewSessions extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Add Special Location");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -222,7 +225,7 @@ public class ViewSessions extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addGap(0, 43, Short.MAX_VALUE))
+                                .addGap(0, 20, Short.MAX_VALUE))
                             .addComponent(AddSession, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +243,8 @@ public class ViewSessions extends javax.swing.JFrame {
                                 .addGap(31, 31, 31)
                                 .addComponent(loc_id, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(ll_f, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)))
@@ -265,7 +269,9 @@ public class ViewSessions extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loc_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ll_f, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ll_f, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -293,7 +299,9 @@ public class ViewSessions extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +329,7 @@ public class ViewSessions extends javax.swing.JFrame {
         Session ob=getOneDetailSession(y);
             ArrayList arrayRooms=LocationChecker(ob.getTag());
             SID.setText(id);
-            
+            loc_id.removeAllItems();
            for(Object x:arrayRooms){
           //System.out.println("locationnnnnnnn"+x);     
           loc_id.addItem(x);
@@ -501,13 +509,17 @@ public class ViewSessions extends javax.swing.JFrame {
     try{
         //Incase    
         String hh=(String) ll_f.getText();
+        
         //getting location id by input
       int locationID = -500;
-      int incase_l=-500;
+      
             try{
                 locationID=(int) loc_id.getSelectedItem();
-                 incase_l=Integer.parseInt(hh);
+                 
             }catch(Exception e){
+                System.out.println("lllllllllll"+locationID);
+                Logger.getLogger(GenarateTimeTableStructure.class.getName()).log(Level.SEVERE, null, e);
+                int incase_l=Integer.parseInt(hh);
                 if(locationID==-500){
                     locationID=incase_l;
                 }
@@ -570,6 +582,7 @@ public class ViewSessions extends javax.swing.JFrame {
         int rawid=(int) R_ID.getValue();
         
         //getting the details(session) that need to store in time table 
+        System.out.println("llllllllll"+locationID);
         String ll=gettinnglocationName(locationID);
         String sessionDeatils="<html>"+ob.getLec()+"<br>"+ob.getS_grp()+"<br>"+ob.getSub_grp()+"<br>"+ob.getSubject_c()+"<br>"+ob.getTag()+"<br>"+","+ll+"</html>";
         
@@ -1395,6 +1408,7 @@ private ArrayList getsessions(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

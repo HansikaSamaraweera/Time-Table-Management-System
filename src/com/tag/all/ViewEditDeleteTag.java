@@ -35,6 +35,9 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
     PreparedStatement ps1;
     PreparedStatement ps2;
 
+    private boolean Invalidinput=false;
+    
+    
     /**
      * Creates new form ViewEditDeleteTag
      */
@@ -131,11 +134,11 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
         panelEdit = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        tid = new javax.swing.JTextField();
         update = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         tname = new javax.swing.JTextField();
+        tid = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         tagEdit = new javax.swing.JButton();
@@ -201,7 +204,7 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Edit Tags");
 
@@ -218,8 +221,17 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jLabel4)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
+
+        tname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tnameKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tnameKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEditLayout = new javax.swing.GroupLayout(panelEdit);
         panelEdit.setLayout(panelEditLayout);
@@ -239,8 +251,8 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
                                     .addComponent(jLabel8))
                                 .addGap(22, 22, 22)
                                 .addGroup(panelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tid, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .addComponent(tname)))
+                                    .addComponent(tname, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                    .addComponent(tid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(panelEditLayout.createSequentialGroup()
                                 .addGap(149, 149, 149)
                                 .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -252,10 +264,10 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
             .addGroup(panelEditLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(panelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tid))
                 .addGap(18, 18, 18)
                 .addGroup(panelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -267,7 +279,7 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 3, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel6.setText("View Tags");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -332,7 +344,7 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tagEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -611,6 +623,28 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
 
     }//GEN-LAST:event_TagActionPerformed
 
+    private void tnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tnameKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tnameKeyPressed
+
+    private void tnameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tnameKeyTyped
+       String name2 = tname.getText();
+        Invalidinput = invalidCharacter(name2);
+    }//GEN-LAST:event_tnameKeyTyped
+
+    //check input
+    public static boolean invalidCharacter(String tag) {
+        for (int i = 0; i < tag.length(); i++) {
+            char ch = tag.charAt(i);
+
+            if (Character.isDigit(ch)) {
+                JOptionPane.showMessageDialog(null, "You can not enter numbers in this field");
+                return false;
+            }
+        }
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -674,7 +708,7 @@ public class ViewEditDeleteTag extends javax.swing.JFrame {
     private javax.swing.JPanel panelEdit;
     private javax.swing.JButton tagEdit;
     private javax.swing.JTable tagtable;
-    private javax.swing.JTextField tid;
+    private javax.swing.JLabel tid;
     private javax.swing.JTextField tname;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables

@@ -21,6 +21,15 @@ public class Lecturer {
     int level;
     String rank123;
     int count;
+    int lid;
+
+    public int getLid() {
+        return lid;
+    }
+
+    public void setLid(int lid) {
+        this.lid = lid;
+    }
 
     public int getCount() {
         return count;

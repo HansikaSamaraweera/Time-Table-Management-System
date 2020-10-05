@@ -65,7 +65,7 @@ public class Edit_Group extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153)));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153), 2));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Group No");
@@ -99,7 +99,7 @@ public class Edit_Group extends javax.swing.JFrame {
                     .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(242, Short.MAX_VALUE)
+                .addContainerGap(240, Short.MAX_VALUE)
                 .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(241, 241, 241))
         );
@@ -116,7 +116,7 @@ public class Edit_Group extends javax.swing.JFrame {
                     .addComponent(gno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 630, 300));
@@ -154,7 +154,7 @@ public class Edit_Group extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel4.setText("Main Group");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, 60));
 
@@ -191,9 +191,12 @@ public class Edit_Group extends javax.swing.JFrame {
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         try {
             int i=Integer.parseInt(id.getText());
-             String groupNo=(String) gno.getValue().toString();
+            String groupNo=(String) gno.getValue().toString();
 
-
+            if(groupNo.equalsIgnoreCase("0")){
+            JOptionPane.showMessageDialog(null, "Group No can not be zero.Please Enter valid Group Number");
+            }
+            else{
             con = (Connection) dbdetail.getCon();
             ps1 = con.prepareStatement("UPDATE groupNo SET grpno=?  WHERE gid=? ");
             ps1.setString(1, groupNo);
@@ -206,7 +209,7 @@ public class Edit_Group extends javax.swing.JFrame {
             GroupNo add=new  GroupNo();
             this.setVisible(false);
             add.setVisible(true);
-
+            }
         } catch (SQLException ex) {
             Logger.getLogger(GroupNo.class.getName()).log(Level.SEVERE, null, ex);
         }

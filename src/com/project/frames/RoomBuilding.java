@@ -53,6 +53,7 @@ private static Connection con;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -63,30 +64,45 @@ private static Connection con;
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         rName = new javax.swing.JTextField();
-        rLocation = new javax.swing.JComboBox<>();
+        rLocation = new javax.swing.JComboBox<String>();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         preview = new javax.swing.JButton();
         bName1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(153, 153, 0));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+
+        jButton10.setBackground(new java.awt.Color(204, 204, 255));
+        jButton10.setText("Main Menu");
+        jButton10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 186, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(95, 62, 25));
+        jPanel2.setBackground(new java.awt.Color(153, 0, 153));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -343,8 +359,10 @@ private static Connection con;
 //       int id = Integer.parseInt(bid.getText());
 
             if(bName1.getText().isEmpty()){
-//                JOptionPane.showMessageDialog(null,"please enter a value!");
+           
                     System.out.println(id+bName1.getText()+"null");
+                     RoomBuilding r = new RoomBuilding();
+                     r.setVisible(true);
             }
             else{
                 String bname = bName1.getText();
@@ -362,8 +380,9 @@ private static Connection con;
         // TODO add your handling code here:
         
         if(rName.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(null,"please enter a value!");
-            System.out.print("Empty");
+        
+        RoomBuilding r = new RoomBuilding();
+        r.setVisible(true);
         }
         else{  
         
@@ -388,6 +407,13 @@ private static Connection con;
     private void rLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rLocationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rLocationActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,6 +441,7 @@ private static Connection con;
             java.util.logging.Logger.getLogger(RoomBuilding.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -435,10 +462,11 @@ private static Connection con;
          b1.execute();
          con.setAutoCommit(false);
          con.close();
-            
+             
             RoomBuilding rb = new RoomBuilding();
             rb.setVisible(true);
             this.dispose();
+           
     } catch (SQLException ex) {
         Logger.getLogger(RoomBuilding.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -457,7 +485,7 @@ private static Connection con;
          b2.execute();
          con.setAutoCommit(false);
          con.close();
-         
+          
           RoomBuilding rb = new RoomBuilding();
             rb.setVisible(true);
             this.dispose();
@@ -564,6 +592,7 @@ private static Connection con;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bName1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

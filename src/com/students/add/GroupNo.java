@@ -29,7 +29,7 @@ import javax.swing.table.TableModel;
  * @author OSHANI
  */
 public class GroupNo extends javax.swing.JFrame {
-Connection con = null;
+    Connection con = null;
     
     PreparedStatement ps = null;
     PreparedStatement ps1;
@@ -49,6 +49,7 @@ Connection con = null;
         
         idd.setVisible(false);
         
+        //display details
         show_groups();
         
     }
@@ -151,7 +152,7 @@ public void executeSQLQuery(String query,String message){
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153)));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153), 2));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Group No");
@@ -222,7 +223,7 @@ public void executeSQLQuery(String query,String message){
                         .addComponent(groupno, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(256, 256, 256))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +253,7 @@ public void executeSQLQuery(String query,String message){
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Delete, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(Delete, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -262,7 +263,7 @@ public void executeSQLQuery(String query,String message){
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel4.setText("Main Group");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, 60));
         jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -358,6 +359,10 @@ public void executeSQLQuery(String query,String message){
     private void groupnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupnoActionPerformed
         String groupNo=(String) gno.getValue().toString();
         
+        if(groupNo.equalsIgnoreCase("0")){
+            JOptionPane.showMessageDialog(null, "Group No can not be zero.Please Enter valid Group Number");
+        }
+        else{
         int x=0;
         try{
             ps1 = con.prepareStatement("select gid from groupNo where gid >= all (select gid from groupNo)");
@@ -378,7 +383,7 @@ public void executeSQLQuery(String query,String message){
 
             ps.execute();
 
-            JOptionPane.showMessageDialog(null, "Add");
+            JOptionPane.showMessageDialog(null, "Added");
             GroupNo g1=new  GroupNo();
             g1.setVisible(true);
             this.setVisible(false);
@@ -387,7 +392,7 @@ public void executeSQLQuery(String query,String message){
             JOptionPane.showMessageDialog(null, "");
             Logger.getLogger(GroupNo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+    }
     }//GEN-LAST:event_groupnoActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed

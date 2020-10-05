@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,7 +80,7 @@ public class WorkingDays_new extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 102));
 
@@ -438,7 +439,15 @@ public class WorkingDays_new extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelActionPerformed
 
     private void addDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetailsActionPerformed
+                                           
 
+        String errormsg = "";
+        int nodays = 0;
+        int noCorrect = 0;
+        int noIncorrect = 3;
+        int count = 0;
+        String time1 ="";
+        
         String Monday1 = null;
         String Tuesday1 = null;
         String Wednesday1 = null;
@@ -446,40 +455,87 @@ public class WorkingDays_new extends javax.swing.JFrame {
         String Friday1 = null;
         String Saturday1 = null;
         String Sunday1 = null;
-        int nodays= Integer.parseInt(noOfDays.getText());
-        String time1 = time.getText();
+        
+        
+        if(noOfDays.getText().isEmpty()){
+            errormsg = errormsg.concat("Number of Days can not be Empty!!");
+           
+        }
+        else{
+            nodays= Integer.parseInt(noOfDays.getText());
+            noCorrect++;
+        }
+        
+                if(time.getText().isEmpty()){
+            errormsg = errormsg.concat("\nTime  can not be Empty!!");
+           
+        }
+        else{
+
+         time1 = time.getText();
+         noCorrect++;       
+                }
+
         String timeSlot1=(String) timeSlot.getSelectedItem();
         
-        if(Monday.isSelected()){
-             Monday1 = "Yes";     
-        }
+        if(Monday.isSelected() || Tuesday.isSelected() || Wednesday.isSelected()
+                || Thursday.isSelected() || Friday.isSelected() || 
+                Saturday.isSelected()|| Sunday.isSelected()){
         
-                if(Tuesday.isSelected()){
-             Tuesday1 = "Yes";     
-        }
-                
-                if(Wednesday.isSelected()){
-             Wednesday1 = "Yes";     
-        }
+            if(Monday.isSelected()){
+                 Monday1 = "Yes";    
+                 count++;
+            }
 
-                if(Thursday.isSelected()){
-             Thursday1 = "Yes";     
+                    if(Tuesday.isSelected()){
+                 Tuesday1 = "Yes";   
+                 count++;
+            }
+
+                    if(Wednesday.isSelected()){
+                 Wednesday1 = "Yes";     
+                 count++;
+            }
+
+                    if(Thursday.isSelected()){
+                 Thursday1 = "Yes";  
+                 count++;
+            }
+
+                    if(Friday.isSelected()){
+                 Friday1 = "Yes";  
+                 count++;
+            }
+
+                    if(Saturday.isSelected()){
+                 Saturday1 = "Yes"; 
+                 count++;
+            }
+
+                    if(Sunday.isSelected()){
+                 Sunday1 = "Yes";  
+                 count++;
+            }
+                    if( count > nodays || count < nodays){
+                        
+            errormsg = errormsg.concat("\n Number of days and selected days are not equal!!");
         }
+                    else
+                    noCorrect++;
+        }
+        else{
+            errormsg = errormsg.concat("\n Days can not be Empty!!");
+        }
+        System.out.println("Values"+nodays+Monday+time+timeSlot+count+"********");
         
-                if(Friday.isSelected()){
-             Friday1 = "Yes";     
-        }
-                
-                if(Saturday.isSelected()){
-             Saturday1 = "Yes";     
-        }
-                
-                if(Sunday.isSelected()){
-             Sunday1 = "Yes";     
-        }
-        System.out.println("Values"+nodays+Monday+time+timeSlot+"********");
 
-        addDetails(nodays,Monday1,Tuesday1,Wednesday1,Thursday1,Friday1,Saturday1,Sunday1,time1,timeSlot1);
+          if(noCorrect < noIncorrect){
+                JOptionPane.showMessageDialog(null,errormsg ,"Incomplete Form", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            addDetails(nodays,Monday1,Tuesday1,Wednesday1,Thursday1,Friday1,Saturday1,Sunday1,time1,timeSlot1);
+        
+    
     }//GEN-LAST:event_addDetailsActionPerformed
 
     private void timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeActionPerformed
@@ -608,7 +664,7 @@ public class WorkingDays_new extends javax.swing.JFrame {
          try {
                         System.out.println("hello1");    
                         con = dbdetail.getCon();
-                        ps3 = con.prepareStatement("insert into details(Did,nodays, monday,tuesday,wednesday,thursday,friday,saturday,sunday, time, timeslot) values(?,?,?,?,?,?,?,?,?,?,?) ");
+                        ps3 = con.prepareStatement("insert into Details(Did,nodays, monday,tuesday,wednesday,thursday,friday,saturday,sunday, time, timeslot) values(?,?,?,?,?,?,?,?,?,?,?) ");
                        ps3.setInt(1, no);
                         ps3.setInt(2,nodays);
                         ps3.setString(3,Monday1);

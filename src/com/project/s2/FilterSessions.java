@@ -101,7 +101,7 @@ public class FilterSessions extends javax.swing.JFrame {
         display_ser = new javax.swing.JLabel();
         filter_s = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 

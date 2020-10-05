@@ -34,6 +34,9 @@ public class Programme extends javax.swing.JFrame {
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps2;
+    
+    //check valid input
+    private boolean Invalidname=false;
 
     /**
      * Creates new form Programme
@@ -49,6 +52,7 @@ public class Programme extends javax.swing.JFrame {
         
         idd1.setVisible(false);
         
+        //display details
         show_programmes();
         
     }
@@ -151,7 +155,7 @@ public class Programme extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153)));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153), 2));
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel19.setText("Programme");
@@ -159,6 +163,11 @@ public class Programme extends javax.swing.JFrame {
         pro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 proMouseClicked(evt);
+            }
+        });
+        pro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                proKeyTyped(evt);
             }
         });
 
@@ -216,7 +225,7 @@ public class Programme extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(programme, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,7 +267,7 @@ public class Programme extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 640, 500));
@@ -266,7 +275,7 @@ public class Programme extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel4.setText("Programme");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, 60));
         jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
@@ -401,7 +410,7 @@ public class Programme extends javax.swing.JFrame {
 
             ps.execute();
 
-            JOptionPane.showMessageDialog(null, "Add");
+            JOptionPane.showMessageDialog(null, "Added");
             Programme p1=new  Programme();
             p1.setVisible(true);
             this.setVisible(false);
@@ -498,6 +507,24 @@ public class Programme extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_subActionPerformed
 
+    private void proKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proKeyTyped
+        String name2 = pro.getText();
+        Invalidname = invalidCharacter(name2);
+    }//GEN-LAST:event_proKeyTyped
+
+    //check input
+    public static boolean invalidCharacter(String name) {
+        for (int i = 0; i < name.length(); i++) {
+            char ch = name.charAt(i);
+
+            if (Character.isDigit(ch)) {
+                JOptionPane.showMessageDialog(null, "You can not enter numbers in this field");
+                return false;
+            }
+        }
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */

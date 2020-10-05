@@ -5,17 +5,73 @@
  */
 package com.project.frames;
 
+import com.project.model.Lecturer;
+import com.project.model.Location;
+import com.project.model.Session;
+import com.project.model.Student;
+import com.project.s2.ViewSessions;
+import com.project.util.dbdetail;
+import com.students.add.GroupNo;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Hansi
  */
 public class PreferedRoom extends javax.swing.JFrame {
 
+    
+     private static Connection con;
+     private PreparedStatement b1;
+     private PreparedStatement b2;
+     private PreparedStatement b3;
+     private PreparedStatement b4;
+      private PreparedStatement b5;
+     private PreparedStatement b6;
+     private PreparedStatement b7;
     /**
      * Creates new form LocationHome
      */
     public PreferedRoom() {
         initComponents();
+        displaylecLocation();
+        displaySessionLocation();
+        displayGrpLocation();
+        
+          ArrayList arr4 = getlecid();
+        for(Object x:arr4){
+          lec.addItem((String) x);
+          }
+          ArrayList a7 = getgrpId();
+        for(Object x:a7){
+          grp.addItem((String) x);
+          }
+        
+          ArrayList a1 = getLocationid();
+        for(Object x:a1){
+          lecroom.addItem((String) x);
+          }
+         ArrayList a2 = getLocationid();
+        for(Object x:a2){
+          grproom.addItem((String) x);
+          }
+         ArrayList a3 = getLocationid();
+        for(Object x:a3){
+          sessionroom.addItem((String) x);
+          }
+        
+         ArrayList a4 = getSessionId();
+        for(Object x:a4){
+          session.addItem((String) x);
+          }
     }
 
     /**
@@ -30,57 +86,76 @@ public class PreferedRoom extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        lecroom = new javax.swing.JComboBox<String>();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        lecView = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        sessionroom = new javax.swing.JComboBox<String>();
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        grpView = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        grp = new javax.swing.JComboBox<String>();
         jButton5 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        SessionView = new javax.swing.JTable();
         View = new javax.swing.JButton();
         View1 = new javax.swing.JButton();
         View2 = new javax.swing.JButton();
+        lec = new javax.swing.JComboBox<String>();
+        grproom = new javax.swing.JComboBox<String>();
+        session = new javax.swing.JComboBox<String>();
+        View3 = new javax.swing.JButton();
+        View4 = new javax.swing.JButton();
+        View5 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
         jButton2.setText("jButton2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 204));
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+
+        jButton10.setBackground(new java.awt.Color(204, 204, 255));
+        jButton10.setText("Main Menu");
+        jButton10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel2.setBackground(new java.awt.Color(153, 0, 153));
         jPanel2.setAlignmentY(0.0F);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -109,12 +184,8 @@ public class PreferedRoom extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Location");
 
-        jTextField1.setText(" ");
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Lecturer");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton3.setText("Save");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +194,7 @@ public class PreferedRoom extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        lecView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -131,7 +202,7 @@ public class PreferedRoom extends javax.swing.JFrame {
                 "Lecture", "Location"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(lecView);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Session Id");
@@ -139,12 +210,9 @@ public class PreferedRoom extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Location");
 
-        jTextField2.setText(" ");
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        sessionroom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                sessionroomActionPerformed(evt);
             }
         });
 
@@ -158,7 +226,7 @@ public class PreferedRoom extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setText("Preffered Location for Lecturer");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        grpView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -166,20 +234,16 @@ public class PreferedRoom extends javax.swing.JFrame {
                 "Group", "Location"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(grpView);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel9.setText("Preffered Location for Group");
+        jLabel9.setText("Preffered Location for Session");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("Group");
 
-        jTextField3.setText(" ");
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Location");
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton5.setText("Save");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +252,7 @@ public class PreferedRoom extends javax.swing.JFrame {
             }
         });
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        SessionView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -196,7 +260,7 @@ public class PreferedRoom extends javax.swing.JFrame {
                 "Session", "Location"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(SessionView);
 
         View.setText("View ID");
         View.addActionListener(new java.awt.event.ActionListener() {
@@ -216,6 +280,27 @@ public class PreferedRoom extends javax.swing.JFrame {
         View2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 View2ActionPerformed(evt);
+            }
+        });
+
+        View3.setText("View ID");
+        View3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                View3ActionPerformed(evt);
+            }
+        });
+
+        View4.setText("View ID");
+        View4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                View4ActionPerformed(evt);
+            }
+        });
+
+        View5.setText("View ID");
+        View5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                View5ActionPerformed(evt);
             }
         });
 
@@ -240,21 +325,30 @@ public class PreferedRoom extends javax.swing.JFrame {
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField1)
-                                            .addComponent(jComboBox2, 0, 206, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(grproom, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(grp, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(10, 10, 10))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton3))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(36, 36, 36)
+                                                    .addComponent(lecroom, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(lec, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(18, 18, 18)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(View1)
-                                    .addComponent(View2))
+                                    .addComponent(View2)
+                                    .addComponent(View3)
+                                    .addComponent(View4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,9 +360,8 @@ public class PreferedRoom extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jButton3)
+                                            .addGap(36, 36, 36)
+                                            .addComponent(sessionroom, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jButton4)
                                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,9 +369,11 @@ public class PreferedRoom extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(session, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(18, 18, 18)
-                                .addComponent(View)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(View)
+                                    .addComponent(View5))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -289,34 +384,36 @@ public class PreferedRoom extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(View2))
-                        .addGap(16, 16, 16)
+                            .addComponent(View2)
+                            .addComponent(lec, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lecroom, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(View3)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addComponent(jButton3)
-                .addGap(19, 19, 19)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
+                        .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(View1))
-                        .addGap(23, 23, 23)
+                            .addComponent(View1)
+                            .addComponent(grp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(grproom, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(View4)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
@@ -327,16 +424,17 @@ public class PreferedRoom extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(View))
-                        .addGap(24, 24, 24)
+                            .addComponent(View)
+                            .addComponent(session, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(sessionroom, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(View5)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -344,31 +442,71 @@ public class PreferedRoom extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        String lectu = (String) lec.getSelectedItem();
+        String loc = (String) lecroom.getSelectedItem();
+        lectureRoom(loc, lectu);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         String group = (String) grp.getSelectedItem();
+        String loc = (String) grproom.getSelectedItem();
+        GroupRoom(loc, group);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void sessionroomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sessionroomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_sessionroomActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        String sessionid = (String) session.getSelectedItem();
+        String loc2 = (String) sessionroom.getSelectedItem();
+        sessionRoom(loc2,sessionid);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         // TODO add your handling code here:
+        ViewSessions v = new ViewSessions();
+        v.setVisible(true);
     }//GEN-LAST:event_ViewActionPerformed
 
     private void View1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View1ActionPerformed
         // TODO add your handling code here:
+        GroupNo g = new GroupNo();
+        g.setVisible(true);
     }//GEN-LAST:event_View1ActionPerformed
 
     private void View2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View2ActionPerformed
         // TODO add your handling code here:
+        Lecturer_view l = new Lecturer_view();
+        l.setVisible(true);
     }//GEN-LAST:event_View2ActionPerformed
+
+    private void View3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View3ActionPerformed
+        // TODO add your handling code here:
+        Preview p = new Preview();
+        p.setVisible(true);
+    }//GEN-LAST:event_View3ActionPerformed
+
+    private void View4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View4ActionPerformed
+        // TODO add your handling code here:
+        Preview p = new Preview();
+        p.setVisible(true);
+    }//GEN-LAST:event_View4ActionPerformed
+
+    private void View5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View5ActionPerformed
+        // TODO add your handling code here:
+        Preview p = new Preview();
+        p.setVisible(true);
+    }//GEN-LAST:event_View5ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,6 +535,8 @@ public class PreferedRoom extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -406,18 +546,296 @@ public class PreferedRoom extends javax.swing.JFrame {
         });
     }
 
+     public ArrayList getlecid(){
+        
+        ArrayList a=new ArrayList();
+         try {
+             con = dbdetail.getCon();
+             
+             b1 = con.prepareStatement("select id from lec");
+             
+             ResultSet rs11 = b1.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 a.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return a;  
+    }
+        public ArrayList getgrpId(){
+        
+        ArrayList a=new ArrayList();
+         try {
+             con = dbdetail.getCon();
+             
+             b2 = con.prepareStatement("select grpid from students");
+             
+             ResultSet rs11 = b2.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 a.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return a;  
+    }
+         public ArrayList getSessionId(){
+        
+        ArrayList a=new ArrayList();
+         try {
+             con = dbdetail.getCon();
+             
+             b3 = con.prepareStatement("select id from sessions");
+             
+             ResultSet rs11 = b3.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 a.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return a;  
+    }
+    
+    
+     public ArrayList getLocationid(){
+        
+        ArrayList a=new ArrayList();
+         try {
+             con = dbdetail.getCon();
+             
+             b4 = con.prepareStatement("select id from room");
+             
+             ResultSet rs11 = b4.executeQuery();
+             
+             while (rs11.next()) {
+                 
+                 a.add(rs11.getString(1));
+                 
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          return a;  
+    }
+    
+       private void lectureRoom(String id,String name){
+                
+         try {
+                        System.out.println("hello1");    
+                        con = dbdetail.getCon();
+                 
+                        b5 = con.prepareStatement("UPDATE lec SET lid=? where id=?");
+                        b5.setString(2,name);
+                        b5.setString(1, id);
+                        b5.execute();
+                        System.out.println("hello");
+        
+            con.setAutoCommit(false);
+            con.close();
+             JOptionPane.showMessageDialog(null, "Successfully Added! ");
+             
+              PreferedRoom p = new PreferedRoom();
+             p.setVisible(true);
+             this.setVisible(false);
+         } catch (SQLException ex) {
+             Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+         }  
+}
+         private void GroupRoom(String id,String gname){
+                
+         try {
+                        System.out.println("hello1");    
+                        con = dbdetail.getCon();
+                 
+                        b7 = con.prepareStatement("UPDATE students SET lid=? where grpid=?");
+                        b7.setString(2,gname);
+                        b7.setString(1, id);
+                        b7.execute();
+                        System.out.println("hello");
+        
+            con.setAutoCommit(false);
+            con.close();
+             JOptionPane.showMessageDialog(null, "Successfully Added! ");
+               PreferedRoom p = new PreferedRoom();
+             p.setVisible(true);
+             this.setVisible(false);
+         } catch (SQLException ex) {
+             Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+         }  
+}
+           private void sessionRoom(String id,String name){
+                
+         try {
+                        System.out.println("hello1");    
+                        con = dbdetail.getCon();
+                 
+                        b6 = con.prepareStatement("UPDATE sessions SET lid=? where id=?");
+                        b6.setString(2,name);
+                        b6.setString(1, id);
+//                        b6.setString(2,"Normal");
+                        b6.execute();
+                        System.out.println("hello");
+        
+            con.setAutoCommit(false);
+            con.close();
+             JOptionPane.showMessageDialog(null, "Successfully Added! ");
+             PreferedRoom p = new PreferedRoom();
+             p.setVisible(true);
+             this.setVisible(false);
+         } catch (SQLException ex) {
+             Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+         }  
+} 
+         private ArrayList<Lecturer> getLecLocation(){
+             ArrayList arr=new ArrayList();
+         
+        try {
+           con = dbdetail.getCon();
+           b3 = con.prepareStatement("select id,lid from lec where lid is not null");
+            
+              
+            ResultSet set = b3.executeQuery();
+            while (set.next()) {
+                //name+emmid+faculty+department+center+building+level+rank123
+                Lecturer lo = new Lecturer();
+                lo.setId(set.getInt(1));
+                lo.setLid(set.getInt(2));
+                arr.add(lo);
+                
+               
+           } 
+        } catch (SQLException ex) {
+            Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arr;
+    }
+     
+     private void displaylecLocation(){
+    DefaultTableModel model1 =(DefaultTableModel)lecView.getModel();
+        Object[] row=new Object[10];
+        
+        ArrayList<Lecturer> ar= getLecLocation();
+        
+        for(Object x:ar){
+            Lecturer object=new Lecturer();
+            object = (Lecturer) x;
+         row[0]=object.getId();    
+        row[1]=object.getLid();
+         
+       
+        model1.addRow(row);
+        }
+        
+}
+     
+        private ArrayList<Session> getSessionLocation(){
+             ArrayList arr=new ArrayList();
+         
+        try {
+           con = dbdetail.getCon();
+           b3 = con.prepareStatement("select id,lid from sessions where lid is not null");
+            
+              
+            ResultSet set = b3.executeQuery();
+            while (set.next()) {
+                //name+emmid+faculty+department+center+building+level+rank123
+                Session lo = new Session();
+                lo.setId(set.getInt(1));
+                lo.setLid(set.getInt(2));
+                arr.add(lo);
+           } 
+        } catch (SQLException ex) {
+            Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arr;
+    }
+        
+    private void displaySessionLocation(){
+    DefaultTableModel model1 =(DefaultTableModel)SessionView.getModel();
+        Object[] row=new Object[10];
+        
+        ArrayList<Session> ar= getSessionLocation();
+        
+        for(Object x:ar){
+            Session object=new Session();
+            object = (Session) x;
+         row[0]=object.getId();    
+        row[1]=object.getLid();
+         
+       
+        model1.addRow(row);
+        }
+        
+}
+    
+    private ArrayList<Student> getGrpLocation(){
+             ArrayList arr=new ArrayList();
+         
+        try {
+           con = dbdetail.getCon();
+           b7 = con.prepareStatement("select grpid,lid from students where lid is not null");
+            
+              
+            ResultSet set = b7.executeQuery();
+            while (set.next()) {
+                //name+emmid+faculty+department+center+building+level+rank123
+                Student lo = new Student();
+                lo.setGrpid(set.getString(1));
+                lo.setLid(set.getInt(2));
+                arr.add(lo);
+           } 
+        } catch (SQLException ex) {
+            Logger.getLogger(PreferedRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return arr;
+    }
+    
+    
+    private void displayGrpLocation(){
+    DefaultTableModel model1 =(DefaultTableModel)grpView.getModel();
+        Object[] row=new Object[10];
+        
+        ArrayList<Student> ar= getGrpLocation();
+        
+        for(Object x:ar){
+            Student object=new Student();
+            object = (Student) x;
+         row[0]=object.getGrpid();    
+        row[1]=object.getLid();
+         
+       
+        model1.addRow(row);
+        }
+        
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable SessionView;
     private javax.swing.JButton View;
     private javax.swing.JButton View1;
     private javax.swing.JButton View2;
+    private javax.swing.JButton View3;
+    private javax.swing.JButton View4;
+    private javax.swing.JButton View5;
+    private javax.swing.JComboBox<String> grp;
+    private javax.swing.JTable grpView;
+    private javax.swing.JComboBox<String> grproom;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -433,11 +851,10 @@ public class PreferedRoom extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox<String> lec;
+    private javax.swing.JTable lecView;
+    private javax.swing.JComboBox<String> lecroom;
+    private javax.swing.JComboBox<String> session;
+    private javax.swing.JComboBox<String> sessionroom;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,6 +13,24 @@ public class Student {
     
     int count;
     String program;
+    String grpid;
+    int lid;
+
+    public String getGrpid() {
+        return grpid;
+    }
+
+    public void setGrpid(String grpid) {
+        this.grpid = grpid;
+    }
+
+    public int getLid() {
+        return lid;
+    }
+
+    public void setLid(int lid) {
+        this.lid = lid;
+    }
 
     public int getCount() {
         return count;

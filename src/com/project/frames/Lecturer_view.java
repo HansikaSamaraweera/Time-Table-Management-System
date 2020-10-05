@@ -726,6 +726,7 @@ public class Lecturer_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         mainframe ob=new mainframe();
         ob.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_jButton4ActionPerformed
 

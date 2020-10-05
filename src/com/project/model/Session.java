@@ -20,6 +20,16 @@ public class Session {
    int n0_students;
    int duration;
    String status;
+   int lid;
+   String notAvailable;
+
+    public int getLid() {
+        return lid;
+    }
+
+    public void setLid(int lid) {
+        this.lid = lid;
+    }
 
     public String getStatus() {
         return status;
@@ -93,6 +103,12 @@ public class Session {
         this.duration = duration;
     }
    
-            
+    public String getnotAvailable(){
+        return notAvailable;
+    }
+    
+   public void setnotAvailable(String notAvailable){
+       this.notAvailable = notAvailable;
+   }         
     
 }

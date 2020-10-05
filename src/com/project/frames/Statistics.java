@@ -55,6 +55,7 @@ public class Statistics extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -76,24 +77,39 @@ public class Statistics extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(153, 153, 0));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+
+        jButton10.setBackground(new java.awt.Color(204, 204, 255));
+        jButton10.setText("Main Menu");
+        jButton10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(95, 62, 25));
+        jPanel2.setBackground(new java.awt.Color(153, 0, 153));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -297,7 +313,7 @@ public class Statistics extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 327, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(177, 177, 177)
                         .addComponent(jLabel6)
@@ -340,14 +356,18 @@ public class Statistics extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        Integer a =  (Integer) lec.getModel().getValueAt(0,1);
-        String fac1 = (String) lec.getModel().getValueAt(0, 0);
-        Integer b =  (Integer) lec.getModel().getValueAt(1,1);
-         String fac2 = (String) lec.getModel().getValueAt(1, 0);
-          
+                System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        int a = lecRowCount();
+//        int b = 0;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(a,"Count", fac1);
-        dataset.setValue(b,"Count", fac2);
+       for(int i=0; i<a ; i++){
+          System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+         Integer and =  (Integer) lec.getModel().getValueAt(i,1);
+        String fac1 = (String) lec.getModel().getValueAt(i,0); 
+ 
+         dataset.setValue(and,"Count", fac1);
+//         b++;
+    }
         
         JFreeChart chart = ChartFactory.createBarChart("Lecture Count", "Faculty Name","Count", dataset, PlotOrientation.VERTICAL,  false, true, false);
         CategoryPlot p = chart.getCategoryPlot();
@@ -359,20 +379,18 @@ public class Statistics extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Integer a =  (Integer) subject.getModel().getValueAt(0,1);
-        String fac1 = (String) subject.getModel().getValueAt(0, 0);
-        Integer b =  (Integer) subject.getModel().getValueAt(1,1);
-         String fac2 = (String) subject.getModel().getValueAt(1, 0);
-         Integer c =  (Integer) subject.getModel().getValueAt(2,1);
-         String fac3 = (String) subject.getModel().getValueAt(2, 0);
-         Integer d =  (Integer) subject.getModel().getValueAt(3,1);
-         String fac4 = (String) subject.getModel().getValueAt(3, 0);
-          
+               System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        int a = subRowCount();
+//        int b = 0;
         DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
-        dataset1.setValue(a,"Count", fac1);
-        dataset1.setValue(b,"Count", fac2);
-        dataset1.setValue(c,"Count", fac3);
-        dataset1.setValue(d,"Count", fac4);
+       for(int i=0; i<a ; i++){
+          System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+         Integer and =  (Integer) student.getModel().getValueAt(i,1);
+        String fac1 = (String) student.getModel().getValueAt(i,0); 
+ 
+         dataset1.setValue(and,"Count", fac1);
+//         b++;
+    }
         
         JFreeChart chart = ChartFactory.createBarChart("Subject Count", "Faculty Name","Count", dataset1, PlotOrientation.VERTICAL,  false, true, false);
         CategoryPlot p = chart.getCategoryPlot();
@@ -386,20 +404,20 @@ public class Statistics extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
-         Integer a =  (Integer) student.getModel().getValueAt(0,1);
-        String fac1 = (String) student.getModel().getValueAt(0, 0);
-        Integer b =  (Integer) student.getModel().getValueAt(1,1);
-         String fac2 = (String) student.getModel().getValueAt(1, 0);
-         Integer c =  (Integer) student.getModel().getValueAt(2,1);
-         String fac3 = (String) student.getModel().getValueAt(2, 0);
-          
+       
+          System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        int a = stuRowCount();
+//        int b = 0;
         DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
-        dataset1.setValue(a,"Count", fac1);
-        dataset1.setValue(b,"Count", fac2);
-        dataset1.setValue(c,"Count", fac3);
-         
-        
+       for(int i=0; i<a ; i++){
+          System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+         Integer and =  (Integer) student.getModel().getValueAt(i,1);
+        String fac1 = (String) student.getModel().getValueAt(i,0); 
+ 
+         dataset1.setValue(and,"Count", fac1);
+//         b++;
+    }
+ 
         JFreeChart chart = ChartFactory.createBarChart("Student Count", "Faculty Name","Count", dataset1, PlotOrientation.VERTICAL,  false, true, false);
         CategoryPlot p = chart.getCategoryPlot();
         p.setRangeGridlinePaint(Color.black);
@@ -407,6 +425,13 @@ public class Statistics extends javax.swing.JFrame {
         frame.setVisible(true);
         frame.setSize(450,350);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        mainframe ob=new mainframe();
+        ob.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,6 +458,8 @@ public class Statistics extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Statistics.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -563,10 +590,61 @@ public class Statistics extends javax.swing.JFrame {
         model1.addRow(row);
         }
 }
+    private int stuRowCount(){
+         int a =0;
+        try {
+            con = dbdetail.getCon();
+            s1 = con.prepareStatement("select distinct programme from students;");
+            ResultSet set = s1.executeQuery();
+             while (set.next()) {
+               a++;
+            }
+               
+  
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(a+"aaaaaaaaaaaaaaaaaaaaa");
+        return a;
         
+    }
+          private int lecRowCount(){
+         int a =0;
+        try {
+            con = dbdetail.getCon();
+            s1 = con.prepareStatement("select distinct faculty from lec;");
+            ResultSet set = s1.executeQuery();
+             while (set.next()) {
+               a++;
+            }
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(a+"aaaaaaaaaaaaaaaaaaaaa");
+        return a;
         
+    }  
+    private int subRowCount(){
+         int a =0;
+        try {
+            con = dbdetail.getCon();
+            s1 = con.prepareStatement("select distinct faculty from sub;");
+            ResultSet set = s1.executeQuery();
+             while (set.next()) {
+               a++;
+            }
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(Lecturer_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(a+"aaaaaaaaaaaaaaaaaaaaa");
+        return a;
+        
+    } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

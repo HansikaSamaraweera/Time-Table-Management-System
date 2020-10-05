@@ -27,6 +27,8 @@ public class AddNewTag extends javax.swing.JFrame {
     PreparedStatement ps = null;
     PreparedStatement ps1;
     PreparedStatement ps12;
+    
+    private boolean Invalidname=false;
 
     /**
      * Creates new form AddNewTag
@@ -116,6 +118,20 @@ public class AddNewTag extends javax.swing.JFrame {
             }
         });
 
+        tName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tNameFocusLost(evt);
+            }
+        });
+        tName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tNameKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tNameKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -191,7 +207,7 @@ public class AddNewTag extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel7.setText("Add New Tag");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -199,7 +215,7 @@ public class AddNewTag extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(191, Short.MAX_VALUE)
+                .addContainerGap(176, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(105, 105, 105))
         );
@@ -272,6 +288,34 @@ public class AddNewTag extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void tNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tNameFocusLost
+        /*String name2 = tName.getText();
+        Invalidname = invalidCharacter(name2);*/
+    }//GEN-LAST:event_tNameFocusLost
+
+    private void tNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tNameKeyPressed
+        /*String name2 = tName.getText();
+        Invalidname = invalidCharacter(name2);*/
+    }//GEN-LAST:event_tNameKeyPressed
+
+    private void tNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tNameKeyTyped
+        String name2 = tName.getText();
+        Invalidname = invalidCharacter(name2);
+    }//GEN-LAST:event_tNameKeyTyped
+
+    public static boolean invalidCharacter(String name) {
+        for (int i = 0; i < name.length(); i++) {
+            char ch = name.charAt(i);
+
+            if (Character.isDigit(ch)) {
+                JOptionPane.showMessageDialog(null, "You can not enter numbers in this field");
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

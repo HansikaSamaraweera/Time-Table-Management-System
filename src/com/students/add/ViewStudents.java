@@ -10,6 +10,7 @@ import com.project.frames.Subject;
 import com.project.frames.lecturers;
 import com.project.frames.mainframe;
 import com.project.util.dbdetail;
+import com.students.services.stdsubgroups;
 import com.students.services.students;
 import com.tag.all.ViewEditDeleteTag;
 import java.awt.Dimension;
@@ -58,10 +59,14 @@ public class ViewStudents extends javax.swing.JFrame {
         //View year 4 Details
         show_students_year4();
         
+        //View sub group ids
+        show_substudentsids();
+        
         y1id.setVisible(false);
         y2id.setVisible(false);
         y3id.setVisible(false);
         y4id.setVisible(false);
+        lasid.setVisible(false);
         
     }
     
@@ -113,7 +118,7 @@ public class ViewStudents extends javax.swing.JFrame {
         ArrayList<students> list=studentlist_Year1();
         DefaultTableModel model=(DefaultTableModel)viewtable_y1.getModel();
         
-        Object[] row=new Object[8];
+        Object[] row=new Object[6];
         
         for(int i=0;i<list.size();i++){
             row[0]=list.get(i).getid();
@@ -122,8 +127,6 @@ public class ViewStudents extends javax.swing.JFrame {
             row[3]=list.get(i).getprogramme();
             row[4]=list.get(i).getgrpno();
             row[5]=list.get(i).getgrpid();
-            row[6]=list.get(i).getsubno();
-            row[7]=list.get(i).getsubid();
             model.addRow(row);
             
         }
@@ -206,7 +209,7 @@ public class ViewStudents extends javax.swing.JFrame {
         ArrayList<students> list2=studentlist_Year2();
         DefaultTableModel model2=(DefaultTableModel)viewtable_y2.getModel();
         
-        Object[] data=new Object[8];
+        Object[] data=new Object[6];
         
         for(int i=0;i<list2.size();i++){
             data[0]=list2.get(i).getid();
@@ -215,8 +218,6 @@ public class ViewStudents extends javax.swing.JFrame {
             data[3]=list2.get(i).getprogramme();
             data[4]=list2.get(i).getgrpno();
             data[5]=list2.get(i).getgrpid();
-            data[6]=list2.get(i).getsubno();
-            data[7]=list2.get(i).getsubid();
             model2.addRow(data);
             
         }
@@ -299,7 +300,7 @@ public class ViewStudents extends javax.swing.JFrame {
         ArrayList<students> list3=studentlist_Year3();
         DefaultTableModel model3=(DefaultTableModel)viewtable_y3.getModel();
         
-        Object[] row_3=new Object[8];
+        Object[] row_3=new Object[6];
         
         for(int i=0;i<list3.size();i++){
             row_3[0]=list3.get(i).getid();
@@ -308,8 +309,6 @@ public class ViewStudents extends javax.swing.JFrame {
             row_3[3]=list3.get(i).getprogramme();
             row_3[4]=list3.get(i).getgrpno();
             row_3[5]=list3.get(i).getgrpid();
-            row_3[6]=list3.get(i).getsubno();
-            row_3[7]=list3.get(i).getsubid();
             model3.addRow(row_3);
             
         }
@@ -393,7 +392,7 @@ public class ViewStudents extends javax.swing.JFrame {
         ArrayList<students> list4=studentlist_Year4();
         DefaultTableModel model4=(DefaultTableModel)viewtable_y4.getModel();
         
-        Object[] row_data=new Object[8];
+        Object[] row_data=new Object[6];
         
         for(int i=0;i<list4.size();i++){
             row_data[0]=list4.get(i).getid();
@@ -402,8 +401,6 @@ public class ViewStudents extends javax.swing.JFrame {
             row_data[3]=list4.get(i).getprogramme();
             row_data[4]=list4.get(i).getgrpno();
             row_data[5]=list4.get(i).getgrpid();
-            row_data[6]=list4.get(i).getsubno();
-            row_data[7]=list4.get(i).getsubid();
             model4.addRow(row_data);
             
         }
@@ -439,6 +436,76 @@ public class ViewStudents extends javax.swing.JFrame {
         }
     }
     
+    /*
+    -----------------------------------------------------------------------------------------------------------
+                            Display Sub Group IDs
+    -----------------------------------------------------------------------------------------------------------
+    */
+    public ArrayList<stdsubgroups> studentsublist()
+    {
+        ArrayList<stdsubgroups> std=new ArrayList<>();
+        try{
+            con = (Connection) dbdetail.getCon();
+            String query="select * from subgrp";
+            
+            Statement st=con.createStatement();
+            
+            ResultSet rs=st.executeQuery(query);
+            
+            stdsubgroups addStd;
+            
+            while(rs.next()){
+                addStd=new stdsubgroups(rs.getInt("id"),rs.getInt("grpId"),rs.getString("subgrp"));
+                std.add(addStd);
+    
+            }
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        return std;
+
+    }
+
+    public void show_substudentsids(){
+        ArrayList<stdsubgroups> list=studentsublist();
+        DefaultTableModel model=(DefaultTableModel)subtb.getModel();
+        
+        Object[] row67=new Object[3];
+        
+        for(int i=0;i<list.size();i++){
+            row67[0]=list.get(i).getid();
+            row67[1]=list.get(i).getgrpId();
+            row67[2]=list.get(i).getSubgrpID();
+            model.addRow(row67);
+            
+        }
+    }
+
+    public void executeSQLQuery_year12(String query,String message){
+        con = (Connection) dbdetail.getCon();
+        Statement st;
+        
+        try{
+            st=con.createStatement();
+            if(st.executeUpdate(query)==1)
+            {
+                DefaultTableModel model=(DefaultTableModel)subtb.getModel();
+                model.setRowCount(0);
+                show_substudentsids();
+                
+                JOptionPane.showMessageDialog(null,"Data"+message+"Successfully");
+                
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null,"Data Not"+message);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -474,6 +541,8 @@ public class ViewStudents extends javax.swing.JFrame {
         y3id = new javax.swing.JLabel();
         y4id = new javax.swing.JLabel();
         y1id = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lasid = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -488,6 +557,11 @@ public class ViewStudents extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         Tag = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        subtb = new javax.swing.JTable();
+        dy5 = new javax.swing.JButton();
 
         abcd.setText("Edit");
         abcd.addActionListener(new java.awt.event.ActionListener() {
@@ -518,7 +592,7 @@ public class ViewStudents extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
+                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID"
             }
         ));
         viewtable_y4.setSelectionBackground(new java.awt.Color(204, 204, 204));
@@ -529,9 +603,6 @@ public class ViewStudents extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(viewtable_y4);
         if (viewtable_y4.getColumnModel().getColumnCount() > 0) {
-            viewtable_y4.getColumnModel().getColumn(0).setMinWidth(0);
-            viewtable_y4.getColumnModel().getColumn(0).setPreferredWidth(0);
-            viewtable_y4.getColumnModel().getColumn(0).setMaxWidth(0);
             viewtable_y4.getColumnModel().getColumn(1).setMinWidth(0);
             viewtable_y4.getColumnModel().getColumn(1).setPreferredWidth(0);
             viewtable_y4.getColumnModel().getColumn(1).setMaxWidth(0);
@@ -550,7 +621,7 @@ public class ViewStudents extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Year", " Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
+                "ID", "Year", " Year and Semester", "Programme", "Group No", "Group ID"
             }
         ));
         viewtable_y2.setGridColor(new java.awt.Color(0, 153, 102));
@@ -562,9 +633,6 @@ public class ViewStudents extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(viewtable_y2);
         if (viewtable_y2.getColumnModel().getColumnCount() > 0) {
-            viewtable_y2.getColumnModel().getColumn(0).setMinWidth(0);
-            viewtable_y2.getColumnModel().getColumn(0).setPreferredWidth(0);
-            viewtable_y2.getColumnModel().getColumn(0).setMaxWidth(0);
             viewtable_y2.getColumnModel().getColumn(1).setMinWidth(0);
             viewtable_y2.getColumnModel().getColumn(1).setPreferredWidth(0);
             viewtable_y2.getColumnModel().getColumn(1).setMaxWidth(0);
@@ -607,7 +675,7 @@ public class ViewStudents extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
+                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID"
             }
         ));
         viewtable_y1.setGridColor(new java.awt.Color(0, 153, 102));
@@ -620,9 +688,6 @@ public class ViewStudents extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(viewtable_y1);
         if (viewtable_y1.getColumnModel().getColumnCount() > 0) {
-            viewtable_y1.getColumnModel().getColumn(0).setMinWidth(0);
-            viewtable_y1.getColumnModel().getColumn(0).setPreferredWidth(0);
-            viewtable_y1.getColumnModel().getColumn(0).setMaxWidth(0);
             viewtable_y1.getColumnModel().getColumn(1).setMinWidth(0);
             viewtable_y1.getColumnModel().getColumn(1).setPreferredWidth(0);
             viewtable_y1.getColumnModel().getColumn(1).setMaxWidth(0);
@@ -633,7 +698,7 @@ public class ViewStudents extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID", "Sub-Group No", "Sub-Group ID"
+                "ID", "Year", "Year and Semester", "Programme", "Group No", "Group ID"
             }
         ));
         viewtable_y3.setSelectionBackground(new java.awt.Color(204, 204, 204));
@@ -644,9 +709,6 @@ public class ViewStudents extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(viewtable_y3);
         if (viewtable_y3.getColumnModel().getColumnCount() > 0) {
-            viewtable_y3.getColumnModel().getColumn(0).setMinWidth(0);
-            viewtable_y3.getColumnModel().getColumn(0).setPreferredWidth(0);
-            viewtable_y3.getColumnModel().getColumn(0).setMaxWidth(0);
             viewtable_y3.getColumnModel().getColumn(1).setMinWidth(0);
             viewtable_y3.getColumnModel().getColumn(1).setPreferredWidth(0);
             viewtable_y3.getColumnModel().getColumn(1).setMaxWidth(0);
@@ -663,53 +725,64 @@ public class ViewStudents extends javax.swing.JFrame {
         y1id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         y1id.setForeground(new java.awt.Color(240, 240, 240));
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel10.setText("Sub Group ID ");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 657, Short.MAX_VALUE)
-                .addComponent(dy2)
-                .addGap(4, 4, 4))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6)
-                    .addComponent(jScrollPane5)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(y1id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(y2id, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(dy1)
-                        .addGap(6, 6, 6))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(dy1)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(dy2)
+                                .addGap(20, 20, 20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(dy3)
+                                .addGap(22, 22, 22))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7)
+                            .addComponent(jScrollPane5)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(36, 36, 36)
-                                .addComponent(y4id, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(78, 78, 78)
-                                .addComponent(y3id)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dy3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dy4, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(y1id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(y2id, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(y4id, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(163, 163, 163)
+                                        .addComponent(y3id)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(35, 35, 35)
+                        .addComponent(lasid, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dy4)
+                        .addGap(20, 20, 20))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -718,42 +791,42 @@ public class ViewStudents extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(y1id, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dy1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(y2id, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dy2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(y3id, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 52, Short.MAX_VALUE))
+                        .addComponent(dy3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(y4id, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dy4))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(dy2)))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(y3id))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dy3)
-                .addGap(12, 12, 12)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(y4id, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dy4)
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(lasid, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 720, 930));
@@ -761,7 +834,7 @@ public class ViewStudents extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/l1.PNG"))); // NOI18N
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
         jLabel8.setText("View Students");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 203, 50));
 
@@ -891,10 +964,46 @@ public class ViewStudents extends javax.swing.JFrame {
                 .addComponent(Tag, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(429, Short.MAX_VALUE))
+                .addContainerGap(589, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 1040));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 1200));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel9.setText("Year 1");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 12, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel1.setText("Main Group ID");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 110, -1));
+
+        subtb.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Main Group ID", "Sub Group ID"
+            }
+        ));
+        subtb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                subtbMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(subtb);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 1030, 710, 100));
+
+        dy5.setBackground(new java.awt.Color(255, 255, 255));
+        dy5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/project/images/icons8-trash-25.png"))); // NOI18N
+        dy5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dy5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(dy5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 1137, -1, -1));
 
         jScrollPane3.setViewportView(jPanel3);
 
@@ -906,7 +1015,7 @@ public class ViewStudents extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1039, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1192, Short.MAX_VALUE)
         );
 
         pack();
@@ -1072,6 +1181,34 @@ public class ViewStudents extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_TagActionPerformed
 
+    private void dy5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dy5ActionPerformed
+        int p=JOptionPane.showConfirmDialog(null,"Do you want to delete this item?","Delete",JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        int id= Integer.parseInt(lasid.getText());
+        System.out.print(id);
+        if(p==0){
+        try {
+            con = (Connection) dbdetail.getCon();
+            ps2=con.prepareStatement("delete from subgrp where id=?");
+            ps2.setInt(1,id);
+            ps2.execute();
+            
+            ViewStudents ad=new ViewStudents();
+            ad.setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewStudents.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_dy5ActionPerformed
+
+    private void subtbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subtbMouseClicked
+        int i=subtb.getSelectedRow();
+        TableModel model=subtb.getModel();
+        lasid.setText(model.getValueAt(i,0).toString());
+    }//GEN-LAST:event_subtbMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1117,6 +1254,7 @@ public class ViewStudents extends javax.swing.JFrame {
     private javax.swing.JButton dy2;
     private javax.swing.JButton dy3;
     private javax.swing.JButton dy4;
+    private javax.swing.JButton dy5;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
@@ -1126,20 +1264,26 @@ public class ViewStudents extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JLabel lasid;
+    private javax.swing.JTable subtb;
     private javax.swing.JTable viewtable_y1;
     private javax.swing.JTable viewtable_y2;
     private javax.swing.JTable viewtable_y3;
