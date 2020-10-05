@@ -68,7 +68,11 @@ public class sessionsMain extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 255));
 
+<<<<<<< HEAD
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton1.setText("Main Menu");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton1.setMaximumSize(null);
@@ -78,7 +82,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton2.setText("Create Sessions");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton2.setMaximumSize(null);
@@ -88,7 +96,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton3.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton3.setText("Filter Sessions");
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton3.setMaximumSize(null);
@@ -98,7 +110,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         parallel.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        parallel.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         parallel.setText("Make Sessions Parrallel Sessions");
         parallel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         parallel.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +123,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         consecutive.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        consecutive.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         consecutive.setText("Make Sessions Consecutive Sessions");
         consecutive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         consecutive.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +136,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         notoverlap.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        notoverlap.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         notoverlap.setText("Make Sessions NotOverlap Sessions");
         notoverlap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         notoverlap.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +187,11 @@ public class sessionsMain extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 255));
 
+<<<<<<< HEAD
         jButton6.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton6.setText("Add Normal Sessions To Time Table");
         jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton6.setMaximumSize(null);
@@ -173,7 +201,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton7.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton7.setText("Add Parralell Sessions To Time Tables");
         jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton7.setMaximumSize(null);
@@ -183,7 +215,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton8.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton8.setText("Add Consecutive sessions to Time Table");
         jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton8.setMaximumSize(null);
@@ -193,25 +229,38 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton13.setBackground(new java.awt.Color(204, 204, 255));
         jButton13.setText("Add Preffered Sessions to time table");
         jButton13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
+=======
+        jButton13.setText("Add Preffered Sessions to time table");
+        jButton13.setMaximumSize(null);
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD
         jButton15.setBackground(new java.awt.Color(204, 204, 255));
         jButton15.setText("Auto Genarate Time Table");
         jButton15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
+=======
+        jButton15.setText("Auto Genarate Time Table");
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD
         not.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        not.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         not.setText("Add Not Overlap sessions to Time Table");
         not.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         not.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +304,11 @@ public class sessionsMain extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 204, 255));
 
+<<<<<<< HEAD
         jButton9.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton9.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton9.setText("Genarate Time Tables Structure");
         jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton9.setMaximumSize(null);
@@ -265,7 +318,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton11.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton11.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton11.setText("View Lectueres Time Table");
         jButton11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton11.setMaximumSize(null);
@@ -275,7 +332,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton10.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton10.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton10.setText("View Student Time Tables");
         jButton10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton10.setMaximumSize(null);
@@ -285,7 +346,11 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton12.setBackground(new java.awt.Color(204, 204, 255));
+=======
+        jButton12.setBackground(new java.awt.Color(255, 255, 255));
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton12.setText("View Room Time Tables");
         jButton12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
         jButton12.setMaximumSize(null);
@@ -295,9 +360,13 @@ public class sessionsMain extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jButton14.setBackground(new java.awt.Color(204, 204, 255));
         jButton14.setText("Genarate Reports");
         jButton14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 51)));
+=======
+        jButton14.setText("Genarate Reports");
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);

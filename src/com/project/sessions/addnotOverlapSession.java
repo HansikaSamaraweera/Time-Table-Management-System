@@ -677,7 +677,11 @@ private int studentId(int id){
         }
         
          String val1=gettinnglocationName(locationID1);
+<<<<<<< HEAD
         String sessionDeatils1=ob1.getLec()+"<br>"+ob1.getS_grp()+"<br>"+ob1.getSub_grp()+"<br>"+ob1.getSubject_c()+"<br>"+ob1.getTag()+"<br>"+val1+"<br>"+"<br>";
+=======
+        String sessionDeatils1=ob1.getLec()+"<br>"+ob1.getS_grp()+"<br>"+ob1.getSub_grp()+"<br>"+ob1.getSubject_c()+"<br>"+ob1.getTag()+"<br>"+val1+"<br>"+"------------------------"+"<br>";
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         
          String val2=gettinnglocationName(locationID2);
         String sessionDeatils2=ob2.getLec()+"<br>"+ob2.getS_grp()+"<br>"+ob2.getSub_grp()+"<br>"+ob2.getSubject_c()+"<br>"+ob2.getTag()+"<br>"+val2;

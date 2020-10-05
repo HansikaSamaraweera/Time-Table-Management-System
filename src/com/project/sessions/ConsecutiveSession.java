@@ -473,7 +473,11 @@ public class ConsecutiveSession extends javax.swing.JFrame {
             ps.execute();
 
             JOptionPane.showMessageDialog(null, "successfully created consecutive session");
+<<<<<<< HEAD
             AddConsecutive ob4=new  AddConsecutive();
+=======
+            ParallelSession ob4=new  ParallelSession();
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             ob4.setVisible(true);
             this.setVisible(false);
             
@@ -520,12 +524,20 @@ public class ConsecutiveSession extends javax.swing.JFrame {
             ps9.execute();
             JOptionPane.showMessageDialog(null, "View Consecutive Session");
 
+<<<<<<< HEAD
             AddConsecutive add=new  AddConsecutive();
+=======
+            ViewSessions add=new  ViewSessions();
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             this.setVisible(false);
             add.setVisible(true);
 
         } catch (SQLException ex) {
+<<<<<<< HEAD
             Logger.getLogger(AddConsecutive.class.getName()).log(Level.SEVERE, null, ex);
+=======
+            Logger.getLogger(ViewSessions.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
         }
     }
         

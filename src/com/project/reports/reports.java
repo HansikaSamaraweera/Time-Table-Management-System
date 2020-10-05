@@ -196,7 +196,11 @@ public class reports extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
+<<<<<<< HEAD
             String file="C:\\reports\\reportlec.jrxml";
+=======
+            String file="C:\\Users\\vnaso\\Videos\\timetab\\src\\com\\project\\reports\\reportlec.jrxml";
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             JasperReport jr=JasperCompileManager.compileReport(file);
             JasperPrint jp = JasperFillManager.fillReport(jr,null,dbdetail.getCon());
             JasperViewer.viewReport(jp,false);
@@ -210,7 +214,11 @@ public class reports extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
+<<<<<<< HEAD
             String file="C:\\reports\\reportstu.jrxml";
+=======
+            String file="C:\\Users\\vnaso\\Videos\\timetab\\src\\com\\project\\reports\\reportlec.jrxml";
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             JasperReport jr=JasperCompileManager.compileReport(file);
             JasperPrint jp = JasperFillManager.fillReport(jr,null,dbdetail.getCon());
             JasperViewer.viewReport(jp,false);
@@ -225,7 +233,11 @@ public class reports extends javax.swing.JFrame {
         // TODO add your handling code here:
         int x=(int) lec2.getValue();
         try {
+<<<<<<< HEAD
             String file="C:\\reports\\reportlec_1.jrxml";
+=======
+            String file="C:\\Users\\vnaso\\Videos\\timetab\\src\\com\\project\\reports\\reportlec_1.jrxml";
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             HashMap param=new HashMap();
           
             
@@ -252,14 +264,22 @@ public class reports extends javax.swing.JFrame {
         // TODO add your handling code here:
         int x=(int) stu2.getValue();
         try {
+<<<<<<< HEAD
             String file="C:\\reports\\reportstu_1.jrxml";
+=======
+            String file="C:\\Users\\vnaso\\Videos\\timetab\\src\\com\\project\\reports\\reportlec_one.jrxml";
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             HashMap param=new HashMap();
           
             
             try{
            
             
+<<<<<<< HEAD
             param.put("paramstu", x);
+=======
+            param.put("paralec", x);
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             
             }catch(Exception e){}
             
@@ -278,14 +298,22 @@ public class reports extends javax.swing.JFrame {
         // TODO add your handling code here:
         int x=(int) loc2.getValue();
         try {
+<<<<<<< HEAD
             String file="C:\\reports\\reportlocation_1.jrxml";
+=======
+            String file="C:\\Users\\vnaso\\Videos\\timetab\\src\\com\\project\\reports\\reportlec_one.jrxml";
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             HashMap param=new HashMap();
           
             
             try{
            
             
+<<<<<<< HEAD
             param.put("paramroom", x);
+=======
+            param.put("paralec", x);
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             
             }catch(Exception e){}
             
@@ -317,7 +345,11 @@ public class reports extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         try {
+<<<<<<< HEAD
             String file="C:\\reports\\reportlocation.jrxml";
+=======
+            String file="C:\\Users\\vnaso\\Videos\\timetab\\src\\com\\project\\reports\\reportlec.jrxml";
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
             JasperReport jr=JasperCompileManager.compileReport(file);
             JasperPrint jp = JasperFillManager.fillReport(jr,null,dbdetail.getCon());
             JasperViewer.viewReport(jp,false);

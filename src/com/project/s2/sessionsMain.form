@@ -131,7 +131,11 @@
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Main Menu"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -152,7 +156,11 @@
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create Sessions"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -173,7 +181,11 @@
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Filter Sessions"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -194,7 +206,11 @@
             <Component class="javax.swing.JButton" name="parallel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Make Sessions Parrallel Sessions"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -212,7 +228,11 @@
             <Component class="javax.swing.JButton" name="consecutive">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Make Sessions Consecutive Sessions"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -230,7 +250,11 @@
             <Component class="javax.swing.JButton" name="notoverlap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Make Sessions NotOverlap Sessions"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -295,7 +319,11 @@
             <Component class="javax.swing.JButton" name="jButton6">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add Normal Sessions To Time Table"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -316,7 +344,11 @@
             <Component class="javax.swing.JButton" name="jButton7">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add Parralell Sessions To Time Tables"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -337,7 +369,11 @@
             <Component class="javax.swing.JButton" name="jButton8">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add Consecutive sessions to Time Table"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -357,6 +393,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton13">
               <Properties>
+<<<<<<< HEAD
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
                 </Property>
@@ -367,6 +404,11 @@
                       <Color PropertyName="color" blue="33" green="0" red="33" type="rgb"/>
                     </LineBorder>
                   </Border>
+=======
+                <Property name="text" type="java.lang.String" value="Add Preffered Sessions to time table"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="null"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
               </Properties>
               <Events>
@@ -375,6 +417,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton15">
               <Properties>
+<<<<<<< HEAD
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
                 </Property>
@@ -386,6 +429,9 @@
                     </LineBorder>
                   </Border>
                 </Property>
+=======
+                <Property name="text" type="java.lang.String" value="Auto Genarate Time Table"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton15ActionPerformed"/>
@@ -394,7 +440,11 @@
             <Component class="javax.swing.JButton" name="not">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add Not Overlap sessions to Time Table"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -456,7 +506,11 @@
             <Component class="javax.swing.JButton" name="jButton9">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="Genarate Time Tables Structure"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -477,7 +531,11 @@
             <Component class="javax.swing.JButton" name="jButton11">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="View Lectueres Time Table"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -498,7 +556,11 @@
             <Component class="javax.swing.JButton" name="jButton10">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="View Student Time Tables"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -519,7 +581,11 @@
             <Component class="javax.swing.JButton" name="jButton12">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+<<<<<<< HEAD
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
+=======
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
                 </Property>
                 <Property name="text" type="java.lang.String" value="View Room Time Tables"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -539,6 +605,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton14">
               <Properties>
+<<<<<<< HEAD
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
                 </Property>
@@ -550,6 +617,9 @@
                     </LineBorder>
                   </Border>
                 </Property>
+=======
+                <Property name="text" type="java.lang.String" value="Genarate Reports"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>

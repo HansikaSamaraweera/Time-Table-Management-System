@@ -19,7 +19,14 @@
 	<queryString>
 		<![CDATA[select lt.id,l.name,lt.timeslot,lt.mon,lt.tue,lt.wed,lt.thur,lt.fri,lt.sat,lt.sun
 from lec_timetable  lt, lec l
+<<<<<<< HEAD
 where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
+=======
+where lt.lecid=$P{paramlec} and  lt.lecid=l.id
+
+
+]]>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -60,17 +67,30 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 				<reportElement mode="Opaque" x="0" y="70" width="802" height="7" forecolor="#000000" backcolor="#660066" uuid="89f4724e-2863-4241-9df2-aca5d6a07b2b"/>
 			</frame>
 			<staticText>
+<<<<<<< HEAD
 				<reportElement style="Title" x="24" y="12" width="303" height="41" forecolor="#000000" uuid="08f973b9-fdb3-413b-bec5-1622455b10b2"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Comic Sans MS" size="20" isBold="true"/>
+=======
+				<reportElement style="Title" x="24" y="12" width="371" height="41" forecolor="#000000" uuid="08f973b9-fdb3-413b-bec5-1622455b10b2"/>
+				<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="24" isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Time Table Genaration for Lecturer - ]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 				<reportElement style="Detail" positionType="Float" x="327" y="22" width="138" height="31" forecolor="#000000" uuid="2f0829ee-9bd1-443d-a3c0-df0e07070c8e"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="20" isBold="true"/>
+=======
+				<reportElement style="Detail" positionType="Float" x="395" y="22" width="138" height="31" forecolor="#000000" uuid="2f0829ee-9bd1-443d-a3c0-df0e07070c8e"/>
+				<textElement>
+					<font size="24"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
@@ -91,70 +111,110 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 			<staticText>
 				<reportElement style="Column header" x="0" y="0" width="79" height="18" forecolor="#000000" uuid="5822502a-8cb0-4297-8971-117bf18a2152"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="79" y="0" width="79" height="18" forecolor="#000000" uuid="ed282f6c-59ad-4577-8208-f02c71129209"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Lectuer Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="158" y="0" width="79" height="18" forecolor="#000000" uuid="8d3e954a-532b-4415-a2f8-05419fbf6de0"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Time Slot]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="237" y="0" width="79" height="18" forecolor="#000000" uuid="cd95f37c-b535-46ff-8964-14022b88cf42"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Monday]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="316" y="0" width="79" height="18" forecolor="#000000" uuid="87f40963-8617-46ed-8404-8ed9c016c230"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Tuesday]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="395" y="0" width="79" height="18" forecolor="#000000" uuid="540a31d0-fd3e-4c5a-8630-304dce6d2c3e"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Wednesday]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="474" y="0" width="79" height="18" forecolor="#000000" uuid="b5c440ec-2319-42d4-a8e0-59457539a058"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Thursday]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="553" y="0" width="79" height="18" forecolor="#000000" uuid="8875efa9-72f8-414e-8cba-ed02911d3803"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Friday]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="632" y="0" width="79" height="18" forecolor="#000000" uuid="ea5f6200-e907-4f44-8b02-fe492d09a6f1"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Saturday]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="711" y="0" width="79" height="18" forecolor="#000000" uuid="f6df4c3e-ba9f-490d-9d79-26f2dcf340b9"/>
 				<textElement>
+<<<<<<< HEAD
 					<font size="10" isBold="true"/>
+=======
+					<font isBold="false"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				</textElement>
 				<text><![CDATA[Sunday]]></text>
 			</staticText>
@@ -172,7 +232,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement>
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 				</textField>
@@ -184,7 +248,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement>
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 				</textField>
@@ -196,7 +264,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement>
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{timeslot}]]></textFieldExpression>
 				</textField>
@@ -208,7 +280,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement markup="html">
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{mon}]]></textFieldExpression>
 				</textField>
@@ -220,7 +296,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement markup="html">
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{tue}]]></textFieldExpression>
 				</textField>
@@ -232,7 +312,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement markup="html">
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{wed}]]></textFieldExpression>
 				</textField>
@@ -244,7 +328,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement markup="html">
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{thur}]]></textFieldExpression>
 				</textField>
@@ -256,7 +344,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement markup="html">
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{fri}]]></textFieldExpression>
 				</textField>
@@ -268,7 +360,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement markup="html">
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{sat}]]></textFieldExpression>
 				</textField>
@@ -280,7 +376,11 @@ where lt.lecid=$P{paramlec} and  lt.lecid=l.id]]>
 						<rightPen lineWidth="0.25"/>
 					</box>
 					<textElement markup="html">
+<<<<<<< HEAD
 						<font size="10" isBold="true"/>
+=======
+						<font size="14"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					</textElement>
 					<textFieldExpression><![CDATA[$F{sun}]]></textFieldExpression>
 				</textField>

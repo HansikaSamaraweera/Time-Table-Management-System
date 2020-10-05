@@ -147,11 +147,19 @@ where lt.lecid=l.id]]>
 		</band>
 	</columnHeader>
 	<detail>
+<<<<<<< HEAD
 		<band height="22" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="69a8cff2-8326-48cc-b3ec-8a07e94aeb2a"/>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="79" y="0" width="79" height="18" uuid="c89a8491-6aba-4959-a31b-8aeb225003cb"/>
+=======
+		<band height="33" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="69a8cff2-8326-48cc-b3ec-8a07e94aeb2a"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="79" y="0" width="79" height="18" uuid="c89a8491-6aba-4959-a31b-8aeb225003cb"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -165,7 +173,11 @@ where lt.lecid=l.id]]>
 					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="158" y="0" width="79" height="18" uuid="c27fe9ce-eeaf-47c8-be99-146dc5654ed0"/>
+=======
+					<reportElement style="Detail" positionType="Float" x="158" y="0" width="79" height="18" uuid="c27fe9ce-eeaf-47c8-be99-146dc5654ed0"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -179,7 +191,11 @@ where lt.lecid=l.id]]>
 					<textFieldExpression><![CDATA[$F{timeslot}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="237" y="0" width="79" height="18" uuid="18df09a0-189f-4591-822e-07be5989d519"/>
+=======
+					<reportElement style="Detail" positionType="Float" x="237" y="0" width="79" height="18" isRemoveLineWhenBlank="true" uuid="18df09a0-189f-4591-822e-07be5989d519"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -193,7 +209,11 @@ where lt.lecid=l.id]]>
 					<textFieldExpression><![CDATA[$F{mon}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="316" y="0" width="79" height="18" uuid="87fd9358-0415-4b73-b4fe-04a21b398e52"/>
+=======
+					<reportElement style="Detail" positionType="Float" x="316" y="0" width="79" height="18" isRemoveLineWhenBlank="true" uuid="87fd9358-0415-4b73-b4fe-04a21b398e52"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -207,7 +227,11 @@ where lt.lecid=l.id]]>
 					<textFieldExpression><![CDATA[$F{tue}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="474" y="0" width="81" height="18" uuid="4df35a1e-1a48-4915-b15b-6221c9c2b857"/>
+=======
+					<reportElement style="Detail" positionType="Float" x="476" y="0" width="79" height="18" isRemoveLineWhenBlank="true" uuid="4df35a1e-1a48-4915-b15b-6221c9c2b857"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -221,7 +245,11 @@ where lt.lecid=l.id]]>
 					<textFieldExpression><![CDATA[$F{thur}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="555" y="0" width="77" height="18" uuid="fefe2343-b770-42e8-a92f-9b422d231a95"/>
+=======
+					<reportElement style="Detail" positionType="Float" x="555" y="0" width="77" height="18" isRemoveLineWhenBlank="true" uuid="fefe2343-b770-42e8-a92f-9b422d231a95"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -235,7 +263,11 @@ where lt.lecid=l.id]]>
 					<textFieldExpression><![CDATA[$F{fri}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="632" y="0" width="79" height="18" uuid="a41492da-cacc-4827-b341-7362880fe582"/>
+=======
+					<reportElement style="Detail" positionType="Float" x="632" y="0" width="79" height="18" isRemoveLineWhenBlank="true" uuid="a41492da-cacc-4827-b341-7362880fe582"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -249,9 +281,13 @@ where lt.lecid=l.id]]>
 					<textFieldExpression><![CDATA[$F{sat}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="79" height="18" uuid="bddc9c68-1983-481c-8056-76d7b49d4811">
 						<property name="net.sf.jasperreports.export.pdf.tag.tr" value="full"/>
 					</reportElement>
+=======
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="79" height="18" uuid="bddc9c68-1983-481c-8056-76d7b49d4811"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -265,7 +301,11 @@ where lt.lecid=l.id]]>
 					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 					<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="395" y="0" width="79" height="18" uuid="bf3bdbea-bf44-41ca-9823-6ff396d9cb94"/>
+=======
+					<reportElement style="Detail" positionType="Float" x="395" y="0" width="79" height="18" isRemoveLineWhenBlank="true" uuid="bf3bdbea-bf44-41ca-9823-6ff396d9cb94"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 						<pen lineWidth="0.25"/>
 						<topPen lineWidth="0.25"/>
@@ -280,7 +320,11 @@ where lt.lecid=l.id]]>
 				</textField>
 			</frame>
 			<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 				<reportElement style="Detail" positionType="Float" stretchType="RelativeToTallestObject" x="711" y="0" width="79" height="18" uuid="2b840696-f7c7-4094-8584-f4dd96a10376"/>
+=======
+				<reportElement style="Detail" positionType="Float" x="711" y="0" width="79" height="18" isRemoveLineWhenBlank="true" uuid="2b840696-f7c7-4094-8584-f4dd96a10376"/>
+>>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 					<pen lineWidth="0.25"/>
 					<topPen lineWidth="0.25"/>
