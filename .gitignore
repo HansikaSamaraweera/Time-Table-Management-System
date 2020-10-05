@@ -1,8 +1,14 @@
-<<<<<<< HEAD
-/nbproject/private/
-/build/
-=======
-/nbproject/private/
-/build/
->>>>>>> d8d67a71a94e55ebd5e2356106d9c2d2e8d1855c
-/dist/
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx

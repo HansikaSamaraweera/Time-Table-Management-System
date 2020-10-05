@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    tools:context=".MedicineActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medicine Details"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"/>
+    <RelativeLayout
+        android:id="@+id/rhome"
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/prof"
+            android:layout_width="262dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="70dp"
+            android:src="@drawable/proft" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        >
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="94dp"
+            android:layout_marginLeft="94dp"
+            android:text="Name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edName"
+            android:layout_width="190dp"
+            android:layout_height="39dp"
+            android:text="Hana Anne"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/txtAge"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="94dp"
+            android:layout_marginLeft="94dp"
+            android:text="Company"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edAge"
+            android:layout_width="190dp"
+            android:layout_height="39dp"
+            android:text="25"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/txtblood"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="94dp"
+            android:layout_marginLeft="94dp"
+            android:text="Dosage"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edblood"
+            android:layout_width="190dp"
+            android:layout_height="39dp"
+            android:text="A+"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/txtDia"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="94dp"
+            android:layout_marginLeft="94dp"
+            android:text="Time"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edDia"
+            android:layout_width="190dp"
+            android:layout_height="39dp"
+            android:text="Diabetes"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/txtmed"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="94dp"
+            android:layout_marginLeft="94dp"
+            android:text="Expire Date"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edMedicine"
+            android:layout_width="190dp"
+            android:layout_height="39dp"
+            android:text="Metformin"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/txtDoc"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="94dp"
+            android:layout_marginLeft="94dp"
+            android:text="Price"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edDocName"
+            android:layout_width="190dp"
+            android:layout_height="39dp"
+            android:text="Dr.Neelika Malavige"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#0CCDA3"
+            android:text="Edit"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:id="@+id/editm"
+            android:layout_marginLeft="20dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#50D5B7"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:layout_weight="1"
+            android:id="@+id/cancelm"/>
+    </LinearLayout>
+</LinearLayout>
