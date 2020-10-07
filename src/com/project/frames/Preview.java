@@ -634,6 +634,7 @@ private static Connection con;
         model1.addRow(row);
         }
 }
+     //Fetails get
     private ArrayList<Location> getbuild(){
          ArrayList arr=new ArrayList();
         try {
