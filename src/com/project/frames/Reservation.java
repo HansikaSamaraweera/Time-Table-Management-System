@@ -319,6 +319,8 @@ public class Reservation extends javax.swing.JFrame {
         });
     }
     
+    //Display
+    
          public int rowId() {
         
          try {
