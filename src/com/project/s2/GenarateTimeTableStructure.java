@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
 public class GenarateTimeTableStructure extends javax.swing.JFrame {
 
     /**
-     * Creates new form GenarateTimeTableStructure
+     * Creates new form GenarateTimeTable
      */
      private static Connection con;
     private PreparedStatement ps2;
@@ -331,6 +331,8 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
         int ttid=Integer.parseInt(rtt.getText());
         //System.out.println(id);
         //Checking the time table has created
+        //verify time table
+        //for loop
         int r_i = roomtablecheck(id);
         if(r_i==-90){
             JOptionPane.showMessageDialog(null, "Table has Alredy Created.");
@@ -389,6 +391,7 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //asd
         int id_stu=Integer.parseInt(s_id.getText());
         int ttid_stu=Integer.parseInt(s_tt.getText());
         //System.out.println(id);

@@ -32,6 +32,7 @@ public class DisplayStudentsTimetable extends javax.swing.JFrame {
     /**
      * Creates new form DisplayTimetable
      */
+    //new form
      private static Connection con;
     private PreparedStatement ps1;
     public DisplayStudentsTimetable() {
@@ -175,6 +176,7 @@ public class DisplayStudentsTimetable extends javax.swing.JFrame {
         
         Object[] row=new Object[10];
         
+        //having a array list
         ArrayList<StudentStructure> ar= getStudentStr(sid);
         
         for(Object x:ar){
@@ -245,7 +247,9 @@ public class DisplayStudentsTimetable extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    //main method
     public static void main(String args[]) {
+       
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

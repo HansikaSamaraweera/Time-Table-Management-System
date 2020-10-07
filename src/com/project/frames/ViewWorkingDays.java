@@ -662,6 +662,7 @@ public class ViewWorkingDays extends javax.swing.JFrame {
     private void updateDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDetailsActionPerformed
         // TODO add your handling code here:
         //Todo
+        //new 
 
 
         //Updated view Days
@@ -678,6 +679,7 @@ public class ViewWorkingDays extends javax.swing.JFrame {
         String time = time1.getText();
         String timeSlot=(String) timeSlot1.getSelectedItem();
         
+        //if else 
         if(CheckBoxMonday.isSelected()){
              Monday1 = "Yes";     
         }
