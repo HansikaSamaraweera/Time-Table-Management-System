@@ -659,7 +659,7 @@ private static Connection con;
         }
         return arr;
     }
-    
+    //Display
          private void displayRoom(){
     DefaultTableModel model1 =(DefaultTableModel)room.getModel();
         Object[] row=new Object[10];
