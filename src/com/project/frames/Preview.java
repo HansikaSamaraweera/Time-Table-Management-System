@@ -704,7 +704,7 @@ private static Connection con;
     }
     
     
-    
+    //Display
       private void displayLoc(int id){
     //getOneLec(id);
     Location object=new Location();
