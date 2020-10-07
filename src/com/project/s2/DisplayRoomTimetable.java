@@ -270,6 +270,7 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        //display
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DisplayRoomTimetable().setVisible(true);
