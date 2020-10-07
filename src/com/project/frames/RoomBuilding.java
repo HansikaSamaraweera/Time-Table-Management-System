@@ -294,6 +294,7 @@ private static Connection con;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Get Details
     public ArrayList getbuil(){
         
         ArrayList arr=new ArrayList();
