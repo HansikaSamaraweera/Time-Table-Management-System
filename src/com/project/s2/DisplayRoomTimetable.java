@@ -31,6 +31,7 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
     /**
      * Creates new form DisplayTimetable
      */
+    //get connection
      private static Connection con;
     private PreparedStatement ps1;
     public DisplayRoomTimetable() {
