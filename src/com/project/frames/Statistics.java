@@ -356,12 +356,12 @@ public class Statistics extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-                System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+              
         int a = lecRowCount();
 //        int b = 0;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
        for(int i=0; i<a ; i++){
-          System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+           
          Integer and =  (Integer) lec.getModel().getValueAt(i,1);
         String fac1 = (String) lec.getModel().getValueAt(i,0); 
  
@@ -379,12 +379,12 @@ public class Statistics extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-               System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+               
         int a = subRowCount();
 //        int b = 0;
         DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
        for(int i=0; i<a ; i++){
-          System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+          
          Integer and =  (Integer) student.getModel().getValueAt(i,1);
         String fac1 = (String) student.getModel().getValueAt(i,0); 
  
@@ -405,12 +405,12 @@ public class Statistics extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
        
-          System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+         
         int a = stuRowCount();
 //        int b = 0;
         DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
        for(int i=0; i<a ; i++){
-          System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+          
          Integer and =  (Integer) student.getModel().getValueAt(i,1);
         String fac1 = (String) student.getModel().getValueAt(i,0); 
  
@@ -470,6 +470,8 @@ public class Statistics extends javax.swing.JFrame {
             }
         });
     }
+    
+    //Get Details
     private ArrayList<Lecturer> getlecCount(){
          ArrayList arr=new ArrayList();
         try {
