@@ -176,6 +176,7 @@ public class DisplayStudentsTimetable extends javax.swing.JFrame {
         
         Object[] row=new Object[10];
         
+        //having a array list
         ArrayList<StudentStructure> ar= getStudentStr(sid);
         
         for(Object x:ar){
