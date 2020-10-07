@@ -546,6 +546,7 @@ public class PreferedRoom extends javax.swing.JFrame {
         });
     }
 
+    //Display
      public ArrayList getlecid(){
         
         ArrayList a=new ArrayList();
