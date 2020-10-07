@@ -512,7 +512,7 @@ public class Statistics extends javax.swing.JFrame {
         }
 }
     
-        
+         //Get Details
          private ArrayList<SubjectsModel> getsubCount(){
          ArrayList arr=new ArrayList();
         try {
