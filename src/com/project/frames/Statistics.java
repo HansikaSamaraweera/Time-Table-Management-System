@@ -552,7 +552,7 @@ public class Statistics extends javax.swing.JFrame {
         model1.addRow(row);
         }
 }
-        
+         //Get Details
                  private ArrayList<Student> getstuCount(){
          ArrayList arr=new ArrayList();
         try {
