@@ -679,6 +679,7 @@ public class ViewWorkingDays extends javax.swing.JFrame {
         String time = time1.getText();
         String timeSlot=(String) timeSlot1.getSelectedItem();
         
+        //if else 
         if(CheckBoxMonday.isSelected()){
              Monday1 = "Yes";     
         }
