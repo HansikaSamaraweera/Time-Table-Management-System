@@ -294,6 +294,8 @@ public class NotAvailableRooms extends javax.swing.JFrame {
             }
         });
     }
+    
+    //Get Details
        public ArrayList getRoomId(){
         
         ArrayList a=new ArrayList();
