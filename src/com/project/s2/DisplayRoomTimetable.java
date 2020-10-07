@@ -160,7 +160,7 @@ public class DisplayRoomTimetable extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        
+        //new
         int rid=Integer.parseInt(r_id.getText());
         getroomName(rid);
         DefaultTableModel model1 =(DefaultTableModel)roomstructure_tab.getModel();
