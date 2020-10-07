@@ -222,6 +222,7 @@ public class DisplayLecturersTimetable extends javax.swing.JFrame {
             
             while (rs12.next()) {
                 //name+emmid+faculty+department+center+building+level+rank123
+                //while command
                 LectuersStructure ar=new LectuersStructure();
                 ar.setId(rs12.getInt(1));
                 ar.setLec(rs12.getInt(2));
