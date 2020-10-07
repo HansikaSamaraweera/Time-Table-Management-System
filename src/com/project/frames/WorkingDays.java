@@ -426,6 +426,8 @@ public class WorkingDays extends javax.swing.JFrame {
         String time1 = time.getText();
         String timeSlot1=(String) timeSlot.getSelectedItem();
         
+        
+        //if commands for days
         if(Monday.isSelected()){
              Monday1 = "Yes";     
         }

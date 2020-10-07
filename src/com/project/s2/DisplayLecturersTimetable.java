@@ -162,7 +162,7 @@ public class DisplayLecturersTimetable extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        
+        //new method
         int lid=Integer.parseInt(r_id.getText());
         getLectuerName(lid);
         DefaultTableModel model1 =(DefaultTableModel)roomstructure_tab.getModel();
@@ -215,6 +215,8 @@ public class DisplayLecturersTimetable extends javax.swing.JFrame {
     private ArrayList<LectuersStructure> getStudentStr(int rid){
          ArrayList arr=new ArrayList();
         try {
+            
+            //get db connection
             con = dbdetail.getCon();
             ps1 = con.prepareStatement("select id,lecid,timeslot,mon,tue,wed,thur,fri,sat,sun from lec_timetable where lecid=?");
             ps1.setInt(1,rid);
@@ -222,6 +224,7 @@ public class DisplayLecturersTimetable extends javax.swing.JFrame {
             
             while (rs12.next()) {
                 //name+emmid+faculty+department+center+building+level+rank123
+                //while command
                 LectuersStructure ar=new LectuersStructure();
                 ar.setId(rs12.getInt(1));
                 ar.setLec(rs12.getInt(2));

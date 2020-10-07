@@ -661,8 +661,10 @@ public class ViewWorkingDays extends javax.swing.JFrame {
 
     private void updateDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDetailsActionPerformed
         // TODO add your handling code here:
+        //Todo
 
 
+        //Updated view Days
         String Monday1 = null;
         String Tuesday1 = null;
         String Wednesday1 = null;
