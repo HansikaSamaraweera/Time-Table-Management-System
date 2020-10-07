@@ -391,6 +391,7 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //asd
         int id_stu=Integer.parseInt(s_id.getText());
         int ttid_stu=Integer.parseInt(s_tt.getText());
         //System.out.println(id);
