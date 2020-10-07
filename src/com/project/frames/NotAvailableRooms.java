@@ -316,6 +316,9 @@ public class NotAvailableRooms extends javax.swing.JFrame {
          }
           return a;  
     }
+       
+       
+       //Get Details
        public ArrayList getTimeSlot(String id){
         
         ArrayList a=new ArrayList();
