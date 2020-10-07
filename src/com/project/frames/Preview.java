@@ -677,6 +677,7 @@ private static Connection con;
         model1.addRow(row);
         }
 }
+         //Get Details
     private ArrayList<Location> getroom(){
          ArrayList arr=new ArrayList();
         try {
