@@ -412,6 +412,8 @@ private static Connection con;
         model1.addRow(row);
         }
 }
+         
+         //Get details
     private ArrayList<Session> getSessions(){
          ArrayList arr=new ArrayList();
         try {
