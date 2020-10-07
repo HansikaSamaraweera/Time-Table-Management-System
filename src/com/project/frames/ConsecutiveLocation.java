@@ -10,11 +10,6 @@ import com.project.model.Lecturer;
 import com.project.model.Location;
 import com.project.s2.ViewSessions;
 import com.project.util.dbdetail;
-<<<<<<< HEAD
-//import com.students.add.ConsecutiveSession;
-=======
-import com.students.add.ConsecutiveSession;
->>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
