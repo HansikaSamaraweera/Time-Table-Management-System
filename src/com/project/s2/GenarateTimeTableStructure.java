@@ -331,6 +331,7 @@ public class GenarateTimeTableStructure extends javax.swing.JFrame {
         int ttid=Integer.parseInt(rtt.getText());
         //System.out.println(id);
         //Checking the time table has created
+        //verify time table
         int r_i = roomtablecheck(id);
         if(r_i==-90){
             JOptionPane.showMessageDialog(null, "Table has Alredy Created.");
