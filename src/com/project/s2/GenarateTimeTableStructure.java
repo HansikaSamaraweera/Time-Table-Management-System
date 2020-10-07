@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
 public class GenarateTimeTableStructure extends javax.swing.JFrame {
 
     /**
-     * Creates new form GenarateTimeTableStructure
+     * Creates new form GenarateTimeTable
      */
      private static Connection con;
     private PreparedStatement ps2;
