@@ -44,6 +44,7 @@ public class ParallelSession extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
         
+        //display id
         displayId();
         
         //Database Connection
