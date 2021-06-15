@@ -1,16 +1,16 @@
-<<<<<<< HEAD
+
 package com.project.util;
 
 public interface dbdetailimp {
 	
 	
-	/*static final String username = "root";
+	static final String username = "root";
 	
 	
 	static final String pwd = "1234";
 	
 	
-	static final String connurl = "jdbc:mysql://localhost:3306/info";*/
+	static final String connurl = "jdbc:mysql://localhost:3306/info";
         
           //Online db1
 	/*static final String username = "vidushan";
@@ -19,7 +19,7 @@ public interface dbdetailimp {
 	static final String pwd = "0115622898";
 	
 	
-	static final String connurl = "jdbc:mysql://db4free.net:3306/database_newdb";*/
+	static final String connurl = "jdbc:mysql://db4free.net:3306/database_newdb";
     
     static final String username = "root";
 	
@@ -27,39 +27,6 @@ public interface dbdetailimp {
 	static final String pwd = "0115622898";
 	
 	
-	static final String connurl = "jdbc:mysql://130.211.121.24:3306/info";
+	static final String connurl = "jdbc:mysql://130.211.121.24:3306/info";*/
 }
 
-=======
-package com.project.util;
-
-public interface dbdetailimp {
-	
-	
-	/*static final String username = "root";
-	
-	
-	static final String pwd = "1234";
-	
-	
-	static final String connurl = "jdbc:mysql://localhost:3306/info";*/
-        
-          //Online db1
-	/*static final String username = "vidushan";
-	
-	
-	static final String pwd = "0115622898";
-	
-	
-	static final String connurl = "jdbc:mysql://db4free.net:3306/database_newdb";*/
-    
-    static final String username = "root";
-	
-	
-	static final String pwd = "0115622898";
-	
-	
-	static final String connurl = "jdbc:mysql://130.211.121.24:3306/info";
-}
-
->>>>>>> c03a2a05c407dc5b4ef7b45784f9c325737f4842
